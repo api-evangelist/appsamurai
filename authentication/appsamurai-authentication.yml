@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+docs: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+summary:
+  types: [apiKey]
+  api_key_in: [path]
+  oauth2_flows: []
+  notes: >-
+    The Campaign Spend API authenticates with a single account-scoped API key,
+    provided by an AppSamurai account manager and passed as a path segment in
+    the request URL (/api/customer-pull/spent/{api_key}). No OAuth, no
+    self-service key issuance documented.
+schemes:
+  - name: PathApiKey
+    type: apiKey
+    in: path
+    parameter: api_key
+    issuance: manual (provided by AppSamurai account manager)
+    sources: [openapi/appsamurai-campaign-spend-openapi.yml]
+    docs: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
