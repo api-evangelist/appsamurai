@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for AppSamurai Campaign Spend API
+  version: 1.0.0
+extends: openapi/appsamurai-campaign-spend-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-rating: 3
+      x-apievangelist-notes: >-
+        Faithfully modeled from AppSamurai's published Help Center docs. Single
+        read-only reporting operation; API key is path-embedded; errors are
+        plain HTTP status codes (no RFC 9457). No pagination, versioning, or
+        rate-limit signaling documented.
+  - target: $.paths['/api/customer-pull/spent/{api_key}'].get
+    update:
+      x-apievangelist-auth: apiKey-in-path
+      x-apievangelist-idempotent: true

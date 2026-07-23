@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/appsamurai-campaign-spend-openapi.yml
+docs: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+authentication:
+  style: apiKey-in-path
+  detail: Account-scoped API key passed as a path segment; see authentication/appsamurai-authentication.yml
+idempotency:
+  supported: false
+  notes: Read-only reporting API (single GET); no state-changing operations and no documented idempotency contract.
+pagination:
+  supported: false
+  notes: No pagination documented; results are filtered by query parameters (date range, campaign, bundle, platform, country) rather than paged.
+filtering:
+  supported: true
+  params: [start_date, end_date, campaign_id, bundle_id, platform, campaign_name, country]
+  date_format: YYYY-MM-DD
+  default_window: last 30 days when end_date omitted
+  country_format: ISO 3166-1 alpha-2
+versioning:
+  scheme: none-documented
+error_envelope:
+  shape: http-status
+  detail: Standard HTTP status codes (400/401/404/500); see errors/appsamurai-problem-types.yml
+rate_limiting:
+  documented: false
+cross_links:
+  errors: errors/appsamurai-problem-types.yml
+  authentication: authentication/appsamurai-authentication.yml

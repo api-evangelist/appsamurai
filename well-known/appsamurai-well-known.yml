@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: searched
+notes: >-
+  Probed the .well-known discovery surface on the primary web host, the API
+  host, and the dashboard host. appsamurai.com returns 404 for all probed
+  paths; api.appsamurai.com returns 500 for all paths (including root);
+  dashboard.appsamurai.com returns HTTP 200 for every path but serves the SPA
+  HTML shell (content-type text/html), not real discovery documents — recorded
+  as spa-shell, not saved as artifacts. No genuine .well-known documents found.
+hosts:
+  - host: https://appsamurai.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://api.appsamurai.com
+    documents:
+      - {path: /.well-known/security.txt, status: 500}
+      - {path: /.well-known/openid-configuration, status: 500}
+      - {path: /.well-known/oauth-authorization-server, status: 500}
+      - {path: /.well-known/api-catalog, status: 500}
+      - {path: /.well-known/ai-plugin.json, status: 500}
+  - host: https://dashboard.appsamurai.com
+    documents:
+      - {path: /.well-known/security.txt, status: 200, result: spa-shell}
+      - {path: /.well-known/openid-configuration, status: 200, result: spa-shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, result: spa-shell}
+      - {path: /.well-known/api-catalog, status: 200, result: spa-shell}
+      - {path: /.well-known/ai-plugin.json, status: 200, result: spa-shell}

@@ -1,0 +1,156 @@
+openapi: 3.1.0
+info:
+  title: AppSamurai Campaign Spend API
+  version: 1.0.0
+  description: >-
+    The AppSamurai Campaign Spend API lets customers retrieve their campaign
+    spend data with a single authenticated GET request. Results can be filtered
+    by date range, campaign, application bundle, platform, campaign name, and
+    country. Faithfully modeled by API Evangelist from AppSamurai's published
+    Help Center documentation; not an AppSamurai-published specification.
+  contact:
+    name: AppSamurai Support
+    url: https://help.appsamurai.com/en/
+  x-apievangelist-source: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  x-apievangelist-method: generated
+servers:
+  - url: http://api.appsamurai.com
+    description: Production (documented base host; served over HTTP per docs)
+paths:
+  /api/customer-pull/spent/{api_key}:
+    get:
+      operationId: getCampaignSpend
+      summary: Retrieve campaign spend data
+      description: >-
+        Returns campaign spend data for the account identified by the API key
+        supplied in the path. If end_date is omitted the API returns data for
+        the last 30 days. The API key is the unique token provided by your
+        AppSamurai account manager.
+      tags:
+        - Campaign Spend
+      parameters:
+        - name: api_key
+          in: path
+          required: true
+          description: Unique API key provided by your AppSamurai account manager. Acts as the credential.
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          required: false
+          description: Beginning date of the retrieval period (YYYY-MM-DD).
+          schema:
+            type: string
+            format: date
+        - name: end_date
+          in: query
+          required: false
+          description: End date of the retrieval period (YYYY-MM-DD). Defaults to the last 30 days when omitted.
+          schema:
+            type: string
+            format: date
+        - name: campaign_id
+          in: query
+          required: false
+          description: Filter to a specific campaign ID.
+          schema:
+            type: string
+        - name: bundle_id
+          in: query
+          required: false
+          description: Filter results by a specific application bundle ID.
+          schema:
+            type: string
+        - name: platform
+          in: query
+          required: false
+          description: Limit data to a particular platform.
+          schema:
+            type: string
+            enum: [ios, play]
+        - name: campaign_name
+          in: query
+          required: false
+          description: Filter data by campaign name.
+          schema:
+            type: string
+        - name: country
+          in: query
+          required: false
+          description: Filter results by country using ISO 3166-1 alpha-2 codes (e.g. US, GB).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Campaign spend data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignSpend'
+        '400':
+          description: Bad Request — invalid date format.
+        '401':
+          description: Unauthorized — invalid or missing API key.
+        '404':
+          description: Not Found — no matching data.
+        '500':
+          description: Internal Server Error.
+      security:
+        - PathApiKey: []
+components:
+  securitySchemes:
+    PathApiKey:
+      type: apiKey
+      in: query
+      name: api_key
+      description: >-
+        API key credential. Documented as a path segment
+        (/api/customer-pull/spent/{api_key}); represented here as apiKey because
+        OpenAPI does not model path-embedded API keys directly.
+  schemas:
+    CampaignSpend:
+      type: object
+      description: Per-campaign spend record keyed and filtered by the supplied query parameters.
+      properties:
+        campaign_id:
+          type: string
+        bundle_id:
+          type: string
+        app_title:
+          type: string
+        platform:
+          type: string
+        cpi_bid:
+          type: number
+        status:
+          type: string
+        campaign_name:
+          type: string
+        event_goals:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventGoal'
+        campaign_names:
+          type: object
+          description: Campaign names indexed by update date.
+          additionalProperties:
+            type: string
+        countries:
+          type: array
+          description: Targeted countries (ISO 3166-1 alpha-2).
+          items:
+            type: string
+        daily_spend:
+          type: object
+          description: Daily spend as date-to-amount key/value pairs.
+          additionalProperties:
+            type: number
+    EventGoal:
+      type: object
+      properties:
+        event_name:
+          type: string
+        cpi_bid:
+          type: number
+        event_token:
+          type: string

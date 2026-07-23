@@ -1,0 +1,18 @@
+# Help Center I AppSamurai
+
+> Help center
+
+## Setting Up AppSamurai on the MMP
+
+- [Adjust](https://help.appsamurai.com/en/articles/5390731-adjust.md): This document outlines the steps to setup with AppSamurai on Adjust
+- [AppsFlyer](https://help.appsamurai.com/en/articles/5390845-appsflyer.md): This document outlines the steps to setup AppSamurai on AppsFlyer
+- [Kochava](https://help.appsamurai.com/en/articles/489755-kochava.md): This document outlines the steps to setup with AppSamurai on Kochava
+- [Branch](https://help.appsamurai.com/en/articles/2057772-branch.md): This document outlines how to setup AppSamurai on Branch
+- [Tenjin](https://help.appsamurai.com/en/articles/1537460-tenjin.md): This document outlines the steps to setup with AppSamurai on Tenjin
+- [Airbridge](https://help.appsamurai.com/en/articles/9388940-airbridge.md): Airbridge MMP integration
+- [Free App Analytics](https://help.appsamurai.com/en/articles/2113280-free-app-analytics.md): Find out how to integrate Free App Analytics to App Samurai.
+- [Server-to-Server \(S2S\) - For Agencies](https://help.appsamurai.com/en/articles/451138-server-to-server-s2s-for-agencies.md): S2S Integration with AppSamurai
+
+## Campaign Spend API Documentation
+
+- [AppSamurai Campaign Spend API](https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api.md): Access your campaign spending data through the AppSamurai Campaign Spend API using a straightforward GET request.

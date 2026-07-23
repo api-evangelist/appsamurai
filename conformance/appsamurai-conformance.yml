@@ -1,0 +1,17 @@
+generated: '2026-07-18'
+method: searched
+source: https://appsamurai.com/information-security-policy/
+docs: https://appsamurai.com/information-security-policy/
+standards:
+  - id: iso-27001
+    conforms: true
+    evidence: AppSamurai states it is ISO 27001 certified for information security (homepage + Information Security Policy).
+  - id: oauth2
+    conforms: false
+    evidence: Campaign Spend API uses a path-embedded API key, not OAuth2.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors are plain HTTP status codes; no application/problem+json envelope documented.
+  - id: openapi
+    conforms: partial
+    evidence: No provider-published OpenAPI; API Evangelist authored one from the documented endpoint.

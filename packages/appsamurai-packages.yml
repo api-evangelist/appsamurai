@@ -1,0 +1,62 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/Netvent
+notes: >-
+  First-party AppSamurai SDKs are published from the Netvent GitHub
+  organization (Netvent is AppSamurai's parent/engineering org). These are
+  mobile ad / attribution / stories SDKs for integrating AppSamurai and its
+  Storyly and Interceptd products into apps — not clients for the Campaign
+  Spend reporting API, which is a keyed HTTP GET with no published SDK.
+packages:
+  - language: javascript
+    registry: npm
+    name: react-native-appsamurai-ads
+    url: https://www.npmjs.com/package/react-native-appsamurai-ads
+    source_code: https://github.com/Netvent/react-native-appsamurai-ads
+    install: npm install react-native-appsamurai-ads
+    official: true
+    description: React Native SDK for integrating AppSamurai ads.
+  - language: kotlin
+    registry: github
+    name: appsamurai-adsdk-android
+    url: https://github.com/Netvent/appsamurai-adsdk-android
+    source_code: https://github.com/Netvent/appsamurai-adsdk-android
+    official: true
+    description: Android ad SDK for AppSamurai.
+  - language: objective-c
+    registry: github
+    name: appsamurai-adsdk-ios
+    url: https://github.com/Netvent/appsamurai-adsdk-ios
+    source_code: https://github.com/Netvent/appsamurai-adsdk-ios
+    official: true
+    description: iOS ad SDK for AppSamurai.
+  - language: java
+    registry: github
+    name: as-attribution-android
+    url: https://github.com/Netvent/as-attribution-android
+    source_code: https://github.com/Netvent/as-attribution-android
+    official: true
+    description: AppSamurai attribution SDK for Android.
+  - language: swift
+    registry: github
+    name: as-attribution-ios
+    url: https://github.com/Netvent/as-attribution-ios
+    source_code: https://github.com/Netvent/as-attribution-ios
+    official: true
+    description: AppSamurai attribution SDK for iOS.
+  - language: javascript
+    registry: npm
+    name: storyly-react-native
+    url: https://www.npmjs.com/package/storyly-react-native
+    source_code: https://github.com/Netvent/storyly-sdk
+    install: npm install storyly-react-native
+    official: true
+    description: React Native SDK for Storyly (AppSamurai's in-app stories product).
+  - language: dart
+    registry: pub.dev
+    name: storyly_flutter
+    url: https://pub.dev/packages/storyly_flutter
+    source_code: https://github.com/Netvent/storyly-sdk
+    install: flutter pub add storyly_flutter
+    official: true
+    description: Flutter SDK for Storyly.

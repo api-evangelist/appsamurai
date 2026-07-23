@@ -1,7 +1,18 @@
 aid: appsamurai
 name: Appsamurai
-description: Appsamurai is a company surfaced as a portfolio company of 500-global and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  AppSamurai (operated by Netvent) is a global, AI-powered mobile app growth
+  platform founded in 2016. It offers user acquisition, retargeting, OEM /
+  on-device app discovery, rewarded user acquisition, and monetization across
+  one platform, plus the Storyly in-app stories product and the Interceptd ad
+  fraud detection product. AppSamurai reaches over two billion users across more
+  than 130 countries and works with mobile operators and device manufacturers
+  such as Samsung, Xiaomi, Huawei, Oppo, and Lenovo. For developers and
+  advertisers it publishes mobile ad and attribution SDKs and a Campaign Spend
+  API that returns campaign spend reporting data via a keyed HTTP GET request.
+  AppSamurai is ISO 27001 certified for information security. This profile was
+  surfaced as a 500 Global portfolio company and enriched by the API Evangelist
+  pipeline.
 url: https://raw.githubusercontent.com/api-evangelist/appsamurai/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,17 +20,102 @@ x-backed-by:
 - 500-global
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://appsamurai.com/og-default.png
 tags:
 - Company
-apis: []
+- Mobile
+- Advertising
+- User Acquisition
+- Marketing
+- App Growth
+- Attribution
+- Analytics
+- Mobile Marketing
+- SDK
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: appsamurai:appsamurai-campaign-spend-api
+  name: Appsamurai Campaign Spend API
+  description: The Campaign Spend API from Appsamurai — 1 operation(s) for campaign spend.
+  humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  baseURL: http://api.appsamurai.com
+  tags:
+  - Campaign Spend
+  properties:
+  - type: OpenAPI
+    url: openapi/appsamurai-campaign-spend-api-openapi.yml
+  - type: Documentation
+    url: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  - type: Authentication
+    url: authentication/appsamurai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/appsamurai-problem-types.yml
 common:
+- type: DomainSecurity
+  url: security/appsamurai-domain-security.yml
 - type: Website
   url: https://appsamurai.com
+- type: DeveloperPortal
+  url: https://help.appsamurai.com/en/
+- type: Documentation
+  url: https://help.appsamurai.com/en/collections/12520260-campaign-spend-api-documentation
+- type: HelpCenter
+  url: https://help.appsamurai.com/en/
+- type: Support
+  url: https://appsamurai.com/contact-us/
+- type: Blog
+  url: https://appsamurai.com/blog/
+- type: GitHubOrganization
+  url: https://github.com/Netvent
+- type: SignUp
+  url: https://dashboard.appsamurai.com/login
+- type: Login
+  url: https://dashboard.appsamurai.com/login
+- type: PrivacyPolicy
+  url: https://appsamurai.com/privacy-policy/
+- type: TermsOfService
+  url: https://appsamurai.com/terms-of-use/
+- type: Compliance
+  url: https://appsamurai.com/information-security-policy/
+- type: Authentication
+  url: authentication/appsamurai-authentication.yml
+- type: LLMsTxt
+  url: llms/appsamurai-llms.txt
+- type: Packages
+  url: packages/appsamurai-packages.yml
+- type: SDKs
+  url: packages/appsamurai-packages.yml
+- type: WellKnown
+  url: well-known/appsamurai-well-known.yml
+- type: MCPServer
+  url: mcp/appsamurai-mcp.yml
+- type: ErrorCatalog
+  url: errors/appsamurai-problem-types.yml
+- type: Conventions
+  url: conventions/appsamurai-conventions.yml
+- type: Conformance
+  url: conformance/appsamurai-conformance.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

@@ -1,0 +1,14 @@
+{
+  "provider": "appsamurai",
+  "sources": [
+    "appsamurai-campaign-spend-api-openapi.yml"
+  ],
+  "outputs": [
+    "appsamurai-campaign-spend-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
