@@ -1,0 +1,18 @@
+generated: '2026-07-17'
+method: searched
+source: https://appsamurai.com + https://status.storyly.io + https://help.appsamurai.com
+versioning:
+  scheme: none-documented
+  note: Campaign Spend API path is /api/customer-pull/ with no explicit version segment.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published deprecation / Sunset (RFC 8594) policy found.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.storyly.io/
+status_page_note: >-
+  Upptime-powered status page for Storyly, an App Samurai product
+  (github.com/Netvent/storyly-status). No separate status page found for the
+  core App Samurai Ads / Campaign Spend surface.
