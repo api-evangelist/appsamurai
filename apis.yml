@@ -66,6 +66,8 @@ apis:
   - type: ErrorCatalog
     url: errors/appsamurai-problem-types.yml
 common:
+- type: Overlay
+  url: overlays/appsamurai-campaign-spend-overlay.yaml
 - type: DomainSecurity
   url: security/appsamurai-domain-security.yml
 - type: Website
