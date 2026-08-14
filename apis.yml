@@ -1,14 +1,19 @@
 aid: appsamurai
 name: Appsamurai
-description: AppSamurai (operated by Netvent) is a global, AI-powered mobile app growth platform founded
-  in 2016. It offers user acquisition, retargeting, OEM / on-device app discovery, rewarded user acquisition,
-  and monetization across one platform, plus the Storyly in-app stories product and the Interceptd ad
-  fraud detection product. AppSamurai reaches over two billion users across more than 130 countries and
-  works with mobile operators and device manufacturers such as Samsung, Xiaomi, Huawei, Oppo, and Lenovo.
-  For developers and advertisers it publishes mobile ad and attribution SDKs and a Campaign Spend API
-  that returns campaign spend reporting data via a keyed HTTP GET request. AppSamurai is ISO 27001 certified
-  for information security. This profile was surfaced as a 500 Global portfolio company and enriched by
-  the API Evangelist pipeline.
+description: >-
+  AppSamurai (legally Apps Medya Teknoloji A.S., engineering org Netvent) is a global, AI-powered mobile
+  app growth platform founded in 2016. It offers user acquisition, retargeting, OEM / on-device app
+  discovery, rewarded user acquisition and monetization across one platform, plus Storyly, its AI-powered
+  in-app content experience product for mobile commerce, and the Interceptd ad fraud detection product.
+  AppSamurai reaches over two billion users across more than 130 countries and works with mobile operators
+  and device manufacturers such as Samsung, Xiaomi, Huawei, Oppo and Lenovo. It publishes two APIs. The
+  Storyly External API covers 18 operations over apps, instances, story groups, stories, audiences and
+  segments, authenticated with a bearer JWT, with a provider-published OpenAPI advertised through an
+  RFC 9727 api-catalog on its docs host. The AppSamurai Campaign Spend API is a single keyed HTTP GET
+  returning campaign spend reporting. AppSamurai also runs a live remote MCP server at mcp.storyly.io
+  serving Storyly Placement SDK knowledge to agents, and ships embeddable Placement widget SDKs for
+  Android, iOS, Web, React Native and Flutter. AppSamurai is ISO 27001 certified for information security.
+  This profile was surfaced as a 500 Global portfolio company and enriched by the API Evangelist pipeline.
 url: https://raw.githubusercontent.com/api-evangelist/appsamurai/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -30,7 +35,7 @@ accessModel:
   method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-08-08'
+modified: '2026-08-13'
 image: https://appsamurai.com/og-default.png
 tags:
 - Company
@@ -43,6 +48,11 @@ tags:
 - Analytics
 - Mobile Marketing
 - SDK
+- Storyly
+- Content Experience
+- In-App Stories
+- MCP
+- Mobile Commerce
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -65,6 +75,47 @@ apis:
     url: authentication/appsamurai-authentication.yml
   - type: ErrorCatalog
     url: errors/appsamurai-problem-types.yml
+  - type: Conventions
+    url: conventions/appsamurai-conventions.yml
+- aid: appsamurai:appsamurai-storyly-external-api
+  name: Appsamurai Storyly External API
+  description: The Storyly External API manages apps, instances, story groups, stories, audiences and
+    segments for Storyly, App Samurai's in-app content experience product — 18 operations across 8 paths,
+    authenticated with a bearer JWT. Storyly's own About page names the same three founders as co-founders
+    of AppSamurai, Storyly and Netvent, and every Storyly SDK and the Storyly status page are published
+    from the Netvent GitHub org, which is why this contract on storyly.io belongs to this profile.
+  humanURL: https://docs.storyly.io/reference
+  baseURL: https://api.storyly.io
+  tags:
+  - App
+  - Instance
+  - Story Group
+  - Story
+  - Audience
+  - Segment
+  properties:
+  - type: OpenAPI
+    url: openapi/appsamurai-storyly-external-api-openapi.json
+  - type: Documentation
+    url: https://docs.storyly.io/docs
+  - type: APIReference
+    url: https://docs.storyly.io/reference
+  - type: GettingStarted
+    url: https://docs.storyly.io/docs/introduction
+  - type: Authentication
+    url: authentication/appsamurai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/appsamurai-problem-types.yml
+  - type: DataModel
+    url: data-model/appsamurai-data-model.yml
+  - type: Conventions
+    url: conventions/appsamurai-conventions.yml
+  - type: RateLimits
+    url: rate-limits/appsamurai-rate-limits.yml
+  - type: Overlay
+    url: overlays/appsamurai-storyly-external-api-overlay.yaml
+  - type: LLMsTxt
+    url: llms/appsamurai-storyly-llms.txt
 common:
 - type: Overlay
   url: overlays/appsamurai-campaign-spend-overlay.yaml
@@ -73,11 +124,11 @@ common:
 - type: Website
   url: https://appsamurai.com
 - type: DeveloperPortal
-  url: https://help.appsamurai.com/en/
+  url: https://docs.storyly.io/
 - type: Documentation
-  url: https://help.appsamurai.com/en/collections/12520260-campaign-spend-api-documentation
+  url: https://docs.storyly.io/docs
 - type: HelpCenter
-  url: https://help.appsamurai.com/en/
+  url: https://appsamurai.com/help/
 - type: Support
   url: https://appsamurai.com/contact-us/
 - type: Blog
@@ -118,10 +169,36 @@ common:
   url: https://status.storyly.io/
 - type: Lifecycle
   url: lifecycle/appsamurai-lifecycle.yml
+- type: ToolCrosswalk
+  url: mcp/appsamurai-tool-crosswalk.yml
+- type: DataModel
+  url: data-model/appsamurai-data-model.yml
+- type: Components
+  url: components/appsamurai-components.yml
+- type: ChangeLog
+  url: changelog/appsamurai-changelog.yml
+- type: Plans
+  url: plans/appsamurai-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/appsamurai-rate-limits.yml
+- type: Pricing
+  url: https://www.storyly.io/pricing
+- type: GettingStarted
+  url: https://docs.storyly.io/docs/introduction
+- type: LLMsTxt
+  url: llms/appsamurai-storyly-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 17
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Round 2 found the Storyly surface that round 1 missed entirely - a
+    provider-published OpenAPI (18 ops) reached through an RFC 9727 api-catalog,
+    a live anonymous MCP server, and a real llms.txt. Also corrected two false
+    positives: the WellKnown/security.txt credit was Intercom's vendor document,
+    not App Samurai's.
 x-merged-from:
 - app-samurai
