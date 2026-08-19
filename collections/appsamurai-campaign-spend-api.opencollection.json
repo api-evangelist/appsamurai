@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AppSamurai Campaign Spend API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaign Spend",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve campaign spend data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://api.appsamurai.com/api/customer-pull/spent/:api_key",
+            "params": [
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "path",
+                "description": "Unique API key provided by your AppSamurai account manager. Acts as the credential."
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Beginning date of the retrieval period (YYYY-MM-DD)."
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date of the retrieval period (YYYY-MM-DD). Defaults to the last 30 days when omitted."
+              },
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter to a specific campaign ID."
+              },
+              {
+                "name": "bundle_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by a specific application bundle ID."
+              },
+              {
+                "name": "platform",
+                "value": "",
+                "type": "query",
+                "description": "Limit data to a particular platform."
+              },
+              {
+                "name": "campaign_name",
+                "value": "",
+                "type": "query",
+                "description": "Filter data by campaign name."
+              },
+              {
+                "name": "country",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by country using ISO 3166-1 alpha-2 codes (e.g. US, GB)."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "api_key",
+              "value": "{{api_key}}",
+              "placement": "query"
+            }
+          },
+          "docs": "Returns campaign spend data for the account identified by the API key supplied in the path. If end_date is omitted the API returns data for the last 30 days. The API key is the unique token provided by your AppSamurai account manager."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

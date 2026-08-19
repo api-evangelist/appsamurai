@@ -1,18 +1,97 @@
-generated: '2026-07-17'
+generated: '2026-08-13'
 method: searched
-source: https://appsamurai.com + https://status.storyly.io + https://help.appsamurai.com
+source: >-
+  https://status.storyly.io + https://docs.storyly.io/llms.txt +
+  https://mcp.storyly.io (get_release_notes) +
+  https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+notes: >-
+  App Samurai runs a fast, well-documented lifecycle on its SDKs and none at all
+  on its APIs. The Storyly Placement SDKs ship monthly with dated, per-platform
+  release notes; both REST APIs are unversioned, undated and carry no deprecation
+  policy. The React Native and Flutter 1.12.0 releases renamed public structures
+  - a breaking change - and were shipped as a MINOR version bump with a doc link
+  rather than a major, which is the clearest lifecycle finding here.
+
 versioning:
-  scheme: none-documented
-  note: Campaign Spend API path is /api/customer-pull/ with no explicit version segment.
+  apis:
+    storyly_external_api:
+      scheme: none
+      note: >-
+        No version segment (/external/...), no version header, no media-type
+        versioning. info.version is pinned at 1.0.0.
+    appsamurai_campaign_spend_api:
+      scheme: none-documented
+      note: Path is /api/customer-pull/ with no version segment.
+  sdks:
+    scheme: semver
+    lines:
+      - name: Storyly Placement
+        current: 1.12.0 / 1.13.0 (web)
+        status: active
+      - name: Storyly classic
+        current: 4.x
+        status: maintained
+      - name: AppSamurai ads / attribution
+        current: '2019-2021 era'
+        status: dormant
+        note: >-
+          react-native-appsamurai-ads last published 0.1.0 in August 2019; the
+          Android ad SDK repo last pushed July 2019. See packages/.
+    semver_deviation:
+      version: 1.12.0 (React Native, Flutter)
+      date: '2026-08-05'
+      finding: >-
+        "renamed public structures to sync with native sdks" is a breaking API
+        change released as a minor bump. The provider flagged it in the release
+        note and linked the re-integration guide, but semver would require 2.0.0.
+
 deprecation:
   policy_url: null
   sunset_header: false
-  note: No published deprecation / Sunset (RFC 8594) policy found.
+  deprecation_header: false
+  deprecated_operations: []
+  note: >-
+    No published deprecation or Sunset (RFC 8594) policy on either brand, and no
+    operation in either OpenAPI carries `deprecated: true`. Nothing tells a
+    consumer how much notice they would get.
+
 sla:
   url: null
   uptime_target: null
-status_page: https://status.storyly.io/
-status_page_note: >-
-  Upptime-powered status page for Storyly, an App Samurai product
-  (github.com/Netvent/storyly-status). No separate status page found for the
-  core App Samurai Ads / Campaign Spend surface.
+  note: No SLA or uptime commitment is published on appsamurai.com or storyly.io.
+
+status_page:
+  url: https://status.storyly.io/
+  provider: Upptime (GitHub Actions)
+  source_repo: https://github.com/Netvent/storyly-status
+  method: searched
+  http_status: 200
+  window: 90 days
+  observed:
+    - date_range: '2026-05-16 to 2026-06-05'
+      state: no data
+      note: A three-week gap in the history - the monitor was not reporting.
+    - date: '2026-06-06'
+      downtime_minutes: 30
+    - date: '2026-06-07'
+      downtime_minutes: 58
+  note: >-
+    Covers Storyly only. There is no status page for the AppSamurai advertising
+    platform or for api.appsamurai.com - the host that returned 500 on every
+    path when probed on 2026-08-13.
+
+release_cadence:
+  observed: monthly minor releases across five SDK platforms since March 2026
+  window: '2026-03-19 to 2026-08-07'
+  changelog: changelog/appsamurai-changelog.yml
+  changelog_delivery: >-
+    Only via the provider's own MCP server (get_release_notes). No HTML changelog
+    page and no release feed exists.
+
+support:
+  storyly: https://docs.storyly.io/
+  appsamurai: https://appsamurai.com/contact-us/
+  help_centre_migration: >-
+    help.appsamurai.com now 308-redirects to appsamurai.com/help/, so the
+    Intercom-hosted help centre is being retired. The Campaign Spend API article
+    still resolves through it.

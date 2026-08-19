@@ -1,29 +1,136 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: derived
-source: openapi/appsamurai-campaign-spend-openapi.yml
-docs: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
-authentication:
-  style: apiKey-in-path
-  detail: Account-scoped API key passed as a path segment; see authentication/appsamurai-authentication.yml
-idempotency:
-  supported: false
-  notes: Read-only reporting API (single GET); no state-changing operations and no documented idempotency contract.
-pagination:
-  supported: false
-  notes: No pagination documented; results are filtered by query parameters (date range, campaign, bundle, platform, country) rather than paged.
-filtering:
-  supported: true
-  params: [start_date, end_date, campaign_id, bundle_id, platform, campaign_name, country]
-  date_format: YYYY-MM-DD
-  default_window: last 30 days when end_date omitted
-  country_format: ISO 3166-1 alpha-2
-versioning:
-  scheme: none-documented
-error_envelope:
-  shape: http-status
-  detail: Standard HTTP status codes (400/401/404/500); see errors/appsamurai-problem-types.yml
-rate_limiting:
-  documented: false
+source: >-
+  openapi/appsamurai-storyly-external-api-openapi.json
+  + openapi/appsamurai-campaign-spend-api-openapi.yml
+  + live probes of api.storyly.io (2026-08-13)
+docs: https://docs.storyly.io/reference
+notes: >-
+  Two APIs, two entirely different conventions - they share no auth scheme, no
+  error envelope, no pagination style and no host. Documented separately rather
+  than averaged into one fictional house style.
+
+apis:
+  - name: Storyly External API
+    spec: openapi/appsamurai-storyly-external-api-openapi.json
+    base_url: https://api.storyly.io
+    authentication:
+      style: bearer-jwt
+      header: 'Authorization: Bearer <JWT>'
+      scheme: bearerAuth (http/bearer, bearerFormat JWT)
+      detail: see authentication/appsamurai-authentication.yml
+    idempotency:
+      supported: false
+      notes: >-
+        No Idempotency-Key header, no idempotent-retry contract, and the
+        create/update operations (createStoryGroup, createStory, createAudience,
+        createSegment) take multipart/form-data with no client-supplied key. A
+        retried create makes a second object.
+    pagination:
+      supported: true
+      style: limit-offset
+      params:
+        limit:
+          in: query
+          type: string
+          min: 1
+          max: 100
+          note: Constraints are stated in the parameter DESCRIPTION as free text ("required=False, min_value=1, max_value=100"), not as schema minimum/maximum.
+        offset:
+          in: query
+          type: string
+          min: 0
+      response_fields:
+        - data
+      notes: >-
+        Responses wrap results in a top-level `data` array. No total count, no
+        next-page cursor and no link header is returned, so a client cannot tell
+        when it has reached the end except by receiving a short page.
+      applies_to: [listApps, listInstances, getStoryGroups, getStories, listAudiences, listSegments]
+    field_expansion:
+      supported: false
+    metadata:
+      supported: false
+      note: >-
+        `settings` and `segments` on story groups and stories accept arbitrary
+        JSON-as-string, which is the nearest thing to a metadata bag.
+    request_id:
+      supported: true
+      field: error.request
+      style: body field on error responses
+      example_shape: 32-character opaque string
+      notes: >-
+        Observed only on error bodies; no X-Request-Id response header was
+        returned on the probed calls. An agent can quote `error.request` to
+        support but cannot correlate successful calls.
+      method: probed
+    versioning:
+      scheme: none
+      note: No version segment in the path, no version header. info.version is pinned at 1.0.0.
+    error_envelope:
+      shape: '{"status","request","error":{"message","code"}}'
+      rfc9457: false
+      detail: see errors/appsamurai-problem-types.yml
+    content_types:
+      requests:
+        - multipart/form-data (all create and update operations)
+      responses:
+        - application/json
+      note: >-
+        Unusual for a management API - createStory, createStoryGroup,
+        createAudience and createSegment all take multipart/form-data with
+        JSON-encoded STRING fields rather than a JSON body, because the same
+        endpoints accept a binary `file` upload.
+    rate_limiting:
+      documented: false
+      headers_observed: none
+      detail: see rate-limits/appsamurai-rate-limits.yml
+    cors:
+      enabled: true
+      observed:
+        access-control-allow-origin: '*'
+        access-control-allow-credentials: 'true'
+        access-control-allow-methods: GET, PATCH, HEAD, OPTIONS, POST, PUT, DELETE
+        access-control-allow-headers: Authorization, Content-Type, Accept
+      method: probed
+
+  - name: AppSamurai Campaign Spend API
+    spec: openapi/appsamurai-campaign-spend-api-openapi.yml
+    base_url: http://api.appsamurai.com
+    authentication:
+      style: apiKey-in-path
+      detail: >-
+        Account-scoped API key passed as a path segment
+        (/api/customer-pull/spent/{api_key}), issued by an account manager. See
+        authentication/appsamurai-authentication.yml.
+      transport_warning: >-
+        The documented base URL is http://, not https://. A credential in the
+        path of a cleartext URL is exposed to every intermediary and to every
+        access log on the route. api.appsamurai.com does answer on TLS and 301s
+        from :80, but the published documentation still shows http://.
+    idempotency:
+      supported: false
+      notes: Read-only reporting API - a single GET, no state-changing operations.
+    pagination:
+      supported: false
+      notes: Filtered by query parameters (date range, campaign, bundle, platform, country), never paged.
+    filtering:
+      supported: true
+      params: [start_date, end_date, campaign_id, bundle_id, platform, campaign_name, country]
+      date_format: YYYY-MM-DD
+      default_window: last 30 days when end_date omitted
+      country_format: ISO 3166-1 alpha-2
+    versioning:
+      scheme: none-documented
+    error_envelope:
+      shape: http-status
+      rfc9457: false
+    rate_limiting:
+      documented: false
+
 cross_links:
   errors: errors/appsamurai-problem-types.yml
   authentication: authentication/appsamurai-authentication.yml
+  lifecycle: lifecycle/appsamurai-lifecycle.yml
+  rate_limits: rate-limits/appsamurai-rate-limits.yml
+  data_model: data-model/appsamurai-data-model.yml

@@ -1,26 +1,104 @@
-generated: '2026-07-18'
-method: derived
-source: openapi/appsamurai-campaign-spend-openapi.yml
-docs: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
-format: http-status
+generated: '2026-08-13'
+method: probed
+source: >-
+  live unauthenticated requests to https://api.storyly.io/external/app
+  (2026-08-13) + openapi/appsamurai-storyly-external-api-openapi.json
+  + openapi/appsamurai-campaign-spend-api-openapi.yml
+docs: https://docs.storyly.io/reference
+format: vendor-json
 notes: >-
-  AppSamurai's Campaign Spend API documents standard HTTP status codes; it does
-  not publish an RFC 9457 problem+json envelope. Derived from the documented
-  error responses.
+  Neither App Samurai API uses RFC 9457 problem+json. The Storyly External API's
+  published OpenAPI is the weaker source here - it declares ONLY 200 responses
+  for all 18 operations and documents no error at all - so the error envelope
+  below was recovered by probing the live host anonymously and with a bogus
+  bearer token. Doing that turned up a well-formed vendor envelope with a
+  machine-readable `error.code` and a per-request correlation id, which is more
+  than the specification admits to. The gap between the two is the finding:
+  an agent reading only the spec would believe this API cannot fail.
+  The AppSamurai Campaign Spend API's status codes come from its Help Center
+  article; the host itself answered 500 on every path on 2026-08-13, so nothing
+  could be observed live.
+
+envelopes:
+  - api: Storyly External API
+    shape: >-
+      {"status": "<http status as string>", "request": "<32-char correlation
+      id>", "error": {"message": "<human message>", "code": "<PascalCase machine
+      code>"}}
+    method: probed
+    fields:
+      status: HTTP status repeated as a string
+      request: opaque 32-character request identifier, unique per call
+      error.message: human-readable message
+      error.code: machine-readable PascalCase code
+    note: >-
+      Undocumented in the OpenAPI. Observed on api.storyly.io/external/app on
+      2026-08-13.
+  - api: AppSamurai Campaign Spend API
+    shape: HTTP status code only; no documented body
+    method: searched
+    source: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+
 problems:
-  - status: 400
+  # --- Storyly External API, observed live ---
+  - api: storyly-external
+    status: 400
+    code: TokenNotFound
+    title: Token not found
+    detail: No Authorization header was supplied.
+    remediation: >-
+      Send `Authorization` with a Bearer JWT. Note the API answers 400, not 401,
+      when the header is absent entirely.
+    method: probed
+    observed: '2026-08-13'
+    source_operation: openapi/appsamurai-storyly-external-api-openapi.json#listApps
+  - api: storyly-external
+    status: 401
+    code: InvalidToken
+    title: Invalid Token
+    detail: The supplied bearer token is not a valid Storyly JWT.
+    remediation: Re-issue the JWT from the Storyly dashboard and retry.
+    method: probed
+    observed: '2026-08-13'
+    source_operation: openapi/appsamurai-storyly-external-api-openapi.json#listApps
+
+  # --- AppSamurai Campaign Spend API, from the Help Center article ---
+  - api: appsamurai-campaign-spend
+    status: 400
     title: Bad Request
     detail: Invalid date format (dates must be YYYY-MM-DD).
-    source_operation: openapi/appsamurai-campaign-spend-openapi.yml#getCampaignSpend
-  - status: 401
+    method: searched
+    source_operation: openapi/appsamurai-campaign-spend-api-openapi.yml#getCampaignSpend
+  - api: appsamurai-campaign-spend
+    status: 401
     title: Unauthorized
     detail: Invalid or missing API key.
-    source_operation: openapi/appsamurai-campaign-spend-openapi.yml#getCampaignSpend
-  - status: 404
+    method: searched
+    source_operation: openapi/appsamurai-campaign-spend-api-openapi.yml#getCampaignSpend
+  - api: appsamurai-campaign-spend
+    status: 404
     title: Not Found
     detail: No matching data for the supplied filters.
-    source_operation: openapi/appsamurai-campaign-spend-openapi.yml#getCampaignSpend
-  - status: 500
+    method: searched
+    source_operation: openapi/appsamurai-campaign-spend-api-openapi.yml#getCampaignSpend
+  - api: appsamurai-campaign-spend
+    status: 500
     title: Internal Server Error
     detail: Server-side issue.
-    source_operation: openapi/appsamurai-campaign-spend-openapi.yml#getCampaignSpend
+    method: searched
+    source_operation: openapi/appsamurai-campaign-spend-api-openapi.yml#getCampaignSpend
+    note: >-
+      On 2026-08-13 api.appsamurai.com returned this status for EVERY path
+      including the documented endpoint and the host root, with body
+      {"code":500,"message":"Internal Server Error","log":{"id":...}}. Recorded as
+      an observation, not a diagnosis - the endpoint may be reachable only from
+      allow-listed customer networks.
+
+gaps:
+  - >-
+    The Storyly External API OpenAPI declares no 4xx/5xx responses on any of its
+    18 operations. Adding the observed TokenNotFound / InvalidToken envelope to
+    the spec would be the single cheapest documentation fix available to this
+    provider.
+  - No RFC 9457 application/problem+json on either API.
+  - No published error-code reference page on docs.storyly.io.

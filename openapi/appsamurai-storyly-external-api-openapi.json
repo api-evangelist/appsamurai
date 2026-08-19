@@ -1,0 +1,3010 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Storyly External API",
+    "version": "1.0.0",
+    "contact": {},
+    "description": "The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).",
+    "x-apievangelist-source": "https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b",
+    "x-apievangelist-method": "searched"
+  },
+  "servers": [
+    {
+      "url": "https://api.storyly.io"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT token for API authentication"
+      }
+    }
+  },
+  "paths": {
+    "/external/app": {
+      "get": {
+        "tags": [
+          "app"
+        ],
+        "summary": "List apps",
+        "description": "List all apps for the authenticated account.",
+        "operationId": "listApps",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "required=False, min_value=1, max_value=100"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "0"
+            },
+            "description": "required=False, min_value=0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "account_id": {
+                            "type": "number",
+                            "example": 9434
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "web"
+                          },
+                          "detailed_info": {
+                            "type": "object",
+                            "properties": {
+                              "icon": {
+                                "type": "string",
+                                "example": "https://www.google.com/s2/favicons?sz=64&domain_url=Inbox Story"
+                              }
+                            }
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 14686
+                          },
+                          "is_inbox_story": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "settings": {
+                            "type": "object",
+                            "properties": {
+                              "is_sharable": {
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "is_shopify": {
+                                "type": "boolean",
+                                "example": false
+                              }
+                            }
+                          },
+                          "store_id": {
+                            "type": "string",
+                            "example": "Inbox Story"
+                          },
+                          "store_type": {
+                            "type": "string",
+                            "example": "web"
+                          },
+                          "sub_category": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "Inbox Story"
+                          },
+                          "token": {
+                            "type": "string",
+                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                          },
+                          "ts_created": {
+                            "type": "string",
+                            "example": "2023-02-03 10:51:47"
+                          },
+                          "ts_updated": {
+                            "type": "string",
+                            "example": "2023-02-03 10:51:47"
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "account_id": 9434,
+                          "category": "web",
+                          "detailed_info": {
+                            "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=Inbox Story"
+                          },
+                          "id": 14686,
+                          "is_inbox_story": 1,
+                          "settings": {
+                            "is_sharable": true,
+                            "is_shopify": false
+                          },
+                          "store_id": "Inbox Story",
+                          "store_type": "web",
+                          "sub_category": null,
+                          "title": "Inbox Story",
+                          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+                          "ts_created": "2023-02-03 10:51:47",
+                          "ts_updated": "2023-02-03 10:51:47"
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Apps successfully listed"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "data": [
+                        {
+                          "account_id": 9434,
+                          "category": "web",
+                          "detailed_info": {
+                            "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=Inbox Story"
+                          },
+                          "id": 14686,
+                          "is_inbox_story": 1,
+                          "settings": {
+                            "is_sharable": true,
+                            "is_shopify": false
+                          },
+                          "store_id": "Inbox Story",
+                          "store_type": "web",
+                          "sub_category": null,
+                          "title": "Inbox Story",
+                          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+                          "ts_created": "2023-02-03 10:51:47",
+                          "ts_updated": "2023-02-03 10:51:47"
+                        }
+                      ],
+                      "message": "Apps successfully listed",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/instance": {
+      "get": {
+        "tags": [
+          "instance"
+        ],
+        "summary": "List instances",
+        "description": "List instances for an app.",
+        "operationId": "listInstances",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "app_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "20485"
+            },
+            "description": "required=True, min_value=1"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "required=False, min_value=1, max_value=100"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "0"
+            },
+            "description": "required=False, min_value=0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "account_id": {
+                            "type": "number",
+                            "example": 9434
+                          },
+                          "app_id": {
+                            "type": "number",
+                            "example": 20485
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 22896
+                          },
+                          "is_sharable": {
+                            "type": "boolean",
+                            "example": true
+                          },
+                          "settings": {
+                            "type": "object",
+                            "properties": {
+                              "smart_sorting": {
+                                "type": "object",
+                                "properties": {
+                                  "is_enabled": {
+                                    "type": "boolean",
+                                    "example": false
+                                  },
+                                  "ts_updated": {
+                                    "type": "number",
+                                    "example": 1740057918
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "status": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "Default"
+                          },
+                          "token": {
+                            "type": "string",
+                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+                          },
+                          "ts_created": {
+                            "type": "string",
+                            "example": "2024-10-15 08:39:17"
+                          },
+                          "ts_updated": {
+                            "type": "string",
+                            "example": "2025-02-20 13:30:31"
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "account_id": 9434,
+                          "app_id": 20485,
+                          "id": 22896,
+                          "is_sharable": true,
+                          "settings": {
+                            "smart_sorting": {
+                              "is_enabled": false,
+                              "ts_updated": 1740057918
+                            }
+                          },
+                          "status": 1,
+                          "title": "Default",
+                          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+                          "ts_created": "2024-10-15 08:39:17",
+                          "ts_updated": "2025-02-20 13:30:31"
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Instances successfully listed"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "data": [
+                        {
+                          "account_id": 9434,
+                          "app_id": 20485,
+                          "id": 22896,
+                          "is_sharable": true,
+                          "settings": {
+                            "smart_sorting": {
+                              "is_enabled": false,
+                              "ts_updated": 1740057918
+                            }
+                          },
+                          "status": 1,
+                          "title": "Default",
+                          "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+                          "ts_created": "2024-10-15 08:39:17",
+                          "ts_updated": "2025-02-20 13:30:31"
+                        }
+                      ],
+                      "message": "Instances successfully listed",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/story-group": {
+      "get": {
+        "tags": [
+          "story-group"
+        ],
+        "summary": "Get story groups",
+        "description": "Get story groups by instance or specific story group ID.",
+        "operationId": "getStoryGroups",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "instance_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "22896"
+            },
+            "description": "required=True, min_value=1"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "required=False, min_value=1, max_value=100"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "0"
+            },
+            "description": "required=False, min_value=0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "account_id": {
+                            "type": "number",
+                            "example": 9434
+                          },
+                          "app_id": {
+                            "type": "number",
+                            "example": 20485
+                          },
+                          "detail": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "icon": {
+                            "type": "string",
+                            "example": "https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg"
+                          },
+                          "icon_raw": {
+                            "type": "string",
+                            "example": "https://db62cod6cnasq.cloudfront.net/user-media/9434/dd55b9ff-cbe3-4d70-9179-7be65ee9a944--Screenshot20250301at11.52.38.png"
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 204206
+                          },
+                          "instance_id": {
+                            "type": "number",
+                            "example": 22896
+                          },
+                          "pinned": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "segments": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "sort_order": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "status": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "template": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "templates": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "TEST 4"
+                          },
+                          "ts_created": {
+                            "type": "string",
+                            "example": "2025-03-04 17:47:45"
+                          },
+                          "ts_end": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "ts_start": {
+                            "type": "string",
+                            "example": "2025-03-04 17:47:45"
+                          },
+                          "ts_updated": {
+                            "type": "string",
+                            "example": "2025-03-04 17:48:46"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "default"
+                          },
+                          "user_id": {
+                            "type": "number",
+                            "example": 13705
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "account_id": 9434,
+                          "app_id": 20485,
+                          "detail": null,
+                          "icon": "https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg",
+                          "icon_raw": "https://db62cod6cnasq.cloudfront.net/user-media/9434/dd55b9ff-cbe3-4d70-9179-7be65ee9a944--Screenshot20250301at11.52.38.png",
+                          "id": 204206,
+                          "instance_id": 22896,
+                          "pinned": false,
+                          "segments": null,
+                          "sort_order": 0,
+                          "status": 1,
+                          "template": null,
+                          "templates": null,
+                          "title": "TEST 4",
+                          "ts_created": "2025-03-04 17:47:45",
+                          "ts_end": null,
+                          "ts_start": "2025-03-04 17:47:45",
+                          "ts_updated": "2025-03-04 17:48:46",
+                          "type": "default",
+                          "user_id": 13705
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Story Group successfully listed"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "data": [
+                        {
+                          "account_id": 9434,
+                          "app_id": 20485,
+                          "detail": null,
+                          "icon": "https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg",
+                          "icon_raw": "https://db62cod6cnasq.cloudfront.net/user-media/9434/dd55b9ff-cbe3-4d70-9179-7be65ee9a944--Screenshot20250301at11.52.38.png",
+                          "id": 204206,
+                          "instance_id": 22896,
+                          "pinned": false,
+                          "segments": null,
+                          "sort_order": 0,
+                          "status": 1,
+                          "template": null,
+                          "templates": null,
+                          "title": "TEST 4",
+                          "ts_created": "2025-03-04 17:47:45",
+                          "ts_end": null,
+                          "ts_start": "2025-03-04 17:47:45",
+                          "ts_updated": "2025-03-04 17:48:46",
+                          "type": "default",
+                          "user_id": 13705
+                        }
+                      ],
+                      "message": "Story Group successfully listed",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "story-group"
+        ],
+        "summary": "Create story group",
+        "description": "Create a new story group.",
+        "operationId": "createStoryGroup",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "description": "Story group cover image (optional)",
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "instance_id": {
+                    "description": "Required - Instance ID",
+                    "type": "string",
+                    "example": "22896"
+                  },
+                  "media_url": {
+                    "description": "Optional - Media URL",
+                    "type": "string",
+                    "example": "https://example.com/cover.jpg"
+                  },
+                  "segments": {
+                    "description": "Optional - Story group segments as JSON",
+                    "type": "string",
+                    "example": "{}"
+                  },
+                  "settings": {
+                    "description": "Optional - Story group settings as JSON",
+                    "type": "string",
+                    "example": "{}"
+                  },
+                  "status": {
+                    "description": "Required - Story group status (integer)",
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "title": {
+                    "description": "Required - Story group title (max 255 chars)",
+                    "type": "string",
+                    "example": "My Story Group"
+                  },
+                  "ts_end": {
+                    "description": "Optional - End timestamp",
+                    "type": "string",
+                    "example": "2024-04-20T00:00:00Z"
+                  },
+                  "ts_start": {
+                    "description": "Optional - Start timestamp",
+                    "type": "string",
+                    "example": "2024-03-20T00:00:00Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Story Group successfully created"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Story Group successfully created",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "story-group"
+        ],
+        "summary": "Delete story group",
+        "description": "Delete a story group by ID.",
+        "operationId": "deleteStoryGroup",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "story_group_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "204206"
+            },
+            "description": "required=True, min_value=1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Story Group successfully deleted"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Story Group successfully deleted",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "story-group"
+        ],
+        "summary": "Update story group",
+        "description": "Update an existing story group.",
+        "operationId": "updateStoryGroup",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "description": "Optional - New cover image",
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "id": {
+                    "description": "Required - Story group ID",
+                    "type": "string",
+                    "example": "204206"
+                  },
+                  "media_url": {
+                    "description": "Optional - New media URL",
+                    "type": "string",
+                    "example": "https://example.com/new-cover.jpg"
+                  },
+                  "pinned": {
+                    "description": "Optional - Pin status (boolean)",
+                    "type": "string",
+                    "example": "false"
+                  },
+                  "segments": {
+                    "description": "Optional - New segments as JSON",
+                    "type": "string",
+                    "example": "{}"
+                  },
+                  "settings": {
+                    "description": "Optional - New settings as JSON",
+                    "type": "string",
+                    "example": "{}"
+                  },
+                  "sort_order": {
+                    "description": "Optional - New sort order (integer)",
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "status": {
+                    "description": "Required - New status (integer)",
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "title": {
+                    "description": "Optional - New title (max 255 chars)",
+                    "type": "string",
+                    "example": "Updated Story Group"
+                  },
+                  "ts_end": {
+                    "description": "Optional - New end timestamp",
+                    "type": "string",
+                    "example": "2024-04-20T00:00:00Z"
+                  },
+                  "ts_start": {
+                    "description": "Optional - New start timestamp",
+                    "type": "string",
+                    "example": "2024-03-20T00:00:00Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Story Group successfully updated"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Story Group successfully updated",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/story-group/stats": {
+      "get": {
+        "tags": [
+          "story-group"
+        ],
+        "summary": "Get story group stats",
+        "description": "Get statistics for story groups.",
+        "operationId": "getStoryGroupStats",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "instance_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "22896"
+            },
+            "description": "required=False"
+          },
+          {
+            "name": "story_group_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "204206"
+            },
+            "description": "required=False, min_value=1"
+          },
+          {
+            "name": "ts_start",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "2025-01-01"
+            },
+            "description": "required=True, format=YYYY-MM-DD"
+          },
+          {
+            "name": "ts_end",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "2025-01-01"
+            },
+            "description": "required=True, format=YYYY-MM-DD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "daily-stats": {
+                            "type": "object",
+                            "properties": {
+                              "2025-01-01": {
+                                "type": "object",
+                                "properties": {
+                                  "active_users": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "reach": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "share_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_click": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_complete": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_open": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_skipped": {
+                                    "type": "number",
+                                    "example": 0
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "icon": {
+                            "type": "string",
+                            "example": "https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg"
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 204206
+                          },
+                          "instance_id": {
+                            "type": "number",
+                            "example": 22896
+                          },
+                          "monthly-stats": {
+                            "type": "object",
+                            "properties": {
+                              "2025-01-01": {
+                                "type": "object",
+                                "properties": {
+                                  "active_users": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "reach": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "share_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_click": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_complete": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_open": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_skipped": {
+                                    "type": "number",
+                                    "example": 0
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "TEST 4"
+                          },
+                          "segments": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "status": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "total-stats": {
+                            "type": "object",
+                            "properties": {
+                              "active_users": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "reach": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "share_count": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "total_click": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "total_complete": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "total_impression": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "total_open": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "total_skipped": {
+                                "type": "number",
+                                "example": 0
+                              }
+                            }
+                          },
+                          "ts_created": {
+                            "type": "string",
+                            "example": "2025-03-04"
+                          },
+                          "ts_end": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "ts_start": {
+                            "type": "string",
+                            "example": "2025-03-04 17:47:45"
+                          },
+                          "weekly-stats": {
+                            "type": "object",
+                            "properties": {
+                              "2025-01-01": {
+                                "type": "object",
+                                "properties": {
+                                  "active_users": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "reach": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "share_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_click": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_complete": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_open": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "total_skipped": {
+                                    "type": "number",
+                                    "example": 0
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "daily-stats": {
+                            "2025-01-01": {
+                              "active_users": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "total_click": 0,
+                              "total_complete": 0,
+                              "total_impression": 0,
+                              "total_open": 0,
+                              "total_skipped": 0
+                            }
+                          },
+                          "icon": "https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg",
+                          "id": 204206,
+                          "instance_id": 22896,
+                          "monthly-stats": {
+                            "2025-01-01": {
+                              "active_users": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "total_click": 0,
+                              "total_complete": 0,
+                              "total_impression": 0,
+                              "total_open": 0,
+                              "total_skipped": 0
+                            }
+                          },
+                          "name": "TEST 4",
+                          "segments": null,
+                          "status": 1,
+                          "total-stats": {
+                            "active_users": 0,
+                            "reach": 0,
+                            "share_count": 0,
+                            "total_click": 0,
+                            "total_complete": 0,
+                            "total_impression": 0,
+                            "total_open": 0,
+                            "total_skipped": 0
+                          },
+                          "ts_created": "2025-03-04",
+                          "ts_end": null,
+                          "ts_start": "2025-03-04 17:47:45",
+                          "weekly-stats": {
+                            "2025-01-01": {
+                              "active_users": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "total_click": 0,
+                              "total_complete": 0,
+                              "total_impression": 0,
+                              "total_open": 0,
+                              "total_skipped": 0
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "data": [
+                        {
+                          "daily-stats": {
+                            "2025-01-01": {
+                              "active_users": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "total_click": 0,
+                              "total_complete": 0,
+                              "total_impression": 0,
+                              "total_open": 0,
+                              "total_skipped": 0
+                            }
+                          },
+                          "icon": "https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg",
+                          "id": 204206,
+                          "instance_id": 22896,
+                          "monthly-stats": {
+                            "2025-01-01": {
+                              "active_users": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "total_click": 0,
+                              "total_complete": 0,
+                              "total_impression": 0,
+                              "total_open": 0,
+                              "total_skipped": 0
+                            }
+                          },
+                          "name": "TEST 4",
+                          "segments": null,
+                          "status": 1,
+                          "total-stats": {
+                            "active_users": 0,
+                            "reach": 0,
+                            "share_count": 0,
+                            "total_click": 0,
+                            "total_complete": 0,
+                            "total_impression": 0,
+                            "total_open": 0,
+                            "total_skipped": 0
+                          },
+                          "ts_created": "2025-03-04",
+                          "ts_end": null,
+                          "ts_start": "2025-03-04 17:47:45",
+                          "weekly-stats": {
+                            "2025-01-01": {
+                              "active_users": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "total_click": 0,
+                              "total_complete": 0,
+                              "total_impression": 0,
+                              "total_open": 0,
+                              "total_skipped": 0
+                            }
+                          }
+                        }
+                      ],
+                      "message": "success",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/story": {
+      "get": {
+        "tags": [
+          "story"
+        ],
+        "summary": "Get stories",
+        "description": "Get stories in a story group.",
+        "operationId": "getStories",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "story_group_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "204206"
+            },
+            "description": "required=True, min_value=1"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "required=False, min_value=1, max_value=100"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "0"
+            },
+            "description": "required=False, min_value=0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "account_id": {
+                            "type": "number",
+                            "example": 9434
+                          },
+                          "button_text": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "deep_link": {
+                            "type": "string",
+                            "example": "jushpl://storyly?g=204206&s=2581651&instance=22896"
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 2581651
+                          },
+                          "media": {
+                            "type": "string",
+                            "example": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg"
+                          },
+                          "media_raw": {
+                            "type": "string",
+                            "example": "https://db62cod6cnasq.cloudfront.net/user-media/9434/087d26b8-4f90-4707-9fa2-764f289d7717--f99ac6d1f6614ba398ced3cb5a83f329.png"
+                          },
+                          "mime_type": {
+                            "type": "string",
+                            "example": "image/jpeg"
+                          },
+                          "name": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "outlink": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "settings": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "sort_order": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "status": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "story_group_id": {
+                            "type": "number",
+                            "example": 204206
+                          },
+                          "studio_image": {
+                            "type": "string",
+                            "example": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg"
+                          },
+                          "target_cap": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "thumbnail": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "TEST 4"
+                          },
+                          "ts_created": {
+                            "type": "string",
+                            "example": "2025-03-04 17:48:15"
+                          },
+                          "ts_end": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "ts_start": {
+                            "type": "string",
+                            "example": "2025-03-04 17:47:47"
+                          },
+                          "ts_updated": {
+                            "type": "string",
+                            "example": "2025-03-04 17:49:41"
+                          },
+                          "type": {
+                            "type": "number",
+                            "example": 1
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "account_id": 9434,
+                          "button_text": "",
+                          "deep_link": "jushpl://storyly?g=204206&s=2581651&instance=22896",
+                          "id": 2581651,
+                          "media": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg",
+                          "media_raw": "https://db62cod6cnasq.cloudfront.net/user-media/9434/087d26b8-4f90-4707-9fa2-764f289d7717--f99ac6d1f6614ba398ced3cb5a83f329.png",
+                          "mime_type": "image/jpeg",
+                          "name": null,
+                          "outlink": "",
+                          "settings": null,
+                          "sort_order": 0,
+                          "status": 1,
+                          "story_group_id": 204206,
+                          "studio_image": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg",
+                          "target_cap": null,
+                          "thumbnail": null,
+                          "title": "TEST 4",
+                          "ts_created": "2025-03-04 17:48:15",
+                          "ts_end": null,
+                          "ts_start": "2025-03-04 17:47:47",
+                          "ts_updated": "2025-03-04 17:49:41",
+                          "type": 1
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Stories successfully listed"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "data": [
+                        {
+                          "account_id": 9434,
+                          "button_text": "",
+                          "deep_link": "jushpl://storyly?g=204206&s=2581651&instance=22896",
+                          "id": 2581651,
+                          "media": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg",
+                          "media_raw": "https://db62cod6cnasq.cloudfront.net/user-media/9434/087d26b8-4f90-4707-9fa2-764f289d7717--f99ac6d1f6614ba398ced3cb5a83f329.png",
+                          "mime_type": "image/jpeg",
+                          "name": null,
+                          "outlink": "",
+                          "settings": null,
+                          "sort_order": 0,
+                          "status": 1,
+                          "story_group_id": 204206,
+                          "studio_image": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg",
+                          "target_cap": null,
+                          "thumbnail": null,
+                          "title": "TEST 4",
+                          "ts_created": "2025-03-04 17:48:15",
+                          "ts_end": null,
+                          "ts_start": "2025-03-04 17:47:47",
+                          "ts_updated": "2025-03-04 17:49:41",
+                          "type": 1
+                        }
+                      ],
+                      "message": "Stories successfully listed",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "story"
+        ],
+        "summary": "Create story",
+        "description": "Create a new story.",
+        "operationId": "createStory",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deep_link": {
+                    "description": "Optional - Deep link URL",
+                    "type": "string",
+                    "example": "storyly://story/123"
+                  },
+                  "file": {
+                    "description": "Optional - Story media file",
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "media_url": {
+                    "description": "Optional - Media URL",
+                    "type": "string",
+                    "example": "https://example.com/story-media.mp4"
+                  },
+                  "name": {
+                    "description": "Optional - Story name (max 255 chars)",
+                    "type": "string",
+                    "example": "story-name"
+                  },
+                  "sort_order": {
+                    "description": "Optional - Sort order (integer)",
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "status": {
+                    "description": "Required - Story status (integer)",
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "story_group_id": {
+                    "description": "Required - Story group ID (integer)",
+                    "type": "string",
+                    "example": "204206"
+                  },
+                  "title": {
+                    "description": "Required - Story title (max 255 chars)",
+                    "type": "string",
+                    "example": "My Story"
+                  },
+                  "ts_end": {
+                    "description": "Optional - End timestamp",
+                    "type": "string",
+                    "example": "2024-04-20T00:00:00Z"
+                  },
+                  "ts_start": {
+                    "description": "Optional - Start timestamp",
+                    "type": "string",
+                    "example": "2024-03-20T00:00:00Z"
+                  },
+                  "type": {
+                    "description": "Required - Story type (integer)",
+                    "type": "string",
+                    "example": "1"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Story successfully created"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Story successfully created",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "story"
+        ],
+        "summary": "Delete story",
+        "description": "Delete a story by ID.",
+        "operationId": "deleteStory",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "story_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "2581651"
+            },
+            "description": "required=True, min_value=1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Story successfully deleted"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Story successfully deleted",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "story"
+        ],
+        "summary": "Update story",
+        "description": "Update an existing story.",
+        "operationId": "updateStory",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "deep_link": {
+                    "description": "Optional - New deep link URL",
+                    "type": "string",
+                    "example": "storyly://story/456"
+                  },
+                  "file": {
+                    "description": "Optional - New story media file",
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "id": {
+                    "description": "Required - Story ID (integer)",
+                    "type": "string",
+                    "example": "2581651"
+                  },
+                  "media_url": {
+                    "description": "Optional - New media URL",
+                    "type": "string",
+                    "example": "https://example.com/updated-story-media.mp4"
+                  },
+                  "name": {
+                    "description": "Optional - New name (max 255 chars)",
+                    "type": "string",
+                    "example": "updated-story-name"
+                  },
+                  "sort_order": {
+                    "description": "Optional - New sort order (integer)",
+                    "type": "string",
+                    "example": "2"
+                  },
+                  "status": {
+                    "description": "Optional - New status (integer)",
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "title": {
+                    "description": "Optional - New title (max 255 chars)",
+                    "type": "string",
+                    "example": "Updated Story"
+                  },
+                  "ts_end": {
+                    "description": "Optional - New end timestamp",
+                    "type": "string",
+                    "example": "2024-04-20T00:00:00Z"
+                  },
+                  "ts_start": {
+                    "description": "Optional - New start timestamp",
+                    "type": "string",
+                    "example": "2024-03-20T00:00:00Z"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Story successfully updated"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Story successfully updated",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/story/stats": {
+      "get": {
+        "tags": [
+          "story"
+        ],
+        "summary": "Get story stats",
+        "description": "Get statistics for stories.",
+        "operationId": "getStoryStats",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "app_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "20485"
+            },
+            "description": "required=False"
+          },
+          {
+            "name": "instance_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "22896"
+            },
+            "description": "required=False"
+          },
+          {
+            "name": "story_group_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "204206"
+            },
+            "description": "required=False"
+          },
+          {
+            "name": "story_id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "2581651"
+            },
+            "description": "required=False, min_value=1"
+          },
+          {
+            "name": "ts_start",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "2025-01-01"
+            },
+            "description": "required=True, format=YYYY-MM-DD"
+          },
+          {
+            "name": "ts_end",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "2025-01-01"
+            },
+            "description": "required=True, format=YYYY-MM-DD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "daily-stats": {
+                            "type": "object",
+                            "properties": {
+                              "2025-01-01": {
+                                "type": "object",
+                                "properties": {
+                                  "average_watch_length": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "click": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "click_impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "close": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "complete": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "next": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "prev": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "reach": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "share_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "shared_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "icon": {
+                            "type": "string",
+                            "example": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg"
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 2581651
+                          },
+                          "media": {
+                            "type": "string",
+                            "example": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg"
+                          },
+                          "monthly-stats": {
+                            "type": "object",
+                            "properties": {
+                              "2025-01-01": {
+                                "type": "object",
+                                "properties": {
+                                  "average_watch_length": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "click": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "click_impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "close": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "complete": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "next": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "prev": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "reach": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "share_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "shared_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "name": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "outlink": {
+                            "type": "string",
+                            "example": ""
+                          },
+                          "settings": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "status": {
+                            "type": "number",
+                            "example": 1
+                          },
+                          "story_group_id": {
+                            "type": "number",
+                            "example": 204206
+                          },
+                          "thumbnail": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "title": {
+                            "type": "string",
+                            "example": "TEST 4"
+                          },
+                          "total-stats": {
+                            "type": "object",
+                            "properties": {
+                              "average_watch_length": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "click": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "click_impression": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "close": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "complete": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "impression": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "next": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "prev": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "reach": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "share_count": {
+                                "type": "number",
+                                "example": 0
+                              },
+                              "shared_count": {
+                                "type": "number",
+                                "example": 0
+                              }
+                            }
+                          },
+                          "ts_created": {
+                            "type": "string",
+                            "example": "2025-03-04"
+                          },
+                          "ts_end": {
+                            "nullable": true,
+                            "example": null
+                          },
+                          "ts_start": {
+                            "type": "string",
+                            "example": "2025-03-04 17:47:47"
+                          },
+                          "weekly-stats": {
+                            "type": "object",
+                            "properties": {
+                              "2025-01-01": {
+                                "type": "object",
+                                "properties": {
+                                  "average_watch_length": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "click": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "click_impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "close": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "complete": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "impression": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "next": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "prev": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "reach": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "share_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  },
+                                  "shared_count": {
+                                    "type": "number",
+                                    "example": 0
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "daily-stats": {
+                            "2025-01-01": {
+                              "average_watch_length": 0,
+                              "click": 0,
+                              "click_impression": 0,
+                              "close": 0,
+                              "complete": 0,
+                              "impression": 0,
+                              "next": 0,
+                              "prev": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "shared_count": 0
+                            }
+                          },
+                          "icon": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg",
+                          "id": 2581651,
+                          "media": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg",
+                          "monthly-stats": {
+                            "2025-01-01": {
+                              "average_watch_length": 0,
+                              "click": 0,
+                              "click_impression": 0,
+                              "close": 0,
+                              "complete": 0,
+                              "impression": 0,
+                              "next": 0,
+                              "prev": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "shared_count": 0
+                            }
+                          },
+                          "name": null,
+                          "outlink": "",
+                          "settings": {},
+                          "status": 1,
+                          "story_group_id": 204206,
+                          "thumbnail": null,
+                          "title": "TEST 4",
+                          "total-stats": {
+                            "average_watch_length": 0,
+                            "click": 0,
+                            "click_impression": 0,
+                            "close": 0,
+                            "complete": 0,
+                            "impression": 0,
+                            "next": 0,
+                            "prev": 0,
+                            "reach": 0,
+                            "share_count": 0,
+                            "shared_count": 0
+                          },
+                          "ts_created": "2025-03-04",
+                          "ts_end": null,
+                          "ts_start": "2025-03-04 17:47:47",
+                          "weekly-stats": {
+                            "2025-01-01": {
+                              "average_watch_length": 0,
+                              "click": 0,
+                              "click_impression": 0,
+                              "close": 0,
+                              "complete": 0,
+                              "impression": 0,
+                              "next": 0,
+                              "prev": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "shared_count": 0
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "data": [
+                        {
+                          "daily-stats": {
+                            "2025-01-01": {
+                              "average_watch_length": 0,
+                              "click": 0,
+                              "click_impression": 0,
+                              "close": 0,
+                              "complete": 0,
+                              "impression": 0,
+                              "next": 0,
+                              "prev": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "shared_count": 0
+                            }
+                          },
+                          "icon": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg",
+                          "id": 2581651,
+                          "media": "https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg",
+                          "monthly-stats": {
+                            "2025-01-01": {
+                              "average_watch_length": 0,
+                              "click": 0,
+                              "click_impression": 0,
+                              "close": 0,
+                              "complete": 0,
+                              "impression": 0,
+                              "next": 0,
+                              "prev": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "shared_count": 0
+                            }
+                          },
+                          "name": null,
+                          "outlink": "",
+                          "settings": {},
+                          "status": 1,
+                          "story_group_id": 204206,
+                          "thumbnail": null,
+                          "title": "TEST 4",
+                          "total-stats": {
+                            "average_watch_length": 0,
+                            "click": 0,
+                            "click_impression": 0,
+                            "close": 0,
+                            "complete": 0,
+                            "impression": 0,
+                            "next": 0,
+                            "prev": 0,
+                            "reach": 0,
+                            "share_count": 0,
+                            "shared_count": 0
+                          },
+                          "ts_created": "2025-03-04",
+                          "ts_end": null,
+                          "ts_start": "2025-03-04 17:47:47",
+                          "weekly-stats": {
+                            "2025-01-01": {
+                              "average_watch_length": 0,
+                              "click": 0,
+                              "click_impression": 0,
+                              "close": 0,
+                              "complete": 0,
+                              "impression": 0,
+                              "next": 0,
+                              "prev": 0,
+                              "reach": 0,
+                              "share_count": 0,
+                              "shared_count": 0
+                            }
+                          }
+                        }
+                      ],
+                      "message": "success",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/audience": {
+      "get": {
+        "tags": [
+          "audience"
+        ],
+        "summary": "List audiences",
+        "description": "List all audiences for the authenticated account.",
+        "operationId": "listAudiences",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "required=False, min_value=1, max_value=100"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "0"
+            },
+            "description": "required=False, min_value=0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "account_id": {
+                            "type": "number",
+                            "example": 9434
+                          },
+                          "audience_identifier": {
+                            "type": "string",
+                            "example": "id"
+                          },
+                          "id": {
+                            "type": "number",
+                            "example": 9934
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "random_data_8kb_10_row"
+                          },
+                          "properties": {
+                            "type": "object",
+                            "properties": {
+                              "data": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "age": {
+                                      "type": "string",
+                                      "example": "45"
+                                    },
+                                    "city": {
+                                      "type": "string",
+                                      "example": "city_1"
+                                    },
+                                    "color": {
+                                      "type": "string",
+                                      "example": "color_1"
+                                    },
+                                    "company": {
+                                      "type": "string",
+                                      "example": "company_1"
+                                    },
+                                    "country": {
+                                      "type": "string",
+                                      "example": "country_1"
+                                    },
+                                    "created_at": {
+                                      "type": "string",
+                                      "example": "2024-02-27"
+                                    },
+                                    "credit_card": {
+                                      "type": "string",
+                                      "example": "card_1"
+                                    },
+                                    "email": {
+                                      "type": "string",
+                                      "example": "email_1@example.com"
+                                    },
+                                    "gender": {
+                                      "type": "string",
+                                      "example": "M"
+                                    },
+                                    "id": {
+                                      "type": "string",
+                                      "example": "1"
+                                    },
+                                    "job": {
+                                      "type": "string",
+                                      "example": "job_1"
+                                    },
+                                    "name": {
+                                      "type": "string",
+                                      "example": "name_1"
+                                    },
+                                    "phone": {
+                                      "type": "string",
+                                      "example": "phone_1"
+                                    },
+                                    "surname": {
+                                      "type": "string",
+                                      "example": "surname_1"
+                                    },
+                                    "updated_at": {
+                                      "type": "string",
+                                      "example": "2024-06-11"
+                                    },
+                                    "username": {
+                                      "type": "string",
+                                      "example": "user_1"
+                                    }
+                                  }
+                                },
+                                "example": [
+                                  {
+                                    "age": "45",
+                                    "city": "city_1",
+                                    "color": "color_1",
+                                    "company": "company_1",
+                                    "country": "country_1",
+                                    "created_at": "2024-02-27",
+                                    "credit_card": "card_1",
+                                    "email": "email_1@example.com",
+                                    "gender": "M",
+                                    "id": "1",
+                                    "job": "job_1",
+                                    "name": "name_1",
+                                    "phone": "phone_1",
+                                    "surname": "surname_1",
+                                    "updated_at": "2024-06-11",
+                                    "username": "user_1"
+                                  }
+                                ]
+                              },
+                              "filename": {
+                                "type": "string",
+                                "example": "random_data_8kb_10_row.csv"
+                              },
+                              "latest_file": {
+                                "type": "string",
+                                "example": "https://prod-storyly-media.s3.amazonaws.com/user-media/9434/f4b269fa-906b-4aa5-9c80-8e6616612060--random_data_8kb_10_row.csv"
+                              },
+                              "row_count": {
+                                "type": "number",
+                                "example": 10
+                              }
+                            }
+                          },
+                          "status": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "story_group_list": {
+                            "type": "array",
+                            "items": {},
+                            "example": []
+                          },
+                          "ts_created": {
+                            "type": "string",
+                            "example": "2024-12-13 12:08:18"
+                          },
+                          "ts_updated": {
+                            "type": "string",
+                            "example": "2024-12-13 12:08:18"
+                          },
+                          "type": {
+                            "type": "number",
+                            "example": 1
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "account_id": 9434,
+                          "audience_identifier": "id",
+                          "id": 9934,
+                          "name": "random_data_8kb_10_row",
+                          "properties": {
+                            "data": [
+                              {
+                                "age": "45",
+                                "city": "city_1",
+                                "color": "color_1",
+                                "company": "company_1",
+                                "country": "country_1",
+                                "created_at": "2024-02-27",
+                                "credit_card": "card_1",
+                                "email": "email_1@example.com",
+                                "gender": "M",
+                                "id": "1",
+                                "job": "job_1",
+                                "name": "name_1",
+                                "phone": "phone_1",
+                                "surname": "surname_1",
+                                "updated_at": "2024-06-11",
+                                "username": "user_1"
+                              }
+                            ],
+                            "filename": "random_data_8kb_10_row.csv",
+                            "latest_file": "https://prod-storyly-media.s3.amazonaws.com/user-media/9434/f4b269fa-906b-4aa5-9c80-8e6616612060--random_data_8kb_10_row.csv",
+                            "row_count": 10
+                          },
+                          "status": 0,
+                          "story_group_list": [],
+                          "ts_created": "2024-12-13 12:08:18",
+                          "ts_updated": "2024-12-13 12:08:18",
+                          "type": 1
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Audiences successfully listed"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "data": [
+                        {
+                          "account_id": 9434,
+                          "audience_identifier": "id",
+                          "id": 9934,
+                          "name": "random_data_8kb_10_row",
+                          "properties": {
+                            "data": [
+                              {
+                                "age": "45",
+                                "city": "city_1",
+                                "color": "color_1",
+                                "company": "company_1",
+                                "country": "country_1",
+                                "created_at": "2024-02-27",
+                                "credit_card": "card_1",
+                                "email": "email_1@example.com",
+                                "gender": "M",
+                                "id": "1",
+                                "job": "job_1",
+                                "name": "name_1",
+                                "phone": "phone_1",
+                                "surname": "surname_1",
+                                "updated_at": "2024-06-11",
+                                "username": "user_1"
+                              }
+                            ],
+                            "filename": "random_data_8kb_10_row.csv",
+                            "latest_file": "https://prod-storyly-media.s3.amazonaws.com/user-media/9434/f4b269fa-906b-4aa5-9c80-8e6616612060--random_data_8kb_10_row.csv",
+                            "row_count": 10
+                          },
+                          "status": 0,
+                          "story_group_list": [],
+                          "ts_created": "2024-12-13 12:08:18",
+                          "ts_updated": "2024-12-13 12:08:18",
+                          "type": 1
+                        }
+                      ],
+                      "message": "Audiences successfully listed",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "audience"
+        ],
+        "summary": "Create audience",
+        "description": "Create a new audience.",
+        "operationId": "createAudience",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "example": "label_name"
+                  }
+                }
+              },
+              "examples": {
+                "Create audience": {
+                  "value": {
+                    "label": "label_name"
+                  }
+                }
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "activity": {
+                    "description": "The user activity on the selected interactive component ",
+                    "type": "string",
+                    "example": "activity"
+                  },
+                  "app_id": {
+                    "description": "The id of the app if interactive audience is selected",
+                    "type": "string",
+                    "example": "20485"
+                  },
+                  "audience_identifier": {
+                    "description": "The unique identifier of the audience table",
+                    "type": "string",
+                    "example": "audience_identifier"
+                  },
+                  "component_id": {
+                    "description": "The id of the interactive component",
+                    "type": "string",
+                    "example": "856bdd44-77da-4eee-bc30-eea63303ef09"
+                  },
+                  "file": {
+                    "description": "The file to be uploaded if CSV has been selected",
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "interactive_type": {
+                    "description": "The type of the interactive to get statistics and create audience within the story",
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "name": {
+                    "description": "The name of the audience",
+                    "type": "string",
+                    "example": "interactive_test"
+                  },
+                  "story_group_id": {
+                    "description": "The id of the story group  if interactive audience is selected",
+                    "type": "string",
+                    "example": "204206"
+                  },
+                  "story_id": {
+                    "description": "The id of the story if interactive audience is selected",
+                    "type": "string",
+                    "example": "2581651"
+                  },
+                  "type": {
+                    "description": "The type of the audience, '1' if CSV, '4' if interactive",
+                    "type": "string",
+                    "example": "4"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Audience successfully created"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Audience successfully created",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "audience"
+        ],
+        "summary": "Update audience",
+        "description": "Update an existing audience.",
+        "operationId": "updateAudience",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "audience_identifier": {
+                    "description": "The unique identifier of the audience table",
+                    "type": "string",
+                    "example": "audience_identifier"
+                  },
+                  "id": {
+                    "description": "required=True, empty=False, nullable=False",
+                    "type": "string",
+                    "example": "9934"
+                  },
+                  "name": {
+                    "description": "The name of the audience",
+                    "type": "string",
+                    "example": "interactive_test"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Audience successfully updated"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Audience successfully updated",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/external/segment": {
+      "get": {
+        "tags": [
+          "segment"
+        ],
+        "summary": "List segments",
+        "description": "List all segments for the authenticated account.",
+        "operationId": "listSegments",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "1"
+            },
+            "description": "required=False, min_value=1, max_value=100"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "0"
+            },
+            "description": "required=False, min_value=0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "account_id": {
+                            "type": "number",
+                            "example": 9434
+                          },
+                          "is_used": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "label": {
+                            "type": "string",
+                            "example": "ffdg"
+                          }
+                        }
+                      },
+                      "example": [
+                        {
+                          "account_id": 9434,
+                          "is_used": false,
+                          "label": "ffdg"
+                        }
+                      ]
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Segments successfully listed"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "data": [
+                        {
+                          "account_id": 9434,
+                          "is_used": false,
+                          "label": "ffdg"
+                        }
+                      ],
+                      "message": "Segments successfully listed",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "segment"
+        ],
+        "summary": "Create segment",
+        "description": "Create a new segment.",
+        "operationId": "createSegment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "example": "label_name"
+                  }
+                }
+              },
+              "examples": {
+                "Create segment": {
+                  "value": {
+                    "label": "label_name"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Segments successfully created"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Segments successfully created",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "segment"
+        ],
+        "summary": "Delete segment",
+        "description": "Delete a segment by label.",
+        "operationId": "deleteSegment",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "label",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "example": "label_name"
+            },
+            "description": "required=True, empty=False"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Segments successfully deleted"
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "ok"
+                    }
+                  }
+                },
+                "examples": {
+                  "200": {
+                    "value": {
+                      "message": "Segments successfully deleted",
+                      "status": "ok"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "app",
+      "description": "App management endpoints"
+    },
+    {
+      "name": "instance",
+      "description": "Instance management endpoints"
+    },
+    {
+      "name": "story-group",
+      "description": "Story group management endpoints"
+    },
+    {
+      "name": "story",
+      "description": "Story management endpoints"
+    },
+    {
+      "name": "audience",
+      "description": "Audience management endpoints"
+    },
+    {
+      "name": "segment",
+      "description": "Segment management endpoints"
+    }
+  ],
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": true
+  }
+}

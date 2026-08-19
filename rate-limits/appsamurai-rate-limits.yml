@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  live requests to https://api.storyly.io/external/app and
+  https://api.appsamurai.com/ (2026-08-13); docs.storyly.io/llms.txt index and
+  https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+notes: >-
+  App Samurai publishes no rate limits for either API, and neither returns a
+  rate-limit signal an agent could read. The full response header set from
+  api.storyly.io on an unauthenticated call carried only date, content-type,
+  content-length and the four CORS headers - no X-RateLimit-*, no RateLimit-*,
+  no Retry-After. The Storyly docs index (35 guides and the External API
+  reference) contains no rate-limit page. api.appsamurai.com answered 500 on
+  every path, so nothing could be observed there at all.
+  An honest zero: the limits may exist server-side, but they are invisible to
+  the client, which means a well-behaved integration cannot back off correctly.
+
+limit_count: 0
+
+apis:
+  - name: Storyly External API
+    base_url: https://api.storyly.io
+    documented_limits: none
+    headers_observed: []
+    headers_checked:
+      - X-RateLimit-Limit
+      - X-RateLimit-Remaining
+      - X-RateLimit-Reset
+      - RateLimit-Limit
+      - RateLimit-Remaining
+      - RateLimit-Reset
+      - RateLimit-Policy
+      - Retry-After
+    exhaustion_status: unknown
+    method: probed
+    evidence:
+      - url: https://api.storyly.io/external/app
+        status: 400
+        note: No auth - "Token not found". No rate-limit header present.
+      - url: https://api.storyly.io/external/app
+        status: 401
+        note: Bogus bearer - "Invalid Token". No rate-limit header present.
+    related_ceiling:
+      note: >-
+        The only numeric ceiling published anywhere on this API is a PAGINATION
+        bound, not a rate limit - `limit` is constrained to max_value=100 in the
+        parameter description. Recorded here so it is not mistaken for a
+        throttle.
+      param: limit
+      max: 100
+
+  - name: AppSamurai Campaign Spend API
+    base_url: http://api.appsamurai.com
+    documented_limits: none
+    headers_observed: []
+    exhaustion_status: unknown
+    method: probed
+    evidence:
+      - url: https://api.appsamurai.com/api/customer-pull/spent/test
+        status: 500
+        note: >-
+          Host answers JSON 500 on every path including root; no request could be
+          made that would reveal throttling behaviour.
+      - url: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+        status: 200
+        note: The documentation article names no limits, no quotas and no retry guidance.
+
+recommendation_for_provider: >-
+  Publishing RFC 9331-style RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset
+  headers, and documenting the 429 response, would cost one middleware and is the
+  single change that would most improve automated-client behaviour against
+  api.storyly.io.

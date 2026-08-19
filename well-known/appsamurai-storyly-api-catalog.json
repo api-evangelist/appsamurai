@@ -1,0 +1,49 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://docs.storyly.io/reference",
+      "service-desc": [
+        {
+          "href": "https://docs.storyly.io/openapi/63c6979f165f37000f12058b",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://docs.storyly.io/reference",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://docs.storyly.io/reference",
+      "service-desc": [
+        {
+          "href": "https://docs.storyly.io/openapi/6493ee43ef401503d6962fdd",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://docs.storyly.io/reference",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://docs.storyly.io/reference",
+      "service-desc": [
+        {
+          "href": "https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://docs.storyly.io/reference",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

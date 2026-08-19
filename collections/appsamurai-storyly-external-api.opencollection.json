@@ -1,0 +1,771 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Storyly External API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "app",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List apps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.storyly.io/external/app",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=1, max_value=100"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=0"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all apps for the authenticated account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "instance",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.storyly.io/external/instance",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query",
+                "description": "required=True, min_value=1"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=1, max_value=100"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=0"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List instances for an app."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "story-group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get story groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.storyly.io/external/story-group",
+            "params": [
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "query",
+                "description": "required=True, min_value=1"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=1, max_value=100"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=0"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get story groups by instance or specific story group ID."
+        },
+        {
+          "info": {
+            "name": "Create story group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.storyly.io/external/story-group",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "instance_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "media_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "segments",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "settings",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "title",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ts_end",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ts_start",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new story group."
+        },
+        {
+          "info": {
+            "name": "Update story group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.storyly.io/external/story-group",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "media_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "pinned",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "segments",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "settings",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sort_order",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "title",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ts_end",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ts_start",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an existing story group."
+        },
+        {
+          "info": {
+            "name": "Delete story group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.storyly.io/external/story-group",
+            "params": [
+              {
+                "name": "story_group_id",
+                "value": "",
+                "type": "query",
+                "description": "required=True, min_value=1"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a story group by ID."
+        },
+        {
+          "info": {
+            "name": "Get story group stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.storyly.io/external/story-group/stats",
+            "params": [
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "query",
+                "description": "required=False"
+              },
+              {
+                "name": "story_group_id",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=1"
+              },
+              {
+                "name": "ts_start",
+                "value": "",
+                "type": "query",
+                "description": "required=True, format=YYYY-MM-DD"
+              },
+              {
+                "name": "ts_end",
+                "value": "",
+                "type": "query",
+                "description": "required=True, format=YYYY-MM-DD"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get statistics for story groups."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "story",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get stories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.storyly.io/external/story",
+            "params": [
+              {
+                "name": "story_group_id",
+                "value": "",
+                "type": "query",
+                "description": "required=True, min_value=1"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=1, max_value=100"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=0"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get stories in a story group."
+        },
+        {
+          "info": {
+            "name": "Create story",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.storyly.io/external/story",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "deep_link",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "media_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sort_order",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "story_group_id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "title",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ts_end",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ts_start",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "type",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new story."
+        },
+        {
+          "info": {
+            "name": "Update story",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.storyly.io/external/story",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "deep_link",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "media_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "sort_order",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "status",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "title",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ts_end",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ts_start",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an existing story."
+        },
+        {
+          "info": {
+            "name": "Delete story",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.storyly.io/external/story",
+            "params": [
+              {
+                "name": "story_id",
+                "value": "",
+                "type": "query",
+                "description": "required=True, min_value=1"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a story by ID."
+        },
+        {
+          "info": {
+            "name": "Get story stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.storyly.io/external/story/stats",
+            "params": [
+              {
+                "name": "app_id",
+                "value": "",
+                "type": "query",
+                "description": "required=False"
+              },
+              {
+                "name": "instance_id",
+                "value": "",
+                "type": "query",
+                "description": "required=False"
+              },
+              {
+                "name": "story_group_id",
+                "value": "",
+                "type": "query",
+                "description": "required=False"
+              },
+              {
+                "name": "story_id",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=1"
+              },
+              {
+                "name": "ts_start",
+                "value": "",
+                "type": "query",
+                "description": "required=True, format=YYYY-MM-DD"
+              },
+              {
+                "name": "ts_end",
+                "value": "",
+                "type": "query",
+                "description": "required=True, format=YYYY-MM-DD"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get statistics for stories."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "audience",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List audiences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.storyly.io/external/audience",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=1, max_value=100"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=0"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all audiences for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create audience",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.storyly.io/external/audience",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new audience."
+        },
+        {
+          "info": {
+            "name": "Update audience",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.storyly.io/external/audience",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "audience_identifier",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "id",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "name",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update an existing audience."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "segment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List segments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.storyly.io/external/segment",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=1, max_value=100"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "required=False, min_value=0"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all segments for the authenticated account."
+        },
+        {
+          "info": {
+            "name": "Create segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.storyly.io/external/segment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create a new segment."
+        },
+        {
+          "info": {
+            "name": "Delete segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.storyly.io/external/segment",
+            "params": [
+              {
+                "name": "label",
+                "value": "",
+                "type": "query",
+                "description": "required=True, empty=False"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete a segment by label."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

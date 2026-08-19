@@ -1,0 +1,508 @@
+{
+  "item": [
+    {
+      "id": "fa3484c1-93d0-4eda-b382-bac10c897e92",
+      "name": "Campaign Spend",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "62e23bee-092b-4d11-9c3b-07e6a58e8d99",
+          "name": "Retrieve campaign spend data",
+          "request": {
+            "name": "Retrieve campaign spend data",
+            "description": {
+              "content": "Returns campaign spend data for the account identified by the API key supplied in the path. If end_date is omitted the API returns data for the last 30 days. The API key is the unique token provided by your AppSamurai account manager.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "customer-pull",
+                "spent",
+                ":api_key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>",
+                  "description": "Beginning date of the retrieval period (YYYY-MM-DD)."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date",
+                  "value": "<date>",
+                  "description": "End date of the retrieval period (YYYY-MM-DD). Defaults to the last 30 days when omitted."
+                },
+                {
+                  "disabled": false,
+                  "key": "campaign_id",
+                  "value": "<string>",
+                  "description": "Filter to a specific campaign ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "bundle_id",
+                  "value": "<string>",
+                  "description": "Filter results by a specific application bundle ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "platform",
+                  "value": "<string>",
+                  "description": "Limit data to a particular platform."
+                },
+                {
+                  "disabled": false,
+                  "key": "campaign_name",
+                  "value": "<string>",
+                  "description": "Filter data by campaign name."
+                },
+                {
+                  "disabled": false,
+                  "key": "country",
+                  "value": "<string>",
+                  "description": "Filter results by country using ISO 3166-1 alpha-2 codes (e.g. US, GB)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "api_key",
+                  "description": "(Required) Unique API key provided by your AppSamurai account manager. Acts as the credential."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "api_key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "query"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d30df3b9-39e1-4fa3-b223-4128618b835a",
+              "name": "Campaign spend data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer-pull",
+                    "spent",
+                    ":api_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bundle_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaign_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key",
+                      "description": "(Required) Unique API key provided by your AppSamurai account manager. Acts as the credential."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"campaign_id\": \"string\",\n  \"bundle_id\": \"string\",\n  \"app_title\": \"string\",\n  \"platform\": \"string\",\n  \"cpi_bid\": 2342.238170458891,\n  \"status\": \"string\",\n  \"campaign_name\": \"string\",\n  \"event_goals\": [\n    {\n      \"event_name\": \"string\",\n      \"cpi_bid\": 3634.995457353667,\n      \"event_token\": \"string\"\n    },\n    {\n      \"event_name\": \"string\",\n      \"cpi_bid\": 1352.2184121564585,\n      \"event_token\": \"string\"\n    }\n  ],\n  \"campaign_names\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"countries\": [\n    \"string\",\n    \"string\"\n  ],\n  \"daily_spend\": {\n    \"key_0\": 7000.970175497452,\n    \"key_1\": 1567.9617416833314,\n    \"key_2\": 2265.2469623549364,\n    \"key_3\": 5752.559321099495\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a9a2638-601f-486e-acb9-e621332397c4",
+              "name": "Bad Request — invalid date format.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer-pull",
+                    "spent",
+                    ":api_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bundle_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaign_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key",
+                      "description": "(Required) Unique API key provided by your AppSamurai account manager. Acts as the credential."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "89ed3e8a-1d76-463d-8518-ed65ad2173b4",
+              "name": "Unauthorized — invalid or missing API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer-pull",
+                    "spent",
+                    ":api_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bundle_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaign_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key",
+                      "description": "(Required) Unique API key provided by your AppSamurai account manager. Acts as the credential."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc8de1f7-7b3e-47cf-8967-366073a88238",
+              "name": "Not Found — no matching data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer-pull",
+                    "spent",
+                    ":api_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bundle_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaign_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key",
+                      "description": "(Required) Unique API key provided by your AppSamurai account manager. Acts as the credential."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a276290-f0a9-493f-afd3-364138916c8c",
+              "name": "Internal Server Error.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "customer-pull",
+                    "spent",
+                    ":api_key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "end_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "bundle_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "platform",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaign_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "api_key",
+                      "description": "(Required) Unique API key provided by your AppSamurai account manager. Acts as the credential."
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.appsamurai.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3c0e6ed4-c1e6-4fb4-afc6-88e15f69d51c",
+    "name": "AppSamurai Campaign Spend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AppSamurai Campaign Spend API lets customers retrieve their campaign spend data with a single authenticated GET request. Results can be filtered by date range, campaign, application bundle, platform, campaign name, and country. Faithfully modeled by API Evangelist from AppSamurai's published Help Center documentation; not an AppSamurai-published specification.\n\nContact Support:\n Name: AppSamurai Support",
+      "type": "text/plain"
+    }
+  }
+}

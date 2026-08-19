@@ -1,21 +1,102 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
-docs: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+source: >-
+  https://docs.storyly.io/reference +
+  openapi/appsamurai-storyly-external-api-openapi.json +
+  https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  + live 400/401 probes of api.storyly.io (2026-08-13)
+docs: https://docs.storyly.io/reference
 summary:
-  types: [apiKey]
+  types: [http-bearer, apiKey]
   api_key_in: [path]
+  bearer_formats: [JWT]
   oauth2_flows: []
+  openid_connect: false
+  mtls: false
   notes: >-
-    The Campaign Spend API authenticates with a single account-scoped API key,
-    provided by an AppSamurai account manager and passed as a path segment in
-    the request URL (/api/customer-pull/spent/{api_key}). No OAuth, no
-    self-service key issuance documented.
+    Two APIs, two unrelated credentials, neither self-service. The Storyly
+    External API takes a bearer JWT; the AppSamurai Campaign Spend API takes an
+    account-scoped key embedded in the URL path. There is no OAuth, no OIDC, no
+    scope model and no documented token-issuance endpoint anywhere in App
+    Samurai's surface - both credentials are obtained out of band.
+    The MCP server is the outlier and the only unauthenticated surface:
+    mcp.storyly.io answered tools/list and tools/call anonymously.
+
 schemes:
+  - name: bearerAuth
+    api: Storyly External API
+    type: http
+    scheme: bearer
+    bearer_format: JWT
+    in: header
+    header: Authorization
+    applies_to: all 18 operations (declared per-operation, not as a root security requirement)
+    issuance: >-
+      Not documented publicly. No token endpoint appears in the OpenAPI, and
+      docs.storyly.io publishes no token/credentials page - the JWT is obtained
+      from the Storyly dashboard or an account contact.
+    rotation: not documented
+    expiry: not documented
+    sources:
+      - openapi/appsamurai-storyly-external-api-openapi.json
+    docs: https://docs.storyly.io/reference
+    observed_behaviour:
+      method: probed
+      checked: '2026-08-13'
+      probes:
+        - request: GET https://api.storyly.io/external/app with no Authorization header
+          status: 400
+          body_code: TokenNotFound
+          note: A missing credential returns 400, not the conventional 401.
+        - request: GET https://api.storyly.io/external/app with an invalid bearer token
+          status: 401
+          body_code: InvalidToken
+    gaps:
+      - The spec declares no 401/403 responses, so a generated client has no failure path.
+      - No token lifetime, refresh or revocation is documented.
+
   - name: PathApiKey
+    api: AppSamurai Campaign Spend API
     type: apiKey
     in: path
     parameter: api_key
-    issuance: manual (provided by AppSamurai account manager)
-    sources: [openapi/appsamurai-campaign-spend-openapi.yml]
+    path_template: /api/customer-pull/spent/{api_key}
+    issuance: manual (provided by an AppSamurai account manager)
+    rotation: not documented
+    sources:
+      - openapi/appsamurai-campaign-spend-api-openapi.yml
     docs: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+    risk:
+      credential_in_url: true
+      documented_over_http: true
+      note: >-
+        A secret in a path segment is written to every proxy log, browser history
+        and referrer along the route, and the published base URL is http://, not
+        https://. It also cannot be rotated by the customer. See
+        security/appsamurai-domain-security.yml.
+    modelling_note: >-
+      Represented in the OpenAPI as apiKey/in:query because OpenAPI 3.x has no
+      in:path security scheme. The real placement is a path segment.
+
+unauthenticated_surfaces:
+  - name: Storyly Integration MCP server
+    url: https://mcp.storyly.io/mcp
+    auth: none
+    verified: probed
+    checked: '2026-08-13'
+    note: >-
+      tools/list and tools/call both answered anonymously. No OAuth challenge,
+      and no /.well-known/oauth-authorization-server or
+      /.well-known/oauth-protected-resource is served (both 404). It exposes
+      documentation content only, not customer data.
+  - name: Storyly External API OpenAPI
+    url: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
+    note: The specification is public; the operations it describes are not.
+
+scopes:
+  model: none
+  note: >-
+    Neither credential carries scopes, roles or permissions. The Storyly JWT is
+    account-wide - any holder can create and delete story groups, stories and
+    segments across every app on the account. No scopes/ artifact is emitted
+    because there is nothing to enumerate.

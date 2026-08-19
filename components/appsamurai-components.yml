@@ -1,0 +1,117 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.storyly.io/llms.txt + https://docs.storyly.io/docs (Placement
+  guides, all five platforms) + https://mcp.storyly.io/mcp get_latest_sdk_version
+  + registry.npmjs.org/storyly-placement
+docs: https://docs.storyly.io/docs/creating-widgets
+notes: >-
+  This is the part of App Samurai that is actually a component library rather
+  than an API. Storyly Placement ships five embeddable content widgets that a
+  developer drops into an app or a web page; the REST API exists to fill them
+  with content. The web build is distributed as a real Web Component
+  (npm `storyly-placement`, "Storyly Placement Web Component"), and the iOS
+  Swift Package exposes each widget as a separate product.
+  Distinct from packages/ - that file records the distribution artifacts and
+  their currency; this one records the rendered surfaces they provide.
+
+families:
+  - name: Story Bar
+    description: Horizontal bubble bar of story groups, the classic Storyly surface.
+    docs: https://docs.storyly.io/docs/widget-design
+    platforms: [android, ios, web, reactnative, flutter]
+    ios_product: StorylyStoryBar
+    backed_by_entities: [story_group, story]
+  - name: Banner
+    description: Inline banner content unit, with carousel support since 1.9.0 (Android) / 1.8.0 (Web).
+    docs: https://docs.storyly.io/docs/creating-a-banner-content
+    platforms: [android, ios, web, reactnative, flutter]
+    ios_product: StorylyBanner
+  - name: Vertical Video Feed
+    description: Full-screen vertical video feed widget with navigation bar and design settings.
+    docs: https://docs.storyly.io/docs/creating-a-video-feed-widget
+    platforms: [android, ios, web, reactnative, flutter]
+    ios_product: StorylyVideoFeed
+  - name: Swipe Card
+    description: Swipeable card stack widget with cart-button support.
+    docs: https://docs.storyly.io/docs/creating-a-swipe-up-widget
+    platforms: [android, ios, web, reactnative, flutter]
+    ios_product: StorylySwipeCard
+  - name: Canvas
+    description: Free-form composable content surface.
+    docs: https://docs.storyly.io/docs/creating-a-canvas-widget
+    platforms: [android, ios, web, reactnative, flutter]
+    ios_product: StorylyCanvas
+
+loaders:
+  - platform: web
+    kind: web-component
+    package: storyly-placement
+    registry: npm
+    version: 1.13.0
+    published: '2026-08-07'
+    install: npm install storyly-placement
+    note: >-
+      Ships code-splitting and TypeScript type definitions since 1.10.1. 1.13.0
+      added a `networkConfig` parameter for a configurable API/CDN host.
+    docs: https://docs.storyly.io/docs/placement-web-initial-setup
+  - platform: web
+    kind: script-sdk
+    package: storyly-web
+    registry: npm
+    version: 4.12.0
+    published: '2026-08-07'
+    note: Classic 4.x Storyly Web SDK, maintained alongside the 1.x Placement line.
+  - platform: android
+    kind: native-sdk
+    package: com.appsamurai.storyly:storyly-placement
+    registry: maven
+    version: 1.12.0
+    docs: https://docs.storyly.io/docs/android-placement-initial-setup
+    variants: [views, jetpack-compose]
+  - platform: ios
+    kind: native-sdk
+    package: https://github.com/Netvent/storyly-placement-ios
+    registry: spm
+    version: 1.12.0
+    docs: https://docs.storyly.io/docs/ios-placement-initial-setup
+    variants: [uikit, swiftui]
+    swiftui_package: https://github.com/Netvent/storyly-placement-swiftui
+  - platform: reactnative
+    kind: wrapper
+    package: storyly-placement-react-native
+    registry: npm
+    version: 1.12.0
+    docs: https://docs.storyly.io/docs/reactnative-placement-initial-setup
+  - platform: flutter
+    kind: wrapper
+    package: storyly_placement_flutter
+    registry: pub.dev
+    version: 1.12.0
+    docs: https://docs.storyly.io/docs/flutter-placement-initial-setup
+
+controller_api:
+  name: STRWidgetController
+  operations: [pause, resume, open, close]
+  since: 1.5.0 (Android, 19.03.2026)
+  note: >-
+    Documented via the MCP server's get_widget_controller_api tool in the setup
+    guide; that tool is not present in the live tools/list response.
+
+capabilities:
+  - name: Shoppable content
+    docs: https://docs.storyly.io/docs/web-shoppable-content.md
+    note: Cart management, product analytics, product hydration, wishlist.
+  - name: Targeting with Labels
+    note: Client-side targeting against segment labels created via the External API.
+  - name: Targeting with Audience
+    note: Client-side targeting against audiences created via the External API.
+  - name: Personalization with User Properties
+  - name: Deep links
+  - name: Placement SDK analytics
+    note: Event stream forwarded to the customer's own analytics tool.
+
+hosted_surfaces:
+  - name: Storyly Studio
+    url: https://dashboard.storyly.io/
+    note: Hosted content authoring surface. SPA; no public API of its own.

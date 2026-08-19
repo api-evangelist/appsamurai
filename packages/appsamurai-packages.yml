@@ -1,62 +1,318 @@
-generated: '2026-07-18'
+generated: '2026-08-13'
 method: searched
-source: https://github.com/Netvent
+source: >-
+  registry.npmjs.org, pub.dev, repo1.maven.org, api.github.com/orgs/Netvent,
+  https://mcp.storyly.io (get_latest_sdk_version) - all read 2026-08-13
+docs: https://docs.storyly.io/docs
 notes: >-
-  First-party AppSamurai SDKs are published from the Netvent GitHub
-  organization (Netvent is AppSamurai's parent/engineering org). These are
-  mobile ad / attribution / stories SDKs for integrating AppSamurai and its
-  Storyly and Interceptd products into apps — not clients for the Campaign
-  Spend reporting API, which is a keyed HTTP GET with no published SDK.
+  Every first-party client library App Samurai ships is a MOBILE/WEB EMBED SDK,
+  not a client for either of its two REST APIs. The Storyly External API (18
+  operations, api.storyly.io) and the AppSamurai Campaign Spend API (1 GET) both
+  ship with no SDK in any language.
+  Currency is the story here and it splits cleanly in two. The Storyly Placement
+  line (1.x) is shipping continuously - Android, iOS, Web, React Native and
+  Flutter all published within the last week. The AppSamurai advertising and
+  attribution line is cold: react-native-appsamurai-ads last published 0.1.0 in
+  August 2019, the attribution bridge in November 2019, and the Android/iOS ad
+  SDK repos have not been pushed since 2019/2021. A first-party SDK seven years
+  stale is the clearest decay signal on this provider.
+  Publisher note: the npm accounts are `storyly` and `appsamuraiinc`, and every
+  repository link resolves into github.com/Netvent - App Samurai's engineering
+  org - which is what establishes these as first-party.
+
 packages:
+  # --- Storyly Placement SDK (current line, 1.x) ---
+  - language: kotlin
+    registry: maven
+    name: com.appsamurai.storyly:storyly-placement
+    version: 1.12.0
+    published: '2026-07-31'
+    url: https://repo1.maven.org/maven2/com/appsamurai/storyly/storyly-placement/
+    install: implementation("com.appsamurai.storyly:storyly-placement:1.12.0")
+    official: true
+    description: Storyly Placement SDK for Android (Story Bar, Banner, Video Feed, Swipe Card, Canvas widgets).
+    version_source: >-
+      Maven Central maven-metadata.xml (latest/release 1.12.0); date confirmed by
+      the provider's own MCP tool get_latest_sdk_version and its 1.12.0 release
+      note dated 31.07.2026.
+  - language: swift
+    registry: github
+    name: storyly-placement-ios
+    version: 1.12.0
+    published: '2026-07-31'
+    url: https://github.com/Netvent/storyly-placement-ios
+    source_code: https://github.com/Netvent/storyly-placement-ios
+    install: '.package(url: "https://github.com/Netvent/storyly-placement-ios", from: "1.12.0")'
+    official: true
+    description: >-
+      Storyly Placement iOS SDK, distributed as a Swift Package. Products -
+      StorylyPlacement, StorylyStoryBar, StorylyBanner, StorylyVideoFeed,
+      StorylySwipeCard, StorylyCanvas.
+    version_source: >-
+      SPM has no metadata registry; version read from the repository's git tags
+      (1.12.0 newest) and confirmed by the provider MCP get_latest_sdk_version.
+  - language: swift
+    registry: github
+    name: storyly-placement-swiftui
+    version: 1.12.0
+    published: '2026-08-12'
+    url: https://github.com/Netvent/storyly-placement-swiftui
+    source_code: https://github.com/Netvent/storyly-placement-swiftui
+    official: true
+    description: Storyly Placement SwiftUI SDK, SPM distribution.
+    version_source: git tag 1.12.0; published date is the repository pushed_at (SPM publishes no dated release).
+  - language: javascript
+    registry: npm
+    name: storyly-placement
+    version: 1.13.0
+    published: '2026-08-07'
+    url: https://www.npmjs.com/package/storyly-placement
+    install: npm install storyly-placement
+    official: true
+    description: Storyly Placement Web Component - the web build of the Placement widget family.
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
+  - language: javascript
+    registry: npm
+    name: storyly-placement-react-native
+    version: 1.12.0
+    published: '2026-08-11'
+    url: https://www.npmjs.com/package/storyly-placement-react-native
+    source_code: https://github.com/Netvent/storyly-sdk
+    install: npm install storyly-placement-react-native
+    official: true
+    description: React Native package for the Storyly Placement SDK.
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
+  - language: dart
+    registry: pub.dev
+    name: storyly_placement_flutter
+    version: 1.12.0
+    published: '2026-08-11'
+    url: https://pub.dev/packages/storyly_placement_flutter
+    install: flutter pub add storyly_placement_flutter
+    official: true
+    description: Flutter package for the Storyly Placement SDK.
+    version_source: pub.dev API latest.version + latest.published
+
+  # --- Storyly classic SDK line (4.x, maintained but slower) ---
+  - language: javascript
+    registry: npm
+    name: storyly-web
+    version: 4.12.0
+    published: '2026-08-07'
+    url: https://www.npmjs.com/package/storyly-web
+    source_code: https://github.com/Netvent/storyly-web
+    install: npm install storyly-web
+    official: true
+    description: Storyly Web SDK (classic 4.x line).
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
+  - language: javascript
+    registry: npm
+    name: storyly-react-native
+    version: 4.19.0
+    published: '2025-12-02'
+    url: https://www.npmjs.com/package/storyly-react-native
+    source_code: https://github.com/Netvent/storyly-mobile
+    install: npm install storyly-react-native
+    official: true
+    description: React Native SDK for Storyly (classic 4.x line).
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
+  - language: javascript
+    registry: npm
+    name: storyly-react-native-fabric
+    version: 4.19.1
+    published: '2025-12-25'
+    url: https://www.npmjs.com/package/storyly-react-native-fabric
+    source_code: https://github.com/Netvent/storyly-mobile
+    install: npm install storyly-react-native-fabric
+    official: true
+    description: Fabric (New Architecture) build of the Storyly React Native component.
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
+  - language: dart
+    registry: pub.dev
+    name: storyly_flutter
+    version: 4.16.4
+    published: '2026-01-21'
+    url: https://pub.dev/packages/storyly_flutter
+    source_code: https://github.com/Netvent/storyly-sdk
+    install: flutter pub add storyly_flutter
+    official: true
+    description: Official Flutter package for Storyly (classic 4.x line).
+    version_source: pub.dev API latest.version + latest.published
+  - language: kotlin
+    registry: maven
+    name: com.appsamurai.storyly:storyly
+    version: 4.14.0
+    published: '2025-04-29'
+    url: https://repo1.maven.org/maven2/com/appsamurai/storyly/storyly/
+    install: implementation("com.appsamurai.storyly:storyly:4.14.0")
+    official: true
+    description: Storyly Android SDK (classic 4.x line).
+    version_source: search.maven.org solrsearch latestVersion + timestamp
+  - language: swift
+    registry: github
+    name: storyly-ios
+    version: null
+    published: '2026-07-31'
+    url: https://github.com/Netvent/storyly-ios
+    source_code: https://github.com/Netvent/storyly-ios
+    official: true
+    description: Storyly iOS SDK, SPM distribution (classic 4.x line).
+    note: >-
+      No GitHub release and no metadata registry to query - SPM resolves from git
+      tags only. Version recorded null rather than guessed; `published` is the
+      repository pushed_at.
+
+  # --- Storyly add-on modules (stale) ---
+  - language: kotlin
+    registry: maven
+    name: com.appsamurai.storyly:storyly-monetization
+    version: 3.0.0
+    published: '2024-05-30'
+    url: https://repo1.maven.org/maven2/com/appsamurai/storyly/storyly-monetization/
+    official: true
+    description: Storyly Monetization module for Android.
+    version_source: search.maven.org solrsearch
+  - language: javascript
+    registry: npm
+    name: storyly-monetization-react-native
+    version: 1.2.0
+    published: '2022-10-11'
+    url: https://www.npmjs.com/package/storyly-monetization-react-native
+    official: true
+    description: React Native plugin for Monetization by Storyly. Last published 2022.
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
+  - language: javascript
+    registry: npm
+    name: storyly-moments-react-native
+    version: 0.5.0
+    published: '2023-03-06'
+    url: https://www.npmjs.com/package/storyly-moments-react-native
+    official: true
+    description: React Native plugin for Moments by Storyly. Last published 2023.
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
+  - language: kotlin
+    registry: maven
+    name: com.appsamurai.storyly:storyly-moments
+    version: 1.0.0
+    published: '2023-05-05'
+    url: https://repo1.maven.org/maven2/com/appsamurai/storyly/storyly-moments/
+    official: true
+    description: Storyly Moments module for Android.
+    version_source: search.maven.org solrsearch
+
+  # --- AppSamurai advertising / attribution line (cold) ---
   - language: javascript
     registry: npm
     name: react-native-appsamurai-ads
+    version: 0.1.0
+    published: '2019-08-05'
     url: https://www.npmjs.com/package/react-native-appsamurai-ads
     source_code: https://github.com/Netvent/react-native-appsamurai-ads
     install: npm install react-native-appsamurai-ads
     official: true
     description: React Native SDK for integrating AppSamurai ads.
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
+    note: Last published August 2019 - seven years stale.
+  - language: javascript
+    registry: npm
+    name: '@appsamurai/react-native-appsamurai-ads'
+    version: 0.0.10
+    published: '2019-07-21'
+    url: https://www.npmjs.com/package/@appsamurai/react-native-appsamurai-ads
+    source_code: https://github.com/Netvent/react-native-appsamurai-ads
+    official: true
+    description: Scoped duplicate of the AppSamurai ads React Native SDK.
+    version_source: registry.npmjs.org search result (date + version)
+  - language: javascript
+    registry: npm
+    name: react-native-as-attribution-sdk-bridge
+    version: 1.0.15
+    published: '2019-11-12'
+    url: https://www.npmjs.com/package/react-native-as-attribution-sdk-bridge
+    source_code: https://github.com/Netvent/react-native-as-attribution-sdk-bridge
+    official: true
+    description: React Native bridge for the AppSamurai attribution SDK.
+    version_source: registry.npmjs.org dist-tags.latest + time[latest]
   - language: kotlin
     registry: github
     name: appsamurai-adsdk-android
+    version: null
+    published: '2019-07-18'
     url: https://github.com/Netvent/appsamurai-adsdk-android
     source_code: https://github.com/Netvent/appsamurai-adsdk-android
     official: true
     description: Android ad SDK for AppSamurai.
+    note: >-
+      No registry and no tags/releases to read - checked GitHub, nothing to
+      record. `published` is the repository pushed_at, July 2019.
   - language: objective-c
     registry: github
     name: appsamurai-adsdk-ios
+    version: null
+    published: '2021-09-23'
     url: https://github.com/Netvent/appsamurai-adsdk-ios
     source_code: https://github.com/Netvent/appsamurai-adsdk-ios
     official: true
     description: iOS ad SDK for AppSamurai.
+    note: No registry, no releases; `published` is the repository pushed_at.
+  - language: csharp
+    registry: github
+    name: appsamurai-adsdk-unity
+    version: null
+    published: '2018-12-24'
+    url: https://github.com/Netvent/appsamurai-adsdk-unity
+    source_code: https://github.com/Netvent/appsamurai-adsdk-unity
+    official: true
+    description: Unity ad SDK for AppSamurai.
+    note: No registry, no releases; `published` is the repository pushed_at, December 2018.
   - language: java
     registry: github
     name: as-attribution-android
+    version: null
+    published: '2019-11-12'
     url: https://github.com/Netvent/as-attribution-android
     source_code: https://github.com/Netvent/as-attribution-android
     official: true
     description: AppSamurai attribution SDK for Android.
-  - language: swift
+    note: No registry, no releases; `published` is the repository pushed_at.
+  - language: objective-c
     registry: github
     name: as-attribution-ios
+    version: null
+    published: '2020-04-21'
     url: https://github.com/Netvent/as-attribution-ios
     source_code: https://github.com/Netvent/as-attribution-ios
     official: true
     description: AppSamurai attribution SDK for iOS.
-  - language: javascript
+    note: No registry, no releases; `published` is the repository pushed_at.
+  - language: csharp
+    registry: github
+    name: appsprize
+    version: AppsPrizeUnity-2.4.0
+    published: '2026-02-25'
+    url: https://github.com/Netvent/appsprize
+    source_code: https://github.com/Netvent/appsprize
+    official: true
+    description: AppsPrize (rewarded user acquisition) Unity SDK.
+    version_source: GitHub releases/latest tag_name + published_at
+
+third_party:
+  - name: '@feedmob/appsamurai-reporting'
     registry: npm
-    name: storyly-react-native
-    url: https://www.npmjs.com/package/storyly-react-native
-    source_code: https://github.com/Netvent/storyly-sdk
-    install: npm install storyly-react-native
-    official: true
-    description: React Native SDK for Storyly (AppSamurai's in-app stories product).
-  - language: dart
-    registry: pub.dev
-    name: storyly_flutter
-    url: https://pub.dev/packages/storyly_flutter
-    source_code: https://github.com/Netvent/storyly-sdk
-    install: flutter pub add storyly_flutter
-    official: true
-    description: Flutter SDK for Storyly.
+    version: 0.0.7
+    published: '2026-02-10'
+    url: https://www.npmjs.com/package/@feedmob/appsamurai-reporting
+    source_code: https://github.com/feed-mob/fm-mcp-servers
+    official: false
+    description: >-
+      Third-party MCP server wrapping the AppSamurai Campaign Spend API,
+      published by Feed Mob - NOT by App Samurai. Recorded so the catalog does
+      not later mistake it for a first-party agent surface.
+
+summary:
+  total: 24
+  official: 24
+  third_party: 1
+  rest_api_clients: 0
+  newest_publish: '2026-08-12'
+  oldest_publish: '2018-12-24'

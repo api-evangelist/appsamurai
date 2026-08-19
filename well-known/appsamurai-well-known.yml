@@ -1,27 +1,127 @@
-generated: '2026-07-18'
-method: searched
+generated: '2026-08-13'
+method: probed
+source: live GET probes of every App Samurai / Storyly host, 2026-08-13
 notes: >-
-  Probed the .well-known discovery surface on the primary web host, the API
-  host, and the dashboard host. appsamurai.com returns 404 for all probed
-  paths; api.appsamurai.com returns 500 for all paths (including root);
-  dashboard.appsamurai.com returns HTTP 200 for every path but serves the SPA
-  HTML shell (content-type text/html), not real discovery documents — recorded
-  as spa-shell, not saved as artifacts. No genuine .well-known documents found.
+  Round 2 widened the probe from the appsamurai.com hosts to the Storyly hosts,
+  and found one genuine document: docs.storyly.io serves an RFC 9727
+  /.well-known/api-catalog linkset (application/linkset+json) pointing at the
+  Storyly External API OpenAPI. That is the only real .well-known document App
+  Samurai serves anywhere, and it is the basis for the WellKnown pointer in
+  apis.yml.
+  Everything else is an absence or a false 200: appsamurai.com 404s every path;
+  api.appsamurai.com answers HTTP 500 on every path including its own root;
+  dashboard.appsamurai.com, dashboard.storyly.io and help.appsamurai.com answer
+  200 with an HTML shell for any path - SPA / help-center catch-alls, not
+  documents.
+  help.appsamurai.com now 308-redirects to appsamurai.com/help/, so the
+  security.txt captured in round 1 (well-known/appsamurai-security.txt) is no
+  longer served, and it never belonged to App Samurai in the first place - it is
+  Intercom's vendor security.txt, canonical
+  https://app.intercom.com/.well-known/security.txt. It is retained only as
+  evidence and is explicitly NOT credited to App Samurai; no SecurityTxt pointer
+  is emitted.
+
 hosts:
+  - host: https://docs.storyly.io
+    documents:
+      - path: /.well-known/api-catalog
+        status: 200
+        content_type: application/linkset+json
+        file: well-known/appsamurai-storyly-api-catalog.json
+        result: document
+        note: >-
+          RFC 9727 linkset. service-desc points at
+          https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
+          (application/vnd.oai.openapi+json) - the Storyly External API spec now
+          saved to openapi/. One of the three linkset entries
+          (6493ee43ef401503d6962fdd) 404s; the other two resolve to the same
+          document.
+      - {path: /.well-known/security.txt, status: 404, result: catch-all-html}
+      - {path: /.well-known/agent-card.json, status: 404, result: catch-all-html}
+      - {path: /.well-known/agent.json, status: 404, result: catch-all-html}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404, result: catch-all-html}
+  - host: https://mcp.storyly.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+    note: >-
+      The MCP server publishes no OAuth metadata because it requires no auth -
+      tools/list answered anonymously.
+  - host: https://api.storyly.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://www.storyly.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://dashboard.storyly.io
+    documents:
+      - {path: /.well-known/security.txt, status: 200, result: spa-shell}
+      - {path: /.well-known/agent-card.json, status: 200, result: spa-shell}
+      - {path: /.well-known/agent.json, status: 200, result: spa-shell}
+      - {path: /.well-known/oauth-authorization-server, status: 200, result: spa-shell}
+      - {path: /.well-known/oauth-protected-resource, status: 200, result: spa-shell}
+      - {path: /.well-known/openid-configuration, status: 200, result: spa-shell}
+      - {path: /.well-known/api-catalog, status: 200, result: spa-shell}
+      - {path: /.well-known/ai-plugin.json, status: 200, result: spa-shell}
+    note: Catch-all SPA - identical 3547-byte text/html body for every path. Not documents.
   - host: https://appsamurai.com
     documents:
       - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/agent-card.json, status: 404}
+      - {path: /.well-known/agent.json, status: 404}
       - {path: /.well-known/openid-configuration, status: 404}
       - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
       - {path: /.well-known/api-catalog, status: 404}
       - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /llms.txt, status: 404}
   - host: https://api.appsamurai.com
     documents:
       - {path: /.well-known/security.txt, status: 500}
+      - {path: /.well-known/agent-card.json, status: 500}
+      - {path: /.well-known/agent.json, status: 500}
       - {path: /.well-known/openid-configuration, status: 500}
       - {path: /.well-known/oauth-authorization-server, status: 500}
+      - {path: /.well-known/oauth-protected-resource, status: 500}
       - {path: /.well-known/api-catalog, status: 500}
       - {path: /.well-known/ai-plugin.json, status: 500}
+    note: >-
+      Every path, including /, returns {"code":500,"message":"Internal Server
+      Error","log":{"id":...}}. The host is up and answering JSON but nothing
+      routes.
+  - host: https://help.appsamurai.com
+    documents:
+      - {path: /.well-known/security.txt, status: 308, redirect: https://appsamurai.com/help/}
+      - {path: /llms.txt, status: 308, redirect: https://appsamurai.com/help/}
+      - {path: /.well-known/agent-card.json, status: 200, result: catch-all-html}
+      - {path: /.well-known/agent.json, status: 200, result: catch-all-html}
+    note: >-
+      The Intercom help centre is being retired behind appsamurai.com/help/. The
+      Intercom-served security.txt captured in round 1 is retained at
+      well-known/appsamurai-security.txt as evidence only.
   - host: https://dashboard.appsamurai.com
     documents:
       - {path: /.well-known/security.txt, status: 200, result: spa-shell}
@@ -29,3 +129,19 @@ hosts:
       - {path: /.well-known/oauth-authorization-server, status: 200, result: spa-shell}
       - {path: /.well-known/api-catalog, status: 200, result: spa-shell}
       - {path: /.well-known/ai-plugin.json, status: 200, result: spa-shell}
+
+third_party_documents:
+  - file: well-known/appsamurai-security.txt
+    served_by: help.appsamurai.com (Intercom help centre), no longer served
+    owner: Intercom
+    canonical: https://app.intercom.com/.well-known/security.txt
+    credited_to_appsamurai: false
+    note: >-
+      Vendor document reached through App Samurai's help-centre CNAME. It names
+      Intercom's Bugcrowd programme and security@intercom.com, not App Samurai's.
+      Kept for provenance; deliberately not wired to a SecurityTxt pointer.
+
+summary:
+  documents_found: 1
+  hosts_probed: 9
+  paths_probed: 74

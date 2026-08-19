@@ -1,0 +1,47 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  openapi/appsamurai-storyly-external-api-openapi.json +
+  openapi/appsamurai-campaign-spend-api-openapi.yml +
+  conventions/appsamurai-conventions.yml + errors/appsamurai-problem-types.yml +
+  data-model/appsamurai-data-model.yml
+notes: >-
+  Four packaged Agent Skills covering the marquee flows across App Samurai's two
+  APIs. Every operationId referenced was grepped out of the specifications; none
+  is invented. App Samurai publishes no skills/ or AGENTS.md of its own — searched
+  appsamurai.com, storyly.io and docs.storyly.io, nothing found — so these are
+  generated, and each one carries the runtime rules the specifications omit (the
+  undeclared 400/401 envelope, the absence of idempotency, the absence of
+  rate-limit signalling).
+
+skills:
+  - name: appsamurai-publish-a-story
+    file: skills/appsamurai-publish-a-story.md
+    api: Appsamurai Storyly External API
+    operations: [listApps, listInstances, createStoryGroup, createStory, getStories]
+    summary: Walk the app → instance → story group → story tree to publish scheduled content.
+  - name: appsamurai-target-content-with-audiences
+    file: skills/appsamurai-target-content-with-audiences.md
+    api: Appsamurai Storyly External API
+    operations: [listSegments, createSegment, deleteSegment, listAudiences, createAudience, updateAudience, updateStoryGroup]
+    summary: Create segment labels and interaction-derived audiences, and attach them to story groups.
+  - name: appsamurai-report-on-content-performance
+    file: skills/appsamurai-report-on-content-performance.md
+    api: Appsamurai Storyly External API
+    operations: [getStoryGroupStats, getStoryStats, listInstances, getStoryGroups]
+    summary: Pull daily/weekly/monthly/total roll-ups for story groups and stories over a date window.
+  - name: appsamurai-pull-campaign-spend
+    file: skills/appsamurai-pull-campaign-spend.md
+    api: Appsamurai Campaign Spend API
+    operations: [getCampaignSpend]
+    summary: Retrieve campaign spend reporting with the daily spend series, filtered by date, campaign, bundle, platform or country.
+
+coverage:
+  operations_total: 19
+  operations_covered: 17
+  uncovered:
+    - deleteStoryGroup
+    - deleteStory
+  uncovered_note: >-
+    The two destructive operations are documented in data-model/ and reachable,
+    but no skill is written to walk an agent through deleting customer content.

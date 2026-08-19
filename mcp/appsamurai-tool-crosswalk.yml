@@ -1,0 +1,110 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  mcp/appsamurai-storyly-mcp-tools.json (live tools/list, HTTP 200, 2026-08-13)
+  + openapi/appsamurai-storyly-external-api-openapi.json
+  + openapi/appsamurai-campaign-spend-api-openapi.yml
+notes: >-
+  The headline finding is that App Samurai's MCP surface and its REST surface do
+  not overlap at all. mcp.storyly.io is a DOCUMENTATION server over the Storyly
+  Placement SDK - it answers "what is the latest Android SDK version", "how do I
+  implement shoppable content", "what changed in 1.12.0". The Storyly External
+  API is a CONTENT MANAGEMENT API - it creates story groups, stories, audiences
+  and segments. No MCP tool calls any REST operation, and no REST operation is
+  reachable from an agent through MCP. Every one of the 18 published operations
+  is rest_only. Recorded as measured, not smoothed.
+
+surfaces:
+  openapi:
+    - file: openapi/appsamurai-storyly-external-api-openapi.json
+      server: https://api.storyly.io
+      operations: 18
+      auth: bearer JWT
+      gated: true
+      note: Operations require a JWT; the specification itself is public.
+    - file: openapi/appsamurai-campaign-spend-api-openapi.yml
+      server: http://api.appsamurai.com
+      operations: 1
+      auth: path-embedded API key
+      gated: true
+      note: >-
+        Host answered HTTP 500 with {"code":500,"message":"Internal Server Error"}
+        on every path probed on 2026-08-13, including the documented
+        /api/customer-pull/spent/{api_key}.
+  graphql: none
+  mcp:
+    url: https://mcp.storyly.io/mcp
+    transport: [streamable-http, sse]
+    gated: false
+    note: tools/list answered anonymously with full inputSchemas.
+
+crosswalk: []
+
+mcp_only:
+  - tool: get_latest_sdk_version
+    reason: >-
+      Resolves the published Storyly Placement SDK version from Maven Central /
+      SPM. No REST operation exposes SDK release metadata.
+  - tool: get_feature_guide
+    reason: Serves documentation content from docs.storyly.io; no REST equivalent.
+  - tool: get_api_reference
+    reason: >-
+      Serves SDK symbol reference from integration.storyly.io (Jazzy/Dokka/TypeDoc
+      output), not the REST API. No REST equivalent.
+  - tool: search_knowledge
+    reason: Full-text search over guides and SDK references; no REST search endpoint exists.
+  - tool: get_release_notes
+    reason: >-
+      Serves the SDK changelog. There is no REST changelog operation; this tool
+      is in fact the only machine-readable, dated changelog App Samurai publishes
+      (see changelog/appsamurai-changelog.yml).
+
+rest_only:
+  - operationId: listApps
+    reason: No MCP tool manages Storyly apps.
+  - operationId: listInstances
+    reason: No MCP tool manages Storyly instances.
+  - operationId: getStoryGroups
+    reason: No MCP tool reads story groups.
+  - operationId: createStoryGroup
+    reason: No MCP tool creates story groups.
+  - operationId: updateStoryGroup
+    reason: No MCP tool updates story groups.
+  - operationId: deleteStoryGroup
+    reason: No MCP tool deletes story groups.
+  - operationId: getStoryGroupStats
+    reason: No MCP tool reads story group analytics.
+  - operationId: getStories
+    reason: No MCP tool reads stories.
+  - operationId: createStory
+    reason: No MCP tool creates stories.
+  - operationId: updateStory
+    reason: No MCP tool updates stories.
+  - operationId: deleteStory
+    reason: No MCP tool deletes stories.
+  - operationId: getStoryStats
+    reason: No MCP tool reads story analytics.
+  - operationId: listAudiences
+    reason: No MCP tool reads audiences.
+  - operationId: createAudience
+    reason: No MCP tool creates audiences.
+  - operationId: updateAudience
+    reason: No MCP tool updates audiences.
+  - operationId: listSegments
+    reason: No MCP tool reads segments.
+  - operationId: createSegment
+    reason: No MCP tool creates segments.
+  - operationId: deleteSegment
+    reason: No MCP tool deletes segments.
+  - operationId: getCampaignSpend
+    reason: >-
+      AppSamurai Campaign Spend API; no MCP server of any kind covers the
+      AppSamurai advertising surface.
+
+coverage:
+  mcp_tools: 5
+  rest_operations: 19
+  bound: 0
+  mcp_only: 5
+  rest_only: 19
+  bound_pct: 0

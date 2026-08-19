@@ -1,0 +1,112 @@
+# Storyly Help Documentation
+
+> Storyly is a lightweight SDK that brings stories to your app or website. With an intuitive design studio, insightful analytics, and seamless connectivity, Storyly is a powerful tool for enriching your audience experience.
+
+## Guides
+- [Introduction](https://docs.storyly.io/docs/introduction.md)
+- [Adding App & Website](https://docs.storyly.io/docs/adding-your-app-website-to-storyly.md): How to add an app or website to the dashboard?
+- [Creating Placements](https://docs.storyly.io/docs/creating-placements.md)
+- [Creating Widgets](https://docs.storyly.io/docs/creating-widgets.md)
+- [Creating the Best Story Creative](https://docs.storyly.io/docs/creating-the-best-story-creative.md): How to create the most optimal story creative?
+- [Creating Story Bar Widget](https://docs.storyly.io/docs/widget-design.md): How to create a Stories bar Widget?
+- [Creating a Story Group from Scratch](https://docs.storyly.io/docs/creating-a-story-group-from-scratch.md): How to create a Story Group from scratch?
+- [Storyly Studio](https://docs.storyly.io/docs/actions-on-stories-you-can-take-on-storyly-studio.md): How to delete, order, set start and end times, and take many more actions in Storyly Studio?
+- [Using Interactive Components](https://docs.storyly.io/docs/adding-interactive-components-and-using-storyly-studio.md): How to use Storyly Studio?
+- [Useful Actions on Stories & Story Groups](https://docs.storyly.io/docs/useful-actions-on-stories-story-groups.md): How to delete, order or change the status of your stories and story groups?
+- [Creating Stories from Instagram Stories, Posts & Reels](https://docs.storyly.io/docs/creating-stories-from-instagram.md): How to create stories from Instagram with a single click?
+- [Importing from TikTok](https://docs.storyly.io/docs/tiktok-import.md): How to create stories from TikTok with a single click?
+- [Nudge Mode](https://docs.storyly.io/docs/nudge-mode.md)
+- [Building Storyly Journeys with Visibility Conditions](https://docs.storyly.io/docs/building-storyly-journeys-with-visibility-conditions.md): How to create Journeys?
+- [Sponsored Mode](https://docs.storyly.io/docs/sponsored.md)
+- [Creating a Banner Widget](https://docs.storyly.io/docs/creating-a-banner-content.md): How to create a Banner Widget?
+- [Creating a Banner Content](https://docs.storyly.io/docs/creating-a-banner-content-copy.md): How to create a Banner?
+- [Creating a Video Feed Widget](https://docs.storyly.io/docs/creating-a-video-feed-widget.md)
+- [Creating Video Feed Content](https://docs.storyly.io/docs/creating-video-feed-content.md): How to create a Video Feed experience?
+- [Creating a Swipe Card Widget](https://docs.storyly.io/docs/creating-a-swipe-up-widget.md): How to create a Swipe Card Widget?
+- [Creating Swipe Card Content](https://docs.storyly.io/docs/creating-swipe-card-content.md): How to create a Swipe Card?
+- [Creating a Canvas Widget](https://docs.storyly.io/docs/creating-a-canvas-widget.md): How to create a Canvas Widget?
+- [Creating Canvas Content](https://docs.storyly.io/docs/creating-canvas-content-1.md): How to create a Canvas?
+- [What it is a Flow?](https://docs.storyly.io/docs/creating-a-flow-copy.md)
+- [Creating a Flow](https://docs.storyly.io/docs/creating-a-flow.md): How to create a Flow?
+- [Preparing and Uploading the Product Feed](https://docs.storyly.io/docs/preparing-and-uploading-the-product-feed-copy.md)
+- [Create Collections](https://docs.storyly.io/docs/create-collections.md)
+- [Customize Product Catalog & Bottom Sheet](https://docs.storyly.io/docs/customize-product-catalog-bottom-sheet.md)
+- [How the Feed is Synced on Your App/Web](https://docs.storyly.io/docs/how-the-feed-is-synced-on-your-appweb-copy.md)
+- [Product Hydration](https://docs.storyly.io/docs/product-hydration-copy.md)
+- [Supplemental Feed](https://docs.storyly.io/docs/supplemental-feed.md)
+- [Add to Wishlist](https://docs.storyly.io/docs/add-to-wishlist.md)
+- [Set Up Storyly Betting Feed](https://docs.storyly.io/docs/setup-storyly-betting-feed.md): This guide describes the data Storyly's betting feed ingestion expects, so your sports and odds feed can power automated story and banner content. It is the betting counterpart of the product feed guide.
+- [Using Labels](https://docs.storyly.io/docs/using-labels-to-distribute-your-stories-to-the-right-audience.md): How to use labels on your Story Groups?
+- [Having Custom Audience for Widget Content](https://docs.storyly.io/docs/having-custom-audience-for-story-groups.md): How to add a custom audience to your story groups?
+- [Create Audiences from Interactive Results](https://docs.storyly.io/docs/create-audiences-from-the-outcome-of-interactive-components.md): How to create audiences using interaction data?
+- [Adding User Properties to Create Personalized Story Groups and Stories](https://docs.storyly.io/docs/adding-user-properties-to-create-personalized-story-groups-and-stories.md): How to use user properties on your stories and story groups?
+- [Filling User Properties with Audiences for Personalized Stories](https://docs.storyly.io/docs/filling-user-properties-with-audiences-for-personalized-stories.md): How to match User Properties with the Audiences?
+- [Connect your Braze Audiences with Storyly](https://docs.storyly.io/docs/connect-your-braze-audiences-with-storyly.md): How to integrate Storyly and Braze to use your audiences?
+- [CleverTap Amazon EventBridge Setup](https://docs.storyly.io/docs/clevertap-amazon-eventbridge-setup.md): How to do Amazon EventBridge Setup on CleverTap for Storyly integration?
+- [Connecting CleverTap Audiences with Storyly](https://docs.storyly.io/docs/connecting-clevertap-audiences-with-storyly.md): How to use CleverTap and Storyly integration?
+- [CleverTap Webhook Setup](https://docs.storyly.io/docs/clevertap-webhook-setup.md): How to do Webhook Setup on CleverTap for Storyly integration?
+- [Exporting Audiences to MoEngage](https://docs.storyly.io/docs/exporting-audiences-to-moengage.md): How to send audiences to MoEngage?
+- [Importing Audiences from MoEngage](https://docs.storyly.io/docs/importing-audiences-from-moengage.md): How to import MoEngage audiences to Storyly?
+- [Sending Storyly Events to 3rd Party Analytics Platform](https://docs.storyly.io/docs/sending-storyly-analytics-to-3rd-party-analytics-platform.md): How to send Storyly analytics to 3rd party analytics platform?
+- [Connect your Iterable Audiences with Storyly](https://docs.storyly.io/docs/connect-your-iterable-audiences-with-storyly.md)
+- [Conversion Attribution & Tracking](https://docs.storyly.io/docs/conversion-attribution-tracking.md)
+- [Connect Bloomreach](https://docs.storyly.io/docs/connect-your-bloomreach-audience-with-storyly.md)
+- [Analytics Mapping](https://docs.storyly.io/docs/analytics-mapping-1.md)
+- [Initial Setup](https://docs.storyly.io/docs/android-placement-initial-setup.md): This guide covers the core concepts, architectural benefits, and a step-by-step implementation to help you integrate Storyly Placement into your Android application.
+- [Targeting with Labels](https://docs.storyly.io/docs/android-targeting-with-labels.md): This guide shows how to target user segments with Labels when using Storyly Placement SDK on Android.
+- [Targeting with Audience](https://docs.storyly.io/docs/android-targeting-with-audience.md): This guide shows how to target users with Audience when using Storyly Placement SDK on Android.
+- [Shoppable Content](https://docs.storyly.io/docs/android-shoppable-content.md): This guide covers how to implement shopping cart management, product analytics tracking, product hydration and product wishlist to create engaging shopping experiences.
+- [Storyly Personalization Engine Setup](https://docs.storyly.io/docs/android-analytics-module-initialization.md): This guide covers the core concepts and a step-by-step implementation to help you initialize Storyly Analytics SDK - Personalization Engine Module in your Android application.
+- [Placement SDK Analytics](https://docs.storyly.io/docs/android-placement-sdk-analytics.md): This guide covers how to send Storyly events to your Analytics tool to understand the performance of Storyly Widgets.
+- [Deep Links](https://docs.storyly.io/docs/android-deeplinks.md): This guide shows you how to handle deep links in your application, open a fullscreen content programmatically and share a content link.
+- [Initial Setup for Jetpack Compose](https://docs.storyly.io/docs/android-jetpackcompose-initial-setup.md): This guide covers the core concepts, architectural benefits, and a step-by-step implementation to help you integrate Storyly Placement into your Jetpack Compose application.
+- [Initial Setup](https://docs.storyly.io/docs/ios-placement-initial-setup.md): This guide covers the core concepts, architectural benefits, and a step-by-step implementation to help you integrate Storyly Placement into your iOS application.
+- [Targeting with Labels](https://docs.storyly.io/docs/ios-targeting-with-labels.md): This guide shows how to target user segments with Labels when using Storyly Placement SDK on iOS.
+- [Targeting with Audience](https://docs.storyly.io/docs/ios-targeting-with-audience.md): This guide shows how to target users with Audience when using Storyly Placement SDK on iOS.
+- [Shoppable Content](https://docs.storyly.io/docs/ios-shoppable-content.md): This guide covers how to implement shopping cart management, product analytics tracking, product hydration and product wishlist to create engaging shopping experiences.
+- [Storyly Personalization Engine Setup](https://docs.storyly.io/docs/ios-analytics-module-initialization.md): This guide covers the core concepts and a step-by-step implementation to help you initialize Storyly Analytics SDK - Personalization Engine Module in your iOS application.
+- [Placement SDK Analytics](https://docs.storyly.io/docs/ios-placement-sdk-analytics.md): This guide covers how to send Storyly events to your Analytics tool to understand the performance of Storyly Widgets.
+- [Deep Links](https://docs.storyly.io/docs/ios-deeplinks.md): This guide shows you how to handle deep links in your application, open a fullscreen content programmatically and share a content link.
+- [Initial Setup for SwiftUI](https://docs.storyly.io/docs/ios-swiftui-initial-setup.md): This guide covers the core concepts, architectural benefits, and a step-by-step implementation to help you integrate Storyly Placement into your SwiftUI application.
+- [Initial Setup](https://docs.storyly.io/docs/reactnative-placement-initial-setup.md): This guide covers the core concepts, architectural benefits, and a step-by-step implementation to help you integrate Storyly Placement into your React Native application.
+- [Targeting with Labels](https://docs.storyly.io/docs/reactnative-targeting-with-labels.md): This guide shows how to target user segments with Labels when using Storyly Placement SDK on React Native.
+- [Targeting with Audience](https://docs.storyly.io/docs/reactnative-targeting-with-audience.md): This guide shows how to target users with Audience when using Storyly Placement SDK on React Native.
+- [Shoppable Content](https://docs.storyly.io/docs/reactnative-shoppable-content.md): This guide covers how to implement shopping cart management, product analytics tracking, product hydration and product wishlist to create engaging shopping experiences.
+- [Storyly Personalization Engine Setup](https://docs.storyly.io/docs/reactnative-analytics-module-initialization.md): This guide covers the core concepts and a step-by-step implementation to help you initialize Storyly Analytics SDK - Personalization Engine Module in your React Native application.
+- [Placement SDK Analytics](https://docs.storyly.io/docs/reactnative-placement-sdk-analytics.md): This guide covers how to send Storyly events to your Analytics tool to understand the performance of Storyly Widgets.
+- [Deep Links](https://docs.storyly.io/docs/reactnative-deeplinks.md): This guide shows you how to handle deep links in your application, open a fullscreen content programmatically and share a content link.
+- [Initial Setup](https://docs.storyly.io/docs/flutter-placement-initial-setup.md): This guide covers the core concepts, architectural benefits, and a step-by-step implementation to help you integrate Storyly Placement into your Flutter application.
+- [Targeting with Labels](https://docs.storyly.io/docs/flutter-targeting-with-labels.md): This guide shows how to target user segments with Labels when using Storyly Placement SDK on Flutter.
+- [Targeting with Audience](https://docs.storyly.io/docs/flutter-targeting-with-audience.md): This guide shows how to target users with Audience when using Storyly Placement SDK on Flutter.
+- [Shoppable Content](https://docs.storyly.io/docs/flutter-shoppable-content.md): This guide covers how to implement shopping cart management, product analytics tracking, product hydration and product wishlist to create engaging shopping experiences.
+- [Storyly Personalization Engine Setup](https://docs.storyly.io/docs/flutter-analytics-module-initialization.md): This guide covers the core concepts and a step-by-step implementation to help you initialize Storyly Analytics SDK - Personalization Engine Module in your Flutter application.
+- [Placement SDK Analytics](https://docs.storyly.io/docs/flutter-placement-sdk-analytics.md): This guide covers how to send Storyly events to your Analytics tool to understand the performance of Storyly Widgets.
+- [Deep Links](https://docs.storyly.io/docs/flutter-deeplinks.md): This guide shows you how to handle deep links in your application, open a fullscreen content programmatically and share a content link.
+- [Initial Setup](https://docs.storyly.io/docs/placement-web-initial-setup.md): This guide covers the core concepts, architectural benefits, and a step-by-step implementation to help you integrate Storyly Placement into your Web application.
+- [Targeting with Labels](https://docs.storyly.io/docs/placement-web-targeting-with-labels.md): This guide shows how to target user segments with Labels when using Storyly Placement SDK on Web.
+- [Targeting with Audience](https://docs.storyly.io/docs/placement-web-targeting-with-audience.md): This guide shows how to target users with Audience feature and use personalization features when using Storyly Placement SDK on Android.
+- [Shoppable Content](https://docs.storyly.io/docs/web-shoppable-content.md): This guide covers how to implement shopping cart management, product analytics tracking, product hydration and product wishlist to create engaging shopping experiences with the Storyly Placement SDK for Web.
+- [Personalization with User Properties](https://docs.storyly.io/docs/placement-web-personalization.md): This guide shows how to personalize Storyly widgets with User Properties.
+- [Deep Links](https://docs.storyly.io/docs/placement-web-deep-links.md): This guide shows you how to handle deep links in your application, open a fullscreen content programmatically and share a content link.
+- [Placement SDK Analytics](https://docs.storyly.io/docs/web-placement-sdk-analytics.md): This section shows you how to observe basic Placement functionality events.
+- [Integration MCP Server](https://docs.storyly.io/docs/storyly-integration-mcp-server.md): This guide helps you to integrate Storyly Integration MCP server into any AI assistants
+
+## API Reference
+- [List apps](https://docs.storyly.io/reference/listapps.md): List all apps for the authenticated account.
+- [List instances](https://docs.storyly.io/reference/listinstances.md): List instances for an app.
+- [Get story groups](https://docs.storyly.io/reference/getstorygroups.md): Get story groups by instance or specific story group ID.
+- [Create story group](https://docs.storyly.io/reference/createstorygroup.md): Create a new story group.
+- [Delete story group](https://docs.storyly.io/reference/deletestorygroup.md): Delete a story group by ID.
+- [Update story group](https://docs.storyly.io/reference/updatestorygroup.md): Update an existing story group.
+- [Get story group stats](https://docs.storyly.io/reference/getstorygroupstats.md): Get statistics for story groups.
+- [Get stories](https://docs.storyly.io/reference/getstories.md): Get stories in a story group.
+- [Create story](https://docs.storyly.io/reference/createstory.md): Create a new story.
+- [Delete story](https://docs.storyly.io/reference/deletestory.md): Delete a story by ID.
+- [Update story](https://docs.storyly.io/reference/updatestory.md): Update an existing story.
+- [Get story stats](https://docs.storyly.io/reference/getstorystats.md): Get statistics for stories.
+- [List audiences](https://docs.storyly.io/reference/listaudiences.md): List all audiences for the authenticated account.
+- [Create audience](https://docs.storyly.io/reference/createaudience.md): Create a new audience.
+- [Update audience](https://docs.storyly.io/reference/updateaudience.md): Update an existing audience.
+- [List segments](https://docs.storyly.io/reference/listsegments.md): List all segments for the authenticated account.
+- [Create segment](https://docs.storyly.io/reference/createsegment.md): Create a new segment.
+- [Delete segment](https://docs.storyly.io/reference/deletesegment.md): Delete a segment by label.

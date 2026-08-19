@@ -1,0 +1,97 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.storyly.io/pricing
+notes: >-
+  Pricing is published for exactly one of App Samurai's two product lines.
+  Storyly lists three suites with two entry prices; the AppSamurai advertising /
+  user-acquisition side publishes no pricing page at all
+  (https://appsamurai.com/pricing/ returns 404) and routes everything through
+  contact-us, which is normal for a managed media business but means an agent
+  cannot price it.
+  Neither API is priced separately: the Storyly External API and the AppSamurai
+  Campaign Spend API are both entitlements of an existing account rather than
+  metered products, and no usage quota, overage rate or per-call price is
+  published for either. There is no free tier and no self-serve checkout - every
+  CTA on the pricing page goes to contact-sales.
+
+plan_count: 3
+currency: USD
+billing_period: monthly
+free_tier: false
+self_serve_checkout: false
+api_metered: false
+api_pricing_note: >-
+  No API call quota, overage rate or rate-limit tier is attached to any plan.
+  API access is not named on the pricing page.
+
+plans:
+  - name: Core Engagement Suite
+    price: 600
+    price_qualifier: starts from
+    currency: USD
+    period: month
+    cta: Start now
+    cta_url: https://www.storyly.io/contact-sales
+    description: Essential interactive experiences for fast, lightweight customer engagement.
+    included:
+      - One Placement
+      - Only Banners & Stories
+      - Basic Interactive Stickers
+      - Basic Analytics
+    limits:
+      placements: 1
+      widgets: [stories, banner]
+      flows: false
+  - name: Personalization & Widget Suite
+    price: 1000
+    price_qualifier: starts from
+    currency: USD
+    period: month
+    cta: Let's Talk
+    cta_url: https://www.storyly.io/contact-sales
+    description: Multi-placement, personalized widgets designed to drive higher conversion.
+    included:
+      - All Core features
+      - Multi-Placement (up to 3)
+      - Smart Flows
+      - All Interactive Stickers
+      - All Widgets
+      - Full Shoppable Content features
+    limits:
+      placements: 3
+      widgets: [stories, banner, video-feed, canvas, swipe-card]
+      flows: true
+  - name: Comprehensive Orchestration Suite
+    price: null
+    price_qualifier: contact sales
+    currency: USD
+    period: month
+    cta: Let's Talk
+    cta_url: https://www.storyly.io/contact-sales
+    description: AI-powered, unlimited personalization with full-funnel experience orchestration.
+    included:
+      - All Personalization & Widget features
+      - Unlimited Placements
+      - Unlimited Flow Requests
+      - Advanced Personalization
+      - Third Party Integrations
+    limits:
+      placements: unlimited
+      flows: unlimited
+
+unpriced_products:
+  - product: AppSamurai (user acquisition, retargeting, OEM / on-device, rewarded UA, monetization)
+    pricing_url: null
+    evidence:
+      - url: https://appsamurai.com/pricing/
+        status: 404
+    note: >-
+      No pricing page exists. The site routes to https://appsamurai.com/contact-us/
+      for all commercial enquiry. Managed-media, sales-gated.
+  - product: AppSamurai Campaign Spend API
+    note: >-
+      The API key is issued by an account manager (per the Help Center article),
+      so the API is an entitlement of an existing managed account, not a
+      purchasable product.
+
+comparison_table: https://www.storyly.io/pricing#plans_table

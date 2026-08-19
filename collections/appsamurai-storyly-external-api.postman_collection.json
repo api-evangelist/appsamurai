@@ -1,0 +1,2881 @@
+{
+  "item": [
+    {
+      "id": "8505d44b-83c8-4867-b6d7-28dd8225fbda",
+      "name": "app",
+      "description": {
+        "content": "App management endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "afd96c55-17b4-4d08-8599-a07dd71e194e",
+          "name": "List apps",
+          "request": {
+            "name": "List apps",
+            "description": {
+              "content": "List all apps for the authenticated account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "app"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "required=False, min_value=1, max_value=100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "required=False, min_value=0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7d49bba1-9060-4504-99a4-8ffdedcf0a36",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "app"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"account_id\": 9434,\n      \"category\": \"web\",\n      \"detailed_info\": {\n        \"icon\": \"https://www.google.com/s2/favicons?sz=64&domain_url=Inbox Story\"\n      },\n      \"id\": 14686,\n      \"is_inbox_story\": 1,\n      \"settings\": {\n        \"is_sharable\": true,\n        \"is_shopify\": false\n      },\n      \"store_id\": \"Inbox Story\",\n      \"store_type\": \"web\",\n      \"sub_category\": null,\n      \"title\": \"Inbox Story\",\n      \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\",\n      \"ts_created\": \"2023-02-03 10:51:47\",\n      \"ts_updated\": \"2023-02-03 10:51:47\"\n    }\n  ],\n  \"message\": \"Apps successfully listed\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fd5a15ad-2b8d-49f5-8e65-b731406e4dd8",
+      "name": "instance",
+      "description": {
+        "content": "Instance management endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "daead21c-8214-4337-a53e-fb3f3c5716ce",
+          "name": "List instances",
+          "request": {
+            "name": "List instances",
+            "description": {
+              "content": "List instances for an app.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "instance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>",
+                  "description": "required=True, min_value=1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "required=False, min_value=1, max_value=100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "required=False, min_value=0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d16d38ad-2e79-4a39-b0de-3d8af7fd03d6",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "instance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "20485"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"account_id\": 9434,\n      \"app_id\": 20485,\n      \"id\": 22896,\n      \"is_sharable\": true,\n      \"settings\": {\n        \"smart_sorting\": {\n          \"is_enabled\": false,\n          \"ts_updated\": 1740057918\n        }\n      },\n      \"status\": 1,\n      \"title\": \"Default\",\n      \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\",\n      \"ts_created\": \"2024-10-15 08:39:17\",\n      \"ts_updated\": \"2025-02-20 13:30:31\"\n    }\n  ],\n  \"message\": \"Instances successfully listed\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "10a87fa5-a484-4def-bc5e-ec214dc544b3",
+      "name": "story-group",
+      "description": {
+        "content": "Story group management endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7635ad11-5022-443a-8404-3de5048b7067",
+          "name": "Get story groups",
+          "request": {
+            "name": "Get story groups",
+            "description": {
+              "content": "Get story groups by instance or specific story group ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instance_id",
+                  "value": "<string>",
+                  "description": "required=True, min_value=1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "required=False, min_value=1, max_value=100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "required=False, min_value=0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e0eefa2c-3657-4006-95d4-056d79803388",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instance_id",
+                      "value": "22896"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"account_id\": 9434,\n      \"app_id\": 20485,\n      \"detail\": null,\n      \"icon\": \"https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg\",\n      \"icon_raw\": \"https://db62cod6cnasq.cloudfront.net/user-media/9434/dd55b9ff-cbe3-4d70-9179-7be65ee9a944--Screenshot20250301at11.52.38.png\",\n      \"id\": 204206,\n      \"instance_id\": 22896,\n      \"pinned\": false,\n      \"segments\": null,\n      \"sort_order\": 0,\n      \"status\": 1,\n      \"template\": null,\n      \"templates\": null,\n      \"title\": \"TEST 4\",\n      \"ts_created\": \"2025-03-04 17:47:45\",\n      \"ts_end\": null,\n      \"ts_start\": \"2025-03-04 17:47:45\",\n      \"ts_updated\": \"2025-03-04 17:48:46\",\n      \"type\": \"default\",\n      \"user_id\": 13705\n    }\n  ],\n  \"message\": \"Story Group successfully listed\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "754e3ccf-a07b-432e-9bd3-b9a891974e38",
+          "name": "Create story group",
+          "request": {
+            "name": "Create story group",
+            "description": {
+              "content": "Create a new story group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Story group cover image (optional)"
+                },
+                {
+                  "key": "instance_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Instance ID"
+                },
+                {
+                  "key": "media_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Media URL"
+                },
+                {
+                  "key": "segments",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Story group segments as JSON"
+                },
+                {
+                  "key": "settings",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Story group settings as JSON"
+                },
+                {
+                  "key": "status",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Story group status (integer)"
+                },
+                {
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Story group title (max 255 chars)"
+                },
+                {
+                  "key": "ts_end",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - End timestamp"
+                },
+                {
+                  "key": "ts_start",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Start timestamp"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ae08f544-862d-4d16-a89a-2090768dd75f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Story group cover image (optional)",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Instance ID",
+                        "type": "text/plain"
+                      },
+                      "key": "instance_id",
+                      "value": "22896",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Media URL",
+                        "type": "text/plain"
+                      },
+                      "key": "media_url",
+                      "value": "https://example.com/cover.jpg",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Story group segments as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "segments",
+                      "value": "{}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Story group settings as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "settings",
+                      "value": "{}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Story group status (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Story group title (max 255 chars)",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "My Story Group",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - End timestamp",
+                        "type": "text/plain"
+                      },
+                      "key": "ts_end",
+                      "value": "2024-04-20T00:00:00Z",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Start timestamp",
+                        "type": "text/plain"
+                      },
+                      "key": "ts_start",
+                      "value": "2024-03-20T00:00:00Z",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Story Group successfully created\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cfacf2fb-3921-4b77-b897-9fd0fb5e090d",
+          "name": "Delete story group",
+          "request": {
+            "name": "Delete story group",
+            "description": {
+              "content": "Delete a story group by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "story_group_id",
+                  "value": "<string>",
+                  "description": "required=True, min_value=1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7671b22d-6962-4b84-bf63-84b343b605a2",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "story_group_id",
+                      "value": "204206"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Story Group successfully deleted\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d47fcb48-8ee9-456a-b400-afa81f9b2492",
+          "name": "Update story group",
+          "request": {
+            "name": "Update story group",
+            "description": {
+              "content": "Update an existing story group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story-group"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Optional - New cover image"
+                },
+                {
+                  "key": "id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Story group ID"
+                },
+                {
+                  "key": "media_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New media URL"
+                },
+                {
+                  "key": "pinned",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Pin status (boolean)"
+                },
+                {
+                  "key": "segments",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New segments as JSON"
+                },
+                {
+                  "key": "settings",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New settings as JSON"
+                },
+                {
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New sort order (integer)"
+                },
+                {
+                  "key": "status",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - New status (integer)"
+                },
+                {
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New title (max 255 chars)"
+                },
+                {
+                  "key": "ts_end",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New end timestamp"
+                },
+                {
+                  "key": "ts_start",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New start timestamp"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "63dcd1f7-047c-41f4-8c38-391cfa52d1dc",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story-group"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Optional - New cover image",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Story group ID",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "204206",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New media URL",
+                        "type": "text/plain"
+                      },
+                      "key": "media_url",
+                      "value": "https://example.com/new-cover.jpg",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Pin status (boolean)",
+                        "type": "text/plain"
+                      },
+                      "key": "pinned",
+                      "value": "false",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New segments as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "segments",
+                      "value": "{}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New settings as JSON",
+                        "type": "text/plain"
+                      },
+                      "key": "settings",
+                      "value": "{}",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New sort order (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "sort_order",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - New status (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New title (max 255 chars)",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "Updated Story Group",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New end timestamp",
+                        "type": "text/plain"
+                      },
+                      "key": "ts_end",
+                      "value": "2024-04-20T00:00:00Z",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New start timestamp",
+                        "type": "text/plain"
+                      },
+                      "key": "ts_start",
+                      "value": "2024-03-20T00:00:00Z",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Story Group successfully updated\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7c6101be-c341-4ce7-b335-6322f6958b05",
+          "name": "Get story group stats",
+          "request": {
+            "name": "Get story group stats",
+            "description": {
+              "content": "Get statistics for story groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story-group",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instance_id",
+                  "value": "<string>",
+                  "description": "required=False"
+                },
+                {
+                  "disabled": false,
+                  "key": "story_group_id",
+                  "value": "<string>",
+                  "description": "required=False, min_value=1"
+                },
+                {
+                  "disabled": false,
+                  "key": "ts_start",
+                  "value": "<string>",
+                  "description": "required=True, format=YYYY-MM-DD"
+                },
+                {
+                  "disabled": false,
+                  "key": "ts_end",
+                  "value": "<string>",
+                  "description": "required=True, format=YYYY-MM-DD"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f116a2bd-32c2-4dc4-b863-f752564ad681",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story-group",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instance_id",
+                      "value": "22896"
+                    },
+                    {
+                      "key": "story_group_id",
+                      "value": "204206"
+                    },
+                    {
+                      "key": "ts_start",
+                      "value": "2025-01-01"
+                    },
+                    {
+                      "key": "ts_end",
+                      "value": "2025-01-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"daily-stats\": {\n        \"2025-01-01\": {\n          \"active_users\": 0,\n          \"reach\": 0,\n          \"share_count\": 0,\n          \"total_click\": 0,\n          \"total_complete\": 0,\n          \"total_impression\": 0,\n          \"total_open\": 0,\n          \"total_skipped\": 0\n        }\n      },\n      \"icon\": \"https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg\",\n      \"id\": 204206,\n      \"instance_id\": 22896,\n      \"monthly-stats\": {\n        \"2025-01-01\": {\n          \"active_users\": 0,\n          \"reach\": 0,\n          \"share_count\": 0,\n          \"total_click\": 0,\n          \"total_complete\": 0,\n          \"total_impression\": 0,\n          \"total_open\": 0,\n          \"total_skipped\": 0\n        }\n      },\n      \"name\": \"TEST 4\",\n      \"segments\": null,\n      \"status\": 1,\n      \"total-stats\": {\n        \"active_users\": 0,\n        \"reach\": 0,\n        \"share_count\": 0,\n        \"total_click\": 0,\n        \"total_complete\": 0,\n        \"total_impression\": 0,\n        \"total_open\": 0,\n        \"total_skipped\": 0\n      },\n      \"ts_created\": \"2025-03-04\",\n      \"ts_end\": null,\n      \"ts_start\": \"2025-03-04 17:47:45\",\n      \"weekly-stats\": {\n        \"2025-01-01\": {\n          \"active_users\": 0,\n          \"reach\": 0,\n          \"share_count\": 0,\n          \"total_click\": 0,\n          \"total_complete\": 0,\n          \"total_impression\": 0,\n          \"total_open\": 0,\n          \"total_skipped\": 0\n        }\n      }\n    }\n  ],\n  \"message\": \"success\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0a8cf62c-c35b-482e-a502-1b1528b9e72f",
+      "name": "story",
+      "description": {
+        "content": "Story management endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c7761b5-3bcf-4ced-9de3-68a6a12dd1b8",
+          "name": "Get stories",
+          "request": {
+            "name": "Get stories",
+            "description": {
+              "content": "Get stories in a story group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "story_group_id",
+                  "value": "<string>",
+                  "description": "required=True, min_value=1"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "required=False, min_value=1, max_value=100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "required=False, min_value=0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2bc7e725-fb8b-4014-ac22-73ee7160803b",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "story_group_id",
+                      "value": "204206"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"account_id\": 9434,\n      \"button_text\": \"\",\n      \"deep_link\": \"jushpl://storyly?g=204206&s=2581651&instance=22896\",\n      \"id\": 2581651,\n      \"media\": \"https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg\",\n      \"media_raw\": \"https://db62cod6cnasq.cloudfront.net/user-media/9434/087d26b8-4f90-4707-9fa2-764f289d7717--f99ac6d1f6614ba398ced3cb5a83f329.png\",\n      \"mime_type\": \"image/jpeg\",\n      \"name\": null,\n      \"outlink\": \"\",\n      \"settings\": null,\n      \"sort_order\": 0,\n      \"status\": 1,\n      \"story_group_id\": 204206,\n      \"studio_image\": \"https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg\",\n      \"target_cap\": null,\n      \"thumbnail\": null,\n      \"title\": \"TEST 4\",\n      \"ts_created\": \"2025-03-04 17:48:15\",\n      \"ts_end\": null,\n      \"ts_start\": \"2025-03-04 17:47:47\",\n      \"ts_updated\": \"2025-03-04 17:49:41\",\n      \"type\": 1\n    }\n  ],\n  \"message\": \"Stories successfully listed\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e150ca56-c26f-4b59-af5f-d4424c084c05",
+          "name": "Create story",
+          "request": {
+            "name": "Create story",
+            "description": {
+              "content": "Create a new story.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "deep_link",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Deep link URL"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Optional - Story media file"
+                },
+                {
+                  "key": "media_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Media URL"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Story name (max 255 chars)"
+                },
+                {
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Sort order (integer)"
+                },
+                {
+                  "key": "status",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Story status (integer)"
+                },
+                {
+                  "key": "story_group_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Story group ID (integer)"
+                },
+                {
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Story title (max 255 chars)"
+                },
+                {
+                  "key": "ts_end",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - End timestamp"
+                },
+                {
+                  "key": "ts_start",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - Start timestamp"
+                },
+                {
+                  "key": "type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Story type (integer)"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1d76e426-5ae9-4fe8-a7a3-8dd7dc09ea4e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Optional - Deep link URL",
+                        "type": "text/plain"
+                      },
+                      "key": "deep_link",
+                      "value": "storyly://story/123",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Story media file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Media URL",
+                        "type": "text/plain"
+                      },
+                      "key": "media_url",
+                      "value": "https://example.com/story-media.mp4",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Story name (max 255 chars)",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "story-name",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Sort order (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "sort_order",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Story status (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Story group ID (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "story_group_id",
+                      "value": "204206",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Story title (max 255 chars)",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "My Story",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - End timestamp",
+                        "type": "text/plain"
+                      },
+                      "key": "ts_end",
+                      "value": "2024-04-20T00:00:00Z",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - Start timestamp",
+                        "type": "text/plain"
+                      },
+                      "key": "ts_start",
+                      "value": "2024-03-20T00:00:00Z",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Story type (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "1",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Story successfully created\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fa11211-dfb8-4da5-b7a3-61913abda436",
+          "name": "Delete story",
+          "request": {
+            "name": "Delete story",
+            "description": {
+              "content": "Delete a story by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "story_id",
+                  "value": "<string>",
+                  "description": "required=True, min_value=1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2a14ecd8-0f7f-4aa0-883e-a0e90444676a",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "story_id",
+                      "value": "2581651"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Story successfully deleted\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec72a445-de42-40ee-bde0-16edea68afdc",
+          "name": "Update story",
+          "request": {
+            "name": "Update story",
+            "description": {
+              "content": "Update an existing story.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "deep_link",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New deep link URL"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "Optional - New story media file"
+                },
+                {
+                  "key": "id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Required - Story ID (integer)"
+                },
+                {
+                  "key": "media_url",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New media URL"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New name (max 255 chars)"
+                },
+                {
+                  "key": "sort_order",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New sort order (integer)"
+                },
+                {
+                  "key": "status",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New status (integer)"
+                },
+                {
+                  "key": "title",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New title (max 255 chars)"
+                },
+                {
+                  "key": "ts_end",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New end timestamp"
+                },
+                {
+                  "key": "ts_start",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Optional - New start timestamp"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7104520e-ea0c-4b2f-a18b-3ec32eeded32",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "Optional - New deep link URL",
+                        "type": "text/plain"
+                      },
+                      "key": "deep_link",
+                      "value": "storyly://story/456",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New story media file",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Required - Story ID (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "2581651",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New media URL",
+                        "type": "text/plain"
+                      },
+                      "key": "media_url",
+                      "value": "https://example.com/updated-story-media.mp4",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New name (max 255 chars)",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "updated-story-name",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New sort order (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "sort_order",
+                      "value": "2",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New status (integer)",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New title (max 255 chars)",
+                        "type": "text/plain"
+                      },
+                      "key": "title",
+                      "value": "Updated Story",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New end timestamp",
+                        "type": "text/plain"
+                      },
+                      "key": "ts_end",
+                      "value": "2024-04-20T00:00:00Z",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Optional - New start timestamp",
+                        "type": "text/plain"
+                      },
+                      "key": "ts_start",
+                      "value": "2024-03-20T00:00:00Z",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Story successfully updated\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42404082-ac76-4344-b899-b5d4923d526f",
+          "name": "Get story stats",
+          "request": {
+            "name": "Get story stats",
+            "description": {
+              "content": "Get statistics for stories.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "story",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<string>",
+                  "description": "required=False"
+                },
+                {
+                  "disabled": false,
+                  "key": "instance_id",
+                  "value": "<string>",
+                  "description": "required=False"
+                },
+                {
+                  "disabled": false,
+                  "key": "story_group_id",
+                  "value": "<string>",
+                  "description": "required=False"
+                },
+                {
+                  "disabled": false,
+                  "key": "story_id",
+                  "value": "<string>",
+                  "description": "required=False, min_value=1"
+                },
+                {
+                  "disabled": false,
+                  "key": "ts_start",
+                  "value": "<string>",
+                  "description": "required=True, format=YYYY-MM-DD"
+                },
+                {
+                  "disabled": false,
+                  "key": "ts_end",
+                  "value": "<string>",
+                  "description": "required=True, format=YYYY-MM-DD"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7f741401-4719-4c8f-946e-5ffe169eed64",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "story",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "20485"
+                    },
+                    {
+                      "key": "instance_id",
+                      "value": "22896"
+                    },
+                    {
+                      "key": "story_group_id",
+                      "value": "204206"
+                    },
+                    {
+                      "key": "story_id",
+                      "value": "2581651"
+                    },
+                    {
+                      "key": "ts_start",
+                      "value": "2025-01-01"
+                    },
+                    {
+                      "key": "ts_end",
+                      "value": "2025-01-01"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"daily-stats\": {\n        \"2025-01-01\": {\n          \"average_watch_length\": 0,\n          \"click\": 0,\n          \"click_impression\": 0,\n          \"close\": 0,\n          \"complete\": 0,\n          \"impression\": 0,\n          \"next\": 0,\n          \"prev\": 0,\n          \"reach\": 0,\n          \"share_count\": 0,\n          \"shared_count\": 0\n        }\n      },\n      \"icon\": \"https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg\",\n      \"id\": 2581651,\n      \"media\": \"https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg\",\n      \"monthly-stats\": {\n        \"2025-01-01\": {\n          \"average_watch_length\": 0,\n          \"click\": 0,\n          \"click_impression\": 0,\n          \"close\": 0,\n          \"complete\": 0,\n          \"impression\": 0,\n          \"next\": 0,\n          \"prev\": 0,\n          \"reach\": 0,\n          \"share_count\": 0,\n          \"shared_count\": 0\n        }\n      },\n      \"name\": null,\n      \"outlink\": \"\",\n      \"settings\": {},\n      \"status\": 1,\n      \"story_group_id\": 204206,\n      \"thumbnail\": null,\n      \"title\": \"TEST 4\",\n      \"total-stats\": {\n        \"average_watch_length\": 0,\n        \"click\": 0,\n        \"click_impression\": 0,\n        \"close\": 0,\n        \"complete\": 0,\n        \"impression\": 0,\n        \"next\": 0,\n        \"prev\": 0,\n        \"reach\": 0,\n        \"share_count\": 0,\n        \"shared_count\": 0\n      },\n      \"ts_created\": \"2025-03-04\",\n      \"ts_end\": null,\n      \"ts_start\": \"2025-03-04 17:47:47\",\n      \"weekly-stats\": {\n        \"2025-01-01\": {\n          \"average_watch_length\": 0,\n          \"click\": 0,\n          \"click_impression\": 0,\n          \"close\": 0,\n          \"complete\": 0,\n          \"impression\": 0,\n          \"next\": 0,\n          \"prev\": 0,\n          \"reach\": 0,\n          \"share_count\": 0,\n          \"shared_count\": 0\n        }\n      }\n    }\n  ],\n  \"message\": \"success\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2eaa7cc5-d7ff-416a-ab82-e06a8fce4d62",
+      "name": "audience",
+      "description": {
+        "content": "Audience management endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1fcff469-19d5-449e-8c78-588b3536f186",
+          "name": "List audiences",
+          "request": {
+            "name": "List audiences",
+            "description": {
+              "content": "List all audiences for the authenticated account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "audience"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "required=False, min_value=1, max_value=100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "required=False, min_value=0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "278efe9e-95fc-4594-9f4f-89a1249e2d04",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "audience"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"account_id\": 9434,\n      \"audience_identifier\": \"id\",\n      \"id\": 9934,\n      \"name\": \"random_data_8kb_10_row\",\n      \"properties\": {\n        \"data\": [\n          {\n            \"age\": \"45\",\n            \"city\": \"city_1\",\n            \"color\": \"color_1\",\n            \"company\": \"company_1\",\n            \"country\": \"country_1\",\n            \"created_at\": \"2024-02-27\",\n            \"credit_card\": \"card_1\",\n            \"email\": \"email_1@example.com\",\n            \"gender\": \"M\",\n            \"id\": \"1\",\n            \"job\": \"job_1\",\n            \"name\": \"name_1\",\n            \"phone\": \"phone_1\",\n            \"surname\": \"surname_1\",\n            \"updated_at\": \"2024-06-11\",\n            \"username\": \"user_1\"\n          }\n        ],\n        \"filename\": \"random_data_8kb_10_row.csv\",\n        \"latest_file\": \"https://prod-storyly-media.s3.amazonaws.com/user-media/9434/f4b269fa-906b-4aa5-9c80-8e6616612060--random_data_8kb_10_row.csv\",\n        \"row_count\": 10\n      },\n      \"status\": 0,\n      \"story_group_list\": [],\n      \"ts_created\": \"2024-12-13 12:08:18\",\n      \"ts_updated\": \"2024-12-13 12:08:18\",\n      \"type\": 1\n    }\n  ],\n  \"message\": \"Audiences successfully listed\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69eba874-d487-4b08-8507-f54106d6944c",
+          "name": "Create audience",
+          "request": {
+            "name": "Create audience",
+            "description": {
+              "content": "Create a new audience.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "audience"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "activity",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The user activity on the selected interactive component "
+                },
+                {
+                  "key": "app_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The id of the app if interactive audience is selected"
+                },
+                {
+                  "key": "audience_identifier",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The unique identifier of the audience table"
+                },
+                {
+                  "key": "component_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The id of the interactive component"
+                },
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "The file to be uploaded if CSV has been selected"
+                },
+                {
+                  "key": "interactive_type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The type of the interactive to get statistics and create audience within the story"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The name of the audience"
+                },
+                {
+                  "key": "story_group_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The id of the story group  if interactive audience is selected"
+                },
+                {
+                  "key": "story_id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The id of the story if interactive audience is selected"
+                },
+                {
+                  "key": "type",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The type of the audience, '1' if CSV, '4' if interactive"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "64d6d5b3-4f7a-40f8-8a15-87384d36e3d8",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "audience"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The user activity on the selected interactive component ",
+                        "type": "text/plain"
+                      },
+                      "key": "activity",
+                      "value": "activity",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The id of the app if interactive audience is selected",
+                        "type": "text/plain"
+                      },
+                      "key": "app_id",
+                      "value": "20485",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The unique identifier of the audience table",
+                        "type": "text/plain"
+                      },
+                      "key": "audience_identifier",
+                      "value": "audience_identifier",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The id of the interactive component",
+                        "type": "text/plain"
+                      },
+                      "key": "component_id",
+                      "value": "856bdd44-77da-4eee-bc30-eea63303ef09",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The file to be uploaded if CSV has been selected",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The type of the interactive to get statistics and create audience within the story",
+                        "type": "text/plain"
+                      },
+                      "key": "interactive_type",
+                      "value": "1",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The name of the audience",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "interactive_test",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The id of the story group  if interactive audience is selected",
+                        "type": "text/plain"
+                      },
+                      "key": "story_group_id",
+                      "value": "204206",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The id of the story if interactive audience is selected",
+                        "type": "text/plain"
+                      },
+                      "key": "story_id",
+                      "value": "2581651",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The type of the audience, '1' if CSV, '4' if interactive",
+                        "type": "text/plain"
+                      },
+                      "key": "type",
+                      "value": "4",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Audience successfully created\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "59e64bf6-7399-493a-8426-9bf9b37e87db",
+          "name": "Update audience",
+          "request": {
+            "name": "Update audience",
+            "description": {
+              "content": "Update an existing audience.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "audience"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "audience_identifier",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The unique identifier of the audience table"
+                },
+                {
+                  "key": "id",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "required=True, empty=False, nullable=False"
+                },
+                {
+                  "key": "name",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "The name of the audience"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "67cd518f-963e-4ede-b347-cc132fdd962f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "audience"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The unique identifier of the audience table",
+                        "type": "text/plain"
+                      },
+                      "key": "audience_identifier",
+                      "value": "audience_identifier",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "required=True, empty=False, nullable=False",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "9934",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "The name of the audience",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": "interactive_test",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Audience successfully updated\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6e19d0dd-9201-474e-8a1a-d35fc62db6b1",
+      "name": "segment",
+      "description": {
+        "content": "Segment management endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "af821d7e-37f5-4e3d-af42-92c524286b04",
+          "name": "List segments",
+          "request": {
+            "name": "List segments",
+            "description": {
+              "content": "List all segments for the authenticated account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "segment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<string>",
+                  "description": "required=False, min_value=1, max_value=100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<string>",
+                  "description": "required=False, min_value=0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "24cb763e-4665-4327-92e9-a939adb58b11",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "segment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "1"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"account_id\": 9434,\n      \"is_used\": false,\n      \"label\": \"ffdg\"\n    }\n  ],\n  \"message\": \"Segments successfully listed\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ea34ff7-f9c4-4121-8733-f04a9957782f",
+          "name": "Create segment",
+          "request": {
+            "name": "Create segment",
+            "description": {
+              "content": "Create a new segment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "segment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae9f6608-4cb1-4670-837e-dfe27c9a246f",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "segment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"label\": \"label_name\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Segments successfully created\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55523b0b-2452-455d-8b60-468f57093dc8",
+          "name": "Delete segment",
+          "request": {
+            "name": "Delete segment",
+            "description": {
+              "content": "Delete a segment by label.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "external",
+                "segment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "label",
+                  "value": "<string>",
+                  "description": "required=True, empty=False"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "11990a56-9d36-4524-b90a-56b8077ba75e",
+              "name": "200",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "external",
+                    "segment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "label",
+                      "value": "label_name"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Segments successfully deleted\",\n  \"status\": \"ok\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.storyly.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e09d0b66-e748-49c0-9f4a-991f37c75191",
+    "name": "Storyly External API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).",
+      "type": "text/plain"
+    }
+  }
+}

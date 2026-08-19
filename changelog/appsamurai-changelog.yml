@@ -1,0 +1,139 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  https://mcp.storyly.io/mcp - tools/call get_release_notes, per platform,
+  read 2026-08-13
+docs: https://docs.storyly.io/docs/storyly-integration-mcp-server
+notes: >-
+  App Samurai publishes no HTML changelog page and no dated release feed on
+  appsamurai.com or storyly.io. The only machine-readable, dated changelog it
+  ships is delivered through its own MCP server: the get_release_notes tool
+  returns per-platform Storyly Placement SDK release notes with versions and
+  DD.MM.YYYY dates. That is an unusual and genuinely agent-first choice - the
+  changelog is readable by an agent before it is readable by a human - and the
+  entries below are transcribed verbatim from that response.
+  Scope caveat: these are SDK release notes. Neither REST API - the Storyly
+  External API nor the AppSamurai Campaign Spend API - has any published
+  changelog, and neither carries a version in its path.
+
+scheme: semver
+scope: Storyly Placement SDK (client libraries), all five platforms
+api_changelog: none
+api_changelog_note: >-
+  No changelog for the Storyly External API (18 operations) or the AppSamurai
+  Campaign Spend API. The External API spec pins info.version 1.0.0 and has no
+  version segment in its paths.
+
+current_versions:
+  - platform: android
+    version: 1.12.0
+    date: '2026-07-31'
+  - platform: ios
+    version: 1.12.0
+    date: '2026-07-31'
+  - platform: web
+    version: 1.13.0
+    date: '2026-08-07'
+  - platform: reactnative
+    version: 1.12.0
+    date: '2026-08-05'
+  - platform: flutter
+    version: 1.12.0
+    date: '2026-08-05'
+
+entries:
+  - version: 1.13.0
+    platform: web
+    date: '2026-08-07'
+    breaking: false
+    highlights:
+      - added networkConfig parameter to support configurable API/CDN
+      - fixed outer border color in safari
+  - version: 1.12.0
+    platform: reactnative
+    date: '2026-08-05'
+    breaking: true
+    breaking_note: >-
+      "renamed public structures to sync with native sdks" - a rename of the
+      public surface, called out by the provider with a pointer to the
+      re-integration guide.
+    highlights:
+      - renamed public structures to sync with native SDKs
+      - added Polish localization support
+      - added visibility support for navigation bar in video feed widget
+      - added dark/light theme support in placement config
+      - added quantity field for products in storyly analytics
+  - version: 1.12.0
+    platform: flutter
+    date: '2026-08-05'
+    breaking: true
+    breaking_note: Same public-structure rename as the React Native 1.12.0 release.
+    highlights:
+      - renamed public structures to sync with native SDKs
+      - added Polish localization support
+      - added title and description color support for swipe card widget
+      - added dark/light theme support in placement config
+  - version: 1.12.0
+    platform: android
+    date: '2026-07-31'
+    breaking: false
+    highlights:
+      - added Polish localization support
+      - added visibility support for navigation bar in video feed widget
+      - improved disclosure layout in banner widget
+  - version: 1.12.0
+    platform: ios
+    date: '2026-07-31'
+    breaking: false
+    highlights:
+      - added Polish localization support
+      - added visibility support for navigation bar in video feed widget
+      - fixed navigation bar functionality for image carousel in video feed widget
+      - improved disclosure layout in banner widget
+  - version: 1.11.1
+    platform: android+ios
+    date: '2026-06-26'
+    breaking: false
+    highlights:
+      - fixed gradient view round corners in banner widget
+  - version: 1.11.0
+    platform: android+ios+web
+    date: '2026-06-24'
+    breaking: false
+    highlights:
+      - added title and description color support for swipe card widget
+      - added dark/light theme support in placement config
+      - added app session information for the placement widgets
+      - added quantity field for products in storyly analytics
+      - added session initialize event in storyly analytics
+  - version: 1.10.1
+    platform: web
+    date: '2026-06-04'
+    breaking: false
+    highlights:
+      - improved npm package with code-splitting and TypeScript type definitions
+  - version: 1.10.0
+    platform: android
+    date: '2026-05-26'
+    breaking: false
+    highlights:
+      - added design settings for story bar widget
+      - improved reset flow for banner and canvas widget
+  - version: 1.9.1
+    platform: web
+    date: '2026-06-01'
+    breaking: false
+    highlights:
+      - fixed swiper security vulnerability issue
+  - version: 1.8.0
+    platform: android
+    date: '2026-05-05'
+    breaking: false
+    highlights:
+      - added retail media integration
+      - added internal scroll axis information for widgets
+
+cadence:
+  observed: roughly monthly minor releases across all five platforms since March 2026
+  window: '2026-03-19 to 2026-08-07'
+  source: get_release_notes, all platforms

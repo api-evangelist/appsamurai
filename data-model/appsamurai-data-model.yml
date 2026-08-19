@@ -1,0 +1,169 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/appsamurai-storyly-external-api-openapi.json
+docs: https://docs.storyly.io/reference
+notes: >-
+  Derived from the response schemas and request bodies of the 18 published
+  Storyly External API operations. The spec declares no components/schemas at
+  all - every shape is inlined in a response - so the entity graph below was
+  reconstructed from the inline property sets and from the id-reference fields
+  (account_id, app_id, instance_id, story_group_id) that link them.
+  The hierarchy is strict and four levels deep: account -> app -> instance ->
+  story_group -> story. Every list operation demands the parent id, so there is
+  no way to enumerate stories across an account in one call - a client must walk
+  the tree. Audiences and segments hang off the account and cross-cut the
+  content tree by label.
+  The AppSamurai Campaign Spend API contributes one flat, unrelated entity and
+  is listed separately.
+
+entities:
+  - name: account
+    id_field: account_id
+    id_type: integer
+    note: >-
+      Implicit. Never listed by any operation - it is whatever the bearer JWT
+      resolves to - but every other entity carries account_id, so it is the root
+      of the graph.
+    operations: []
+
+  - name: app
+    id_field: id
+    id_type: integer
+    operations: [listApps]
+    fields: [account_id, category, detailed_info, id, is_inbox_story, settings, store_id, store_type, sub_category, title, token, ts_created, ts_updated]
+    note: >-
+      An app or website registered in the Storyly dashboard. `token` is the
+      public integration token the client SDK uses; `store_type`/`store_id` tie
+      it to an app-store listing.
+
+  - name: instance
+    id_field: id
+    id_type: integer
+    operations: [listInstances]
+    fields: [account_id, app_id, id, is_sharable, settings, status, title, token, ts_created, ts_updated]
+    note: >-
+      A placement container within an app. listInstances REQUIRES app_id, so
+      instances cannot be listed account-wide.
+
+  - name: story_group
+    id_field: id
+    id_type: integer
+    operations: [getStoryGroups, createStoryGroup, updateStoryGroup, deleteStoryGroup, getStoryGroupStats]
+    fields: [account_id, app_id, detail, icon, icon_raw, id, instance_id, pinned, segments, sort_order, status, template, templates, title, ts_created, ts_end, ts_start, ts_updated, type, user_id]
+    scheduling: [ts_start, ts_end]
+    note: >-
+      The container users see as a story bubble. Carries a scheduling window and
+      a `segments` list that targets it at audience labels.
+
+  - name: story
+    id_field: id
+    id_type: integer
+    operations: [getStories, createStory, updateStory, deleteStory, getStoryStats]
+    fields: [account_id, button_text, deep_link, id, media, media_raw, mime_type, name, outlink, settings, sort_order, status, story_group_id, studio_image, target_cap, thumbnail, title, ts_created, ts_end, ts_start, ts_updated, type]
+    scheduling: [ts_start, ts_end]
+    note: A single card inside a story group. Media is uploaded as multipart `file` or referenced by `media_url`.
+
+  - name: audience
+    id_field: id
+    id_type: integer
+    alt_key: audience_identifier
+    operations: [listAudiences, createAudience, updateAudience]
+    fields: [account_id, audience_identifier, id, name, properties, status, story_group_list, ts_created, ts_updated, type]
+    note: >-
+      A targetable group. `story_group_list` back-references the story groups it
+      is attached to. createAudience can be built from an interaction
+      (story_group_id + story_id + component_id + interactive_type + activity),
+      i.e. "everyone who answered this poll".
+    no_delete: true
+    no_delete_note: There is no deleteAudience operation - audiences can be created and updated but not removed via the API.
+
+  - name: segment
+    id_field: label
+    id_type: string
+    operations: [listSegments, createSegment, deleteSegment]
+    fields: [account_id, is_used, label]
+    note: >-
+      A free-string label, not a numeric entity. Deleted BY LABEL rather than by
+      id, and `is_used` reports whether any story group currently references it.
+    no_update: true
+
+  - name: campaign_spend
+    api: appsamurai-campaign-spend
+    id_field: campaign_id
+    operations: [getCampaignSpend]
+    fields: [campaign_id, bundle_id, app_title, platform, cpi_bid, status, campaign_name, event_goals, campaign_names, countries, daily_spend]
+    source: openapi/appsamurai-campaign-spend-api-openapi.yml
+    note: >-
+      Belongs to the AppSamurai advertising platform, a completely separate
+      system. No field links it to any Storyly entity.
+
+relationships:
+  - from: app
+    to: account
+    type: belongs_to
+    via: account_id
+  - from: instance
+    to: app
+    type: belongs_to
+    via: app_id
+  - from: app
+    to: instance
+    type: has_many
+    via: app_id
+    required_param: listInstances requires app_id
+  - from: story_group
+    to: instance
+    type: belongs_to
+    via: instance_id
+  - from: instance
+    to: story_group
+    type: has_many
+    via: instance_id
+    required_param: getStoryGroups requires instance_id
+  - from: story
+    to: story_group
+    type: belongs_to
+    via: story_group_id
+  - from: story_group
+    to: story
+    type: has_many
+    via: story_group_id
+    required_param: getStories requires story_group_id
+  - from: story_group
+    to: segment
+    type: has_many
+    via: segments
+    note: Targeting link - a story group names segment labels.
+  - from: audience
+    to: story_group
+    type: has_many
+    via: story_group_list
+    note: Back-reference showing which story groups an audience is attached to.
+  - from: audience
+    to: account
+    type: belongs_to
+    via: account_id
+  - from: segment
+    to: account
+    type: belongs_to
+    via: account_id
+  - from: campaign_spend
+    to: event_goal
+    type: has_many
+    via: event_goals
+    api: appsamurai-campaign-spend
+
+stats_shape:
+  operations: [getStoryGroupStats, getStoryStats]
+  buckets: [daily-stats, weekly-stats, monthly-stats, total-stats]
+  required_params: [ts_start, ts_end]
+  date_format: YYYY-MM-DD
+  note: >-
+    Analytics are returned as four pre-bucketed roll-ups on the entity rather
+    than as a separate metrics resource. Property names are hyphenated
+    (`daily-stats`), unlike every other field in the API, which is snake_case.
+
+conventions_note: >-
+  Timestamps are consistently ts_created / ts_updated / ts_start / ts_end.
+  Identifiers are integers everywhere except segment, which is keyed by string
+  label. See conventions/appsamurai-conventions.yml.

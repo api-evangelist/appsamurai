@@ -1,14 +1,100 @@
-generated: '2026-07-18'
-method: derived
-status: candidate
-source: openapi/appsamurai-campaign-spend-openapi.yml
+generated: '2026-08-13'
+method: probed
+source: https://mcp.storyly.io/mcp
+docs: https://docs.storyly.io/docs/storyly-integration-mcp-server
 notes: >-
-  No official AppSamurai MCP server found. Candidate tool list derived from the
-  documented Campaign Spend API operation, for a future MCP wrapper.
-server:
-  name: appsamurai
-  transport: http
-tools:
-  - name: get_campaign_spend
-    description: Retrieve campaign spend data filtered by date range, campaign, bundle, platform, or country.
-    source_operation: openapi/appsamurai-campaign-spend-openapi.yml#getCampaignSpend
+  App Samurai ships one real, publicly reachable MCP server: the Storyly
+  Integration MCP server at https://mcp.storyly.io. It is a documentation /
+  knowledge server over the Storyly Placement SDK surface, not a wrapper of the
+  Storyly External REST API. tools/list answered anonymously (HTTP 200) with 5
+  tools and full inputSchemas; the setup doc advertises 8 tools, so the doc table
+  is ahead of the deployed server. The AppSamurai Campaign Spend API has no MCP
+  server; a candidate tool list derived from its single operation is kept below
+  as a lead, not a claim.
+  Ownership: storyly.io is App Samurai's product line - Storyly's own About page
+  names the same three founders as co-founders of AppSamurai, Storyly and
+  Netvent, and every Storyly SDK plus the Storyly status page is published from
+  the Netvent GitHub org.
+
+deployment:
+  mode: remote
+  endpoint: https://mcp.storyly.io/mcp
+  auth: none
+  verified: probed
+
+servers:
+  - name: storyly-sdk
+    status: published
+    transport:
+      - protocol: streamable-http
+        url: https://mcp.storyly.io/mcp
+        probed:
+          method: tools/list
+          http_status: 200
+          checked: '2026-08-13'
+      - protocol: sse
+        url: https://mcp.storyly.io/sse
+        probed:
+          method: GET
+          http_status: 200
+          note: >-
+            Returned `event: endpoint` with a /messages?sessionId=... handshake,
+            the legacy HTTP+SSE transport.
+          checked: '2026-08-13'
+    server_info:
+      name: placement-mcp
+      version: 1.0.0
+      protocol_version: '2025-06-18'
+      capabilities: [prompts, resources, tools]
+      source: initialize response, 2026-08-13
+    install:
+      claude_code: claude mcp add --transport sse storyly-sdk https://mcp.storyly.io/sse
+      cursor: '{"mcpServers":{"storyly-sdk":{"url":"https://mcp.storyly.io/sse"}}}'
+      source: https://docs.storyly.io/docs/storyly-integration-mcp-server
+    tools_raw: mcp/appsamurai-storyly-mcp-tools.json
+    tool_count: 5
+    tools:
+      - name: get_latest_sdk_version
+        description: Resolves latest published Storyly Placement SDK version for Android or iOS.
+        inputs: [platform]
+      - name: get_feature_guide
+        description: Returns a feature-first guide with checklist, resources, and shared canonical APIs.
+        inputs: [featureId, query, platform]
+      - name: get_api_reference
+        description: >-
+          Returns live API reference (signatures + doc links from
+          integration.storyly.io) for a symbol, and the features that use it.
+        inputs: [apiId, query, platform]
+      - name: search_knowledge
+        description: Searches feature guides and API references.
+        inputs: [query, platform, limit]
+      - name: get_release_notes
+        description: >-
+          Returns Storyly Placement SDK release notes (changelog) for Android,
+          iOS, React Native, Flutter, or Web.
+        inputs: [platform, version, sinceVersion]
+    documented_but_not_deployed:
+      note: >-
+        The setup guide lists these three tools; the live tools/list response on
+        2026-08-13 does not include them.
+      tools:
+        - get_integration_plan
+        - get_platform_diff
+        - get_troubleshooting
+        - get_widget_controller_api
+      source: https://docs.storyly.io/docs/storyly-integration-mcp-server
+
+  - name: appsamurai-campaign-spend
+    status: candidate
+    method: derived
+    source: openapi/appsamurai-campaign-spend-api-openapi.yml
+    note: >-
+      No AppSamurai-published MCP server exists for the Campaign Spend API. This
+      is a derived candidate tool list for a future wrapper, not a reachable
+      endpoint.
+    tools:
+      - name: get_campaign_spend
+        description: Retrieve campaign spend data filtered by date range, campaign, bundle, platform, or country.
+        source_operation: openapi/appsamurai-campaign-spend-api-openapi.yml#getCampaignSpend
+
+crosswalk: mcp/appsamurai-tool-crosswalk.yml

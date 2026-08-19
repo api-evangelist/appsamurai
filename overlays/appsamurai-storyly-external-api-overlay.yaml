@@ -1,0 +1,148 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Storyly External API
+  version: 1.0.0
+x-generated: '2026-08-13'
+x-method: generated
+x-source: openapi/appsamurai-storyly-external-api-openapi.json
+x-notes: >-
+  Applies to the provider-published Storyly External API specification harvested
+  verbatim from https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b. The
+  original is never mutated.
+  Every action below records something that is TRUE and OBSERVED but missing
+  from the published contract: the two error responses seen live on
+  api.storyly.io on 2026-08-13, the pagination constraints the provider states
+  as free text in parameter descriptions rather than as schema keywords, and the
+  contact/licence metadata the spec leaves empty. Nothing here invents behaviour.
+x-extends: openapi/appsamurai-storyly-external-api-openapi.json
+
+actions:
+  - target: $.info
+    description: Fill in the empty contact block and point at the real documentation.
+    update:
+      contact:
+        name: Storyly Support
+        url: https://docs.storyly.io/
+      x-apievangelist-docs: https://docs.storyly.io/reference
+      x-apievangelist-catalog: https://docs.storyly.io/.well-known/api-catalog
+
+  - target: $.servers[0]
+    description: Name the production server and record the observed CORS posture.
+    update:
+      description: Production
+      x-cors:
+        access-control-allow-origin: '*'
+        access-control-allow-credentials: 'true'
+        x-observed: '2026-08-13'
+
+  - target: $.components
+    description: >-
+      Add the error envelope the API actually returns. The published spec
+      declares no schemas at all and no non-2xx responses; this shape was
+      recovered by probing api.storyly.io/external/app anonymously (400
+      TokenNotFound) and with an invalid bearer (401 InvalidToken).
+    update:
+      schemas:
+        StorylyError:
+          type: object
+          description: >-
+            Vendor error envelope observed on api.storyly.io. Not RFC 9457
+            problem+json — content-type is application/json.
+          properties:
+            status:
+              type: string
+              description: HTTP status code repeated as a string.
+              example: '401'
+            request:
+              type: string
+              description: Opaque 32-character per-request correlation id. Quote this to support.
+              example: REDACTED_REQUEST_ID
+            error:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: Invalid Token
+                code:
+                  type: string
+                  description: Machine-readable PascalCase error code.
+                  enum:
+                    - TokenNotFound
+                    - InvalidToken
+          x-apievangelist-method: probed
+          x-apievangelist-observed: '2026-08-13'
+
+  - target: $.paths.*.*.responses
+    description: >-
+      Add the two authentication failures to every operation. All 18 operations
+      declare only a 200 today, so a generated client has no failure path at all.
+    update:
+      '400':
+        description: >-
+          Bad Request — returned when the Authorization header is absent
+          entirely (error.code TokenNotFound). Note this API answers 400, not
+          401, for a missing credential.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorylyError'
+      '401':
+        description: Unauthorized — the supplied bearer token is not a valid Storyly JWT (error.code InvalidToken).
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StorylyError'
+
+  - target: $.paths[*][*].parameters[?(@.name=='limit')]
+    description: >-
+      Promote the pagination bounds from the free-text description
+      ("required=False, min_value=1, max_value=100") into real schema keywords.
+    update:
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        example: 100
+
+  - target: $.paths[*][*].parameters[?(@.name=='offset')]
+    description: Promote the offset bound from free text into schema keywords.
+    update:
+      schema:
+        type: integer
+        minimum: 0
+        example: 0
+
+  - target: $.paths[*][*].parameters[?(@.name=='ts_start')]
+    description: Type the required stats date parameters as dates rather than free strings.
+    update:
+      required: true
+      schema:
+        type: string
+        format: date
+        example: '2026-08-01'
+
+  - target: $.paths[*][*].parameters[?(@.name=='ts_end')]
+    description: Type the required stats date parameters as dates rather than free strings.
+    update:
+      required: true
+      schema:
+        type: string
+        format: date
+        example: '2026-08-13'
+
+  - target: $.tags
+    description: Record the entity graph these tags sit on, derived in data-model/.
+    update:
+      - name: app
+        description: Apps and websites registered on the account. Root of the content tree.
+        x-apievangelist-datamodel: data-model/appsamurai-data-model.yml
+      - name: instance
+        description: Placement containers within an app. listInstances requires app_id.
+      - name: story-group
+        description: Story groups within an instance. getStoryGroups requires instance_id.
+      - name: story
+        description: Stories within a story group. getStories requires story_group_id.
+      - name: audience
+        description: Targetable audiences. Can be created but never deleted via the API.
+      - name: segment
+        description: String labels used for targeting. Keyed and deleted by label, not by id.

@@ -1,0 +1,164 @@
+{
+  "result": {
+    "tools": [
+      {
+        "name": "get_latest_sdk_version",
+        "description": "Resolves latest published Storyly Placement SDK version for Android or iOS.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "default": "android",
+              "description": "Target platform: 'android' or 'ios'.",
+              "type": "string",
+              "enum": [
+                "android",
+                "ios"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "get_feature_guide",
+        "description": "Returns a feature-first guide with checklist, resources, and shared canonical APIs.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "featureId": {
+              "description": "Guide key or synonym (e.g., 'shoppable-content', 'cart', 'deep links'). Resolved against the live docs index; if unknown, use 'query'.",
+              "type": "string",
+              "minLength": 1
+            },
+            "query": {
+              "description": "Free-text feature query when featureId is unknown.",
+              "type": "string",
+              "minLength": 1
+            },
+            "platform": {
+              "default": "android",
+              "description": "Target platform: 'android', 'ios', 'reactnative', 'flutter', or 'web'.",
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "reactnative",
+                "flutter",
+                "web"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "get_api_reference",
+        "description": "Returns live API reference (signatures + doc links from integration.storyly.io) for a symbol, and the features that use it. Accepts a symbol name or free-text query.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "apiId": {
+              "description": "Symbol name (e.g., 'STRPlacementView', 'STRProductItem') or a dotted member (e.g., 'STRPlacementDataProvider.hydrateProducts').",
+              "type": "string",
+              "minLength": 1
+            },
+            "query": {
+              "description": "Free-text query if the symbol name is not known.",
+              "type": "string",
+              "minLength": 1
+            },
+            "platform": {
+              "description": "Scope the answer to a platform: 'android', 'ios', or 'web'. Omit to see every platform the symbol is documented on.",
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "web"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "search_knowledge",
+        "description": "Searches feature guides and API references.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Search query across features and APIs."
+            },
+            "platform": {
+              "default": "android",
+              "description": "Preferred platform context for ranking results.",
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "reactnative",
+                "flutter",
+                "web"
+              ]
+            },
+            "limit": {
+              "default": 8,
+              "description": "Maximum number of results.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20
+            }
+          },
+          "required": [
+            "query"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "name": "get_release_notes",
+        "description": "Returns Storyly Placement SDK release notes (changelog) for Android, iOS, React Native, Flutter, or Web. Use 'sinceVersion' to see what changed after the version currently integrated (e.g. to check whether a feature exists in a newer release), 'version' for one release, or neither for the most recent entries.",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "default": "android",
+              "description": "Platform: 'android', 'ios', 'reactnative', 'flutter', or 'web' (each has its own release notes).",
+              "type": "string",
+              "enum": [
+                "android",
+                "ios",
+                "reactnative",
+                "flutter",
+                "web"
+              ]
+            },
+            "version": {
+              "description": "Return only this version's notes (e.g. '1.7.0').",
+              "type": "string",
+              "minLength": 1
+            },
+            "sinceVersion": {
+              "description": "Return everything released AFTER this version \u2014 the upgrade gap from the version currently integrated (e.g. '1.5.0'). Use this to check whether a feature exists in a newer release.",
+              "type": "string",
+              "minLength": 1
+            },
+            "limit": {
+              "default": 10,
+              "description": "Max entries when neither 'version' nor 'sinceVersion' is given.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    ]
+  },
+  "jsonrpc": "2.0",
+  "id": 1
+}
