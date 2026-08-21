@@ -1,0 +1,47 @@
+# Kin Score artifact — appsamurai — 2026-08-20T205517
+# The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
+---
+kin_score:
+  slug: appsamurai
+  schema_version: 0.12.0
+  scored_at: '2026-08-20'
+  run_ts: 2026-08-20T205517
+  composite: 57.1
+  band: strong
+  facets:
+    discoverability: 87.0
+    contract_quality: 60.1
+    governance: 30.3
+    operational_transparency: 34.2
+    developer_ergonomics: 55.4
+    commercial_clarity: 71.1
+    contract_governance: 30.3
+    access_clarity: 71.1
+  agent_readiness:
+    score: 44.9
+    band: agent-ready
+    dimensions:
+      spec_presence: true
+      agentic_access: false
+      reversibility_documented: false
+      mcp_server: documented
+      auth_clarity: true
+      idempotency: false
+      error_semantics: documented
+      openapi_examples: verified
+      rate_limit_signal: documented
+      event_surface_described: false
+      agent_skills: derived
+      well_known_catalog: true
+      consent_identity: false
+      agent_card: false
+      dry_run_mode: false
+  provenance:
+    mcp: first-party
+    skills: derived
+    conformance: first-party
+    contracts:
+      total: 2
+      derived: 0
+      coverage: 50.0
+      callable: 100.0
