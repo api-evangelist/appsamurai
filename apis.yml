@@ -77,25 +77,16 @@ apis:
     url: errors/appsamurai-problem-types.yml
   - type: Conventions
     url: conventions/appsamurai-conventions.yml
-- aid: appsamurai:appsamurai-storyly-external-api
-  name: Appsamurai Storyly External API
-  description: The Storyly External API manages apps, instances, story groups, stories, audiences and
-    segments for Storyly, App Samurai's in-app content experience product — 18 operations across 8 paths,
-    authenticated with a bearer JWT. Storyly's own About page names the same three founders as co-founders
-    of AppSamurai, Storyly and Netvent, and every Storyly SDK and the Storyly status page are published
-    from the Netvent GitHub org, which is why this contract on storyly.io belongs to this profile.
-  humanURL: https://docs.storyly.io/reference
-  baseURL: https://api.storyly.io
+- aid: appsamurai:appsamurai-app-api
+  name: Appsamurai App API
+  description: App management endpoints
+  humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  baseURL: http://api.appsamurai.com
   tags:
-  - App
-  - Instance
-  - Story Group
-  - Story
-  - Audience
-  - Segment
+  - app
   properties:
   - type: OpenAPI
-    url: openapi/appsamurai-storyly-external-api-openapi.json
+    url: openapi/appsamurai-app-api-openapi.yml
   - type: Documentation
     url: https://docs.storyly.io/docs
   - type: APIReference
@@ -112,11 +103,151 @@ apis:
     url: conventions/appsamurai-conventions.yml
   - type: RateLimits
     url: rate-limits/appsamurai-rate-limits.yml
-  - type: Overlay
-    url: overlays/appsamurai-storyly-external-api-overlay.yaml
+  - type: LLMsTxt
+    url: llms/appsamurai-storyly-llms.txt
+- aid: appsamurai:appsamurai-audience-api
+  name: Appsamurai Audience API
+  description: Audience management endpoints
+  humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  baseURL: http://api.appsamurai.com
+  tags:
+  - audience
+  properties:
+  - type: OpenAPI
+    url: openapi/appsamurai-audience-api-openapi.yml
+  - type: Documentation
+    url: https://docs.storyly.io/docs
+  - type: APIReference
+    url: https://docs.storyly.io/reference
+  - type: GettingStarted
+    url: https://docs.storyly.io/docs/introduction
+  - type: Authentication
+    url: authentication/appsamurai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/appsamurai-problem-types.yml
+  - type: DataModel
+    url: data-model/appsamurai-data-model.yml
+  - type: Conventions
+    url: conventions/appsamurai-conventions.yml
+  - type: RateLimits
+    url: rate-limits/appsamurai-rate-limits.yml
+  - type: LLMsTxt
+    url: llms/appsamurai-storyly-llms.txt
+- aid: appsamurai:appsamurai-instance-api
+  name: Appsamurai Instance API
+  description: Instance management endpoints
+  humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  baseURL: http://api.appsamurai.com
+  tags:
+  - instance
+  properties:
+  - type: OpenAPI
+    url: openapi/appsamurai-instance-api-openapi.yml
+  - type: Documentation
+    url: https://docs.storyly.io/docs
+  - type: APIReference
+    url: https://docs.storyly.io/reference
+  - type: GettingStarted
+    url: https://docs.storyly.io/docs/introduction
+  - type: Authentication
+    url: authentication/appsamurai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/appsamurai-problem-types.yml
+  - type: DataModel
+    url: data-model/appsamurai-data-model.yml
+  - type: Conventions
+    url: conventions/appsamurai-conventions.yml
+  - type: RateLimits
+    url: rate-limits/appsamurai-rate-limits.yml
+  - type: LLMsTxt
+    url: llms/appsamurai-storyly-llms.txt
+- aid: appsamurai:appsamurai-segment-api
+  name: Appsamurai Segment API
+  description: Segment management endpoints
+  humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  baseURL: http://api.appsamurai.com
+  tags:
+  - segment
+  properties:
+  - type: OpenAPI
+    url: openapi/appsamurai-segment-api-openapi.yml
+  - type: Documentation
+    url: https://docs.storyly.io/docs
+  - type: APIReference
+    url: https://docs.storyly.io/reference
+  - type: GettingStarted
+    url: https://docs.storyly.io/docs/introduction
+  - type: Authentication
+    url: authentication/appsamurai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/appsamurai-problem-types.yml
+  - type: DataModel
+    url: data-model/appsamurai-data-model.yml
+  - type: Conventions
+    url: conventions/appsamurai-conventions.yml
+  - type: RateLimits
+    url: rate-limits/appsamurai-rate-limits.yml
+  - type: LLMsTxt
+    url: llms/appsamurai-storyly-llms.txt
+- aid: appsamurai:appsamurai-story-api
+  name: Appsamurai Story API
+  description: Story management endpoints
+  humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  baseURL: http://api.appsamurai.com
+  tags:
+  - story
+  properties:
+  - type: OpenAPI
+    url: openapi/appsamurai-story-api-openapi.yml
+  - type: Documentation
+    url: https://docs.storyly.io/docs
+  - type: APIReference
+    url: https://docs.storyly.io/reference
+  - type: GettingStarted
+    url: https://docs.storyly.io/docs/introduction
+  - type: Authentication
+    url: authentication/appsamurai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/appsamurai-problem-types.yml
+  - type: DataModel
+    url: data-model/appsamurai-data-model.yml
+  - type: Conventions
+    url: conventions/appsamurai-conventions.yml
+  - type: RateLimits
+    url: rate-limits/appsamurai-rate-limits.yml
+  - type: LLMsTxt
+    url: llms/appsamurai-storyly-llms.txt
+- aid: appsamurai:appsamurai-story-group-api
+  name: Appsamurai Story Group API
+  description: Story group management endpoints
+  humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
+  baseURL: http://api.appsamurai.com
+  tags:
+  - story-group
+  properties:
+  - type: OpenAPI
+    url: openapi/appsamurai-story-group-api-openapi.yml
+  - type: Documentation
+    url: https://docs.storyly.io/docs
+  - type: APIReference
+    url: https://docs.storyly.io/reference
+  - type: GettingStarted
+    url: https://docs.storyly.io/docs/introduction
+  - type: Authentication
+    url: authentication/appsamurai-authentication.yml
+  - type: ErrorCatalog
+    url: errors/appsamurai-problem-types.yml
+  - type: DataModel
+    url: data-model/appsamurai-data-model.yml
+  - type: Conventions
+    url: conventions/appsamurai-conventions.yml
+  - type: RateLimits
+    url: rate-limits/appsamurai-rate-limits.yml
   - type: LLMsTxt
     url: llms/appsamurai-storyly-llms.txt
 common:
+- type: Overlay
+  url: overlays/appsamurai-storyly-external-api-overlay.yaml
 - type: Overlay
   url: overlays/appsamurai-campaign-spend-overlay.yaml
 - type: DomainSecurity
