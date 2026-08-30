@@ -1,0 +1,151 @@
+openapi: 3.2.0
+info:
+  title: Storyly External App API
+  version: 1.0.0
+  contact: {}
+  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
+  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
+  x-apievangelist-method: searched
+servers:
+- url: https://api.storyly.io
+tags:
+- name: app
+  description: App management endpoints
+paths:
+  /external/app:
+    get:
+      tags:
+      - app
+      summary: List apps
+      description: List all apps for the authenticated account.
+      operationId: listApps
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: string
+          example: '1'
+        description: required=False, min_value=1, max_value=100
+      - name: offset
+        in: query
+        schema:
+          type: string
+          example: '0'
+        description: required=False, min_value=0
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account_id:
+                          type: number
+                          example: 9434
+                        category:
+                          type: string
+                          example: web
+                        detailed_info:
+                          type: object
+                          properties:
+                            icon:
+                              type: string
+                              example: https://www.google.com/s2/favicons?sz=64&domain_url=Inbox Story
+                        id:
+                          type: number
+                          example: 14686
+                        is_inbox_story:
+                          type: number
+                          example: 1
+                        settings:
+                          type: object
+                          properties:
+                            is_sharable:
+                              type: boolean
+                              example: true
+                            is_shopify:
+                              type: boolean
+                              example: false
+                        store_id:
+                          type: string
+                          example: Inbox Story
+                        store_type:
+                          type: string
+                          example: web
+                        sub_category:
+                          example: null
+                        title:
+                          type: string
+                          example: Inbox Story
+                        token:
+                          type: string
+                          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                        ts_created:
+                          type: string
+                          example: '2023-02-03 10:51:47'
+                        ts_updated:
+                          type: string
+                          example: '2023-02-03 10:51:47'
+                    example:
+                    - account_id: 9434
+                      category: web
+                      detailed_info:
+                        icon: https://www.google.com/s2/favicons?sz=64&domain_url=Inbox Story
+                      id: 14686
+                      is_inbox_story: 1
+                      settings:
+                        is_sharable: true
+                        is_shopify: false
+                      store_id: Inbox Story
+                      store_type: web
+                      sub_category: null
+                      title: Inbox Story
+                      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                      ts_created: '2023-02-03 10:51:47'
+                      ts_updated: '2023-02-03 10:51:47'
+                  message:
+                    type: string
+                    example: Apps successfully listed
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    data:
+                    - account_id: 9434
+                      category: web
+                      detailed_info:
+                        icon: https://www.google.com/s2/favicons?sz=64&domain_url=Inbox Story
+                      id: 14686
+                      is_inbox_story: 1
+                      settings:
+                        is_sharable: true
+                        is_shopify: false
+                      store_id: Inbox Story
+                      store_type: web
+                      sub_category: null
+                      title: Inbox Story
+                      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                      ts_created: '2023-02-03 10:51:47'
+                      ts_updated: '2023-02-03 10:51:47'
+                    message: Apps successfully listed
+                    status: ok
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for API authentication
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

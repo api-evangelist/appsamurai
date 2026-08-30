@@ -1,0 +1,143 @@
+openapi: 3.2.0
+info:
+  title: Storyly External Instance API
+  version: 1.0.0
+  contact: {}
+  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
+  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
+  x-apievangelist-method: searched
+servers:
+- url: https://api.storyly.io
+tags:
+- name: instance
+  description: Instance management endpoints
+paths:
+  /external/instance:
+    get:
+      tags:
+      - instance
+      summary: List instances
+      description: List instances for an app.
+      operationId: listInstances
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: app_id
+        in: query
+        schema:
+          type: string
+          example: '20485'
+        description: required=True, min_value=1
+      - name: limit
+        in: query
+        schema:
+          type: string
+          example: '1'
+        description: required=False, min_value=1, max_value=100
+      - name: offset
+        in: query
+        schema:
+          type: string
+          example: '0'
+        description: required=False, min_value=0
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account_id:
+                          type: number
+                          example: 9434
+                        app_id:
+                          type: number
+                          example: 20485
+                        id:
+                          type: number
+                          example: 22896
+                        is_sharable:
+                          type: boolean
+                          example: true
+                        settings:
+                          type: object
+                          properties:
+                            smart_sorting:
+                              type: object
+                              properties:
+                                is_enabled:
+                                  type: boolean
+                                  example: false
+                                ts_updated:
+                                  type: number
+                                  example: 1740057918
+                        status:
+                          type: number
+                          example: 1
+                        title:
+                          type: string
+                          example: Default
+                        token:
+                          type: string
+                          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                        ts_created:
+                          type: string
+                          example: '2024-10-15 08:39:17'
+                        ts_updated:
+                          type: string
+                          example: '2025-02-20 13:30:31'
+                    example:
+                    - account_id: 9434
+                      app_id: 20485
+                      id: 22896
+                      is_sharable: true
+                      settings:
+                        smart_sorting:
+                          is_enabled: false
+                          ts_updated: 1740057918
+                      status: 1
+                      title: Default
+                      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                      ts_created: '2024-10-15 08:39:17'
+                      ts_updated: '2025-02-20 13:30:31'
+                  message:
+                    type: string
+                    example: Instances successfully listed
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    data:
+                    - account_id: 9434
+                      app_id: 20485
+                      id: 22896
+                      is_sharable: true
+                      settings:
+                        smart_sorting:
+                          is_enabled: false
+                          ts_updated: 1740057918
+                      status: 1
+                      title: Default
+                      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+                      ts_created: '2024-10-15 08:39:17'
+                      ts_updated: '2025-02-20 13:30:31'
+                    message: Instances successfully listed
+                    status: ok
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for API authentication
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

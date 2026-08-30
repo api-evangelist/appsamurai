@@ -1,0 +1,371 @@
+openapi: 3.2.0
+info:
+  title: Storyly External Audience API
+  version: 1.0.0
+  contact: {}
+  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
+  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
+  x-apievangelist-method: searched
+servers:
+- url: https://api.storyly.io
+tags:
+- name: audience
+  description: Audience management endpoints
+paths:
+  /external/audience:
+    get:
+      tags:
+      - audience
+      summary: List audiences
+      description: List all audiences for the authenticated account.
+      operationId: listAudiences
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: string
+          example: '1'
+        description: required=False, min_value=1, max_value=100
+      - name: offset
+        in: query
+        schema:
+          type: string
+          example: '0'
+        description: required=False, min_value=0
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account_id:
+                          type: number
+                          example: 9434
+                        audience_identifier:
+                          type: string
+                          example: id
+                        id:
+                          type: number
+                          example: 9934
+                        name:
+                          type: string
+                          example: random_data_8kb_10_row
+                        properties:
+                          type: object
+                          properties:
+                            data:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  age:
+                                    type: string
+                                    example: '45'
+                                  city:
+                                    type: string
+                                    example: city_1
+                                  color:
+                                    type: string
+                                    example: color_1
+                                  company:
+                                    type: string
+                                    example: company_1
+                                  country:
+                                    type: string
+                                    example: country_1
+                                  created_at:
+                                    type: string
+                                    example: '2024-02-27'
+                                  credit_card:
+                                    type: string
+                                    example: card_1
+                                  email:
+                                    type: string
+                                    example: email_1@example.com
+                                  gender:
+                                    type: string
+                                    example: M
+                                  id:
+                                    type: string
+                                    example: '1'
+                                  job:
+                                    type: string
+                                    example: job_1
+                                  name:
+                                    type: string
+                                    example: name_1
+                                  phone:
+                                    type: string
+                                    example: phone_1
+                                  surname:
+                                    type: string
+                                    example: surname_1
+                                  updated_at:
+                                    type: string
+                                    example: '2024-06-11'
+                                  username:
+                                    type: string
+                                    example: user_1
+                              example:
+                              - age: '45'
+                                city: city_1
+                                color: color_1
+                                company: company_1
+                                country: country_1
+                                created_at: '2024-02-27'
+                                credit_card: card_1
+                                email: email_1@example.com
+                                gender: M
+                                id: '1'
+                                job: job_1
+                                name: name_1
+                                phone: phone_1
+                                surname: surname_1
+                                updated_at: '2024-06-11'
+                                username: user_1
+                            filename:
+                              type: string
+                              example: random_data_8kb_10_row.csv
+                            latest_file:
+                              type: string
+                              example: https://prod-storyly-media.s3.amazonaws.com/user-media/9434/f4b269fa-906b-4aa5-9c80-8e6616612060--random_data_8kb_10_row.csv
+                            row_count:
+                              type: number
+                              example: 10
+                        status:
+                          type: number
+                          example: 0
+                        story_group_list:
+                          type: array
+                          items: {}
+                          example: []
+                        ts_created:
+                          type: string
+                          example: '2024-12-13 12:08:18'
+                        ts_updated:
+                          type: string
+                          example: '2024-12-13 12:08:18'
+                        type:
+                          type: number
+                          example: 1
+                    example:
+                    - account_id: 9434
+                      audience_identifier: id
+                      id: 9934
+                      name: random_data_8kb_10_row
+                      properties:
+                        data:
+                        - age: '45'
+                          city: city_1
+                          color: color_1
+                          company: company_1
+                          country: country_1
+                          created_at: '2024-02-27'
+                          credit_card: card_1
+                          email: email_1@example.com
+                          gender: M
+                          id: '1'
+                          job: job_1
+                          name: name_1
+                          phone: phone_1
+                          surname: surname_1
+                          updated_at: '2024-06-11'
+                          username: user_1
+                        filename: random_data_8kb_10_row.csv
+                        latest_file: https://prod-storyly-media.s3.amazonaws.com/user-media/9434/f4b269fa-906b-4aa5-9c80-8e6616612060--random_data_8kb_10_row.csv
+                        row_count: 10
+                      status: 0
+                      story_group_list: []
+                      ts_created: '2024-12-13 12:08:18'
+                      ts_updated: '2024-12-13 12:08:18'
+                      type: 1
+                  message:
+                    type: string
+                    example: Audiences successfully listed
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    data:
+                    - account_id: 9434
+                      audience_identifier: id
+                      id: 9934
+                      name: random_data_8kb_10_row
+                      properties:
+                        data:
+                        - age: '45'
+                          city: city_1
+                          color: color_1
+                          company: company_1
+                          country: country_1
+                          created_at: '2024-02-27'
+                          credit_card: card_1
+                          email: email_1@example.com
+                          gender: M
+                          id: '1'
+                          job: job_1
+                          name: name_1
+                          phone: phone_1
+                          surname: surname_1
+                          updated_at: '2024-06-11'
+                          username: user_1
+                        filename: random_data_8kb_10_row.csv
+                        latest_file: https://prod-storyly-media.s3.amazonaws.com/user-media/9434/f4b269fa-906b-4aa5-9c80-8e6616612060--random_data_8kb_10_row.csv
+                        row_count: 10
+                      status: 0
+                      story_group_list: []
+                      ts_created: '2024-12-13 12:08:18'
+                      ts_updated: '2024-12-13 12:08:18'
+                      type: 1
+                    message: Audiences successfully listed
+                    status: ok
+    post:
+      tags:
+      - audience
+      summary: Create audience
+      description: Create a new audience.
+      operationId: createAudience
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                  example: label_name
+            examples:
+              Create audience:
+                value:
+                  label: label_name
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                activity:
+                  description: 'The user activity on the selected interactive component '
+                  type: string
+                  example: activity
+                app_id:
+                  description: The id of the app if interactive audience is selected
+                  type: string
+                  example: '20485'
+                audience_identifier:
+                  description: The unique identifier of the audience table
+                  type: string
+                  example: audience_identifier
+                component_id:
+                  description: The id of the interactive component
+                  type: string
+                  example: 856bdd44-77da-4eee-bc30-eea63303ef09
+                file:
+                  description: The file to be uploaded if CSV has been selected
+                  type: string
+                  format: binary
+                interactive_type:
+                  description: The type of the interactive to get statistics and create audience within the story
+                  type: string
+                  example: '1'
+                name:
+                  description: The name of the audience
+                  type: string
+                  example: interactive_test
+                story_group_id:
+                  description: The id of the story group  if interactive audience is selected
+                  type: string
+                  example: '204206'
+                story_id:
+                  description: The id of the story if interactive audience is selected
+                  type: string
+                  example: '2581651'
+                type:
+                  description: The type of the audience, '1' if CSV, '4' if interactive
+                  type: string
+                  example: '4'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Audience successfully created
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Audience successfully created
+                    status: ok
+    patch:
+      tags:
+      - audience
+      summary: Update audience
+      description: Update an existing audience.
+      operationId: updateAudience
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                audience_identifier:
+                  description: The unique identifier of the audience table
+                  type: string
+                  example: audience_identifier
+                id:
+                  description: required=True, empty=False, nullable=False
+                  type: string
+                  example: '9934'
+                name:
+                  description: The name of the audience
+                  type: string
+                  example: interactive_test
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Audience successfully updated
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Audience successfully updated
+                    status: ok
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for API authentication
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

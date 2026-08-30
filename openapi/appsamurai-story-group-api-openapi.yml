@@ -1,0 +1,651 @@
+openapi: 3.2.0
+info:
+  title: Storyly External Story Group API
+  version: 1.0.0
+  contact: {}
+  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
+  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
+  x-apievangelist-method: searched
+servers:
+- url: https://api.storyly.io
+tags:
+- name: story-group
+  description: Story group management endpoints
+paths:
+  /external/story-group:
+    get:
+      tags:
+      - story-group
+      summary: Get story groups
+      description: Get story groups by instance or specific story group ID.
+      operationId: getStoryGroups
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: instance_id
+        in: query
+        schema:
+          type: string
+          example: '22896'
+        description: required=True, min_value=1
+      - name: limit
+        in: query
+        schema:
+          type: string
+          example: '1'
+        description: required=False, min_value=1, max_value=100
+      - name: offset
+        in: query
+        schema:
+          type: string
+          example: '0'
+        description: required=False, min_value=0
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account_id:
+                          type: number
+                          example: 9434
+                        app_id:
+                          type: number
+                          example: 20485
+                        detail:
+                          example: null
+                        icon:
+                          type: string
+                          example: https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg
+                        icon_raw:
+                          type: string
+                          example: https://db62cod6cnasq.cloudfront.net/user-media/9434/dd55b9ff-cbe3-4d70-9179-7be65ee9a944--Screenshot20250301at11.52.38.png
+                        id:
+                          type: number
+                          example: 204206
+                        instance_id:
+                          type: number
+                          example: 22896
+                        pinned:
+                          type: boolean
+                          example: false
+                        segments:
+                          example: null
+                        sort_order:
+                          type: number
+                          example: 0
+                        status:
+                          type: number
+                          example: 1
+                        template:
+                          example: null
+                        templates:
+                          example: null
+                        title:
+                          type: string
+                          example: TEST 4
+                        ts_created:
+                          type: string
+                          example: '2025-03-04 17:47:45'
+                        ts_end:
+                          example: null
+                        ts_start:
+                          type: string
+                          example: '2025-03-04 17:47:45'
+                        ts_updated:
+                          type: string
+                          example: '2025-03-04 17:48:46'
+                        type:
+                          type: string
+                          example: default
+                        user_id:
+                          type: number
+                          example: 13705
+                    example:
+                    - account_id: 9434
+                      app_id: 20485
+                      detail: null
+                      icon: https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg
+                      icon_raw: https://db62cod6cnasq.cloudfront.net/user-media/9434/dd55b9ff-cbe3-4d70-9179-7be65ee9a944--Screenshot20250301at11.52.38.png
+                      id: 204206
+                      instance_id: 22896
+                      pinned: false
+                      segments: null
+                      sort_order: 0
+                      status: 1
+                      template: null
+                      templates: null
+                      title: TEST 4
+                      ts_created: '2025-03-04 17:47:45'
+                      ts_end: null
+                      ts_start: '2025-03-04 17:47:45'
+                      ts_updated: '2025-03-04 17:48:46'
+                      type: default
+                      user_id: 13705
+                  message:
+                    type: string
+                    example: Story Group successfully listed
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    data:
+                    - account_id: 9434
+                      app_id: 20485
+                      detail: null
+                      icon: https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg
+                      icon_raw: https://db62cod6cnasq.cloudfront.net/user-media/9434/dd55b9ff-cbe3-4d70-9179-7be65ee9a944--Screenshot20250301at11.52.38.png
+                      id: 204206
+                      instance_id: 22896
+                      pinned: false
+                      segments: null
+                      sort_order: 0
+                      status: 1
+                      template: null
+                      templates: null
+                      title: TEST 4
+                      ts_created: '2025-03-04 17:47:45'
+                      ts_end: null
+                      ts_start: '2025-03-04 17:47:45'
+                      ts_updated: '2025-03-04 17:48:46'
+                      type: default
+                      user_id: 13705
+                    message: Story Group successfully listed
+                    status: ok
+    post:
+      tags:
+      - story-group
+      summary: Create story group
+      description: Create a new story group.
+      operationId: createStoryGroup
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  description: Story group cover image (optional)
+                  type: string
+                  format: binary
+                instance_id:
+                  description: Required - Instance ID
+                  type: string
+                  example: '22896'
+                media_url:
+                  description: Optional - Media URL
+                  type: string
+                  example: https://example.com/cover.jpg
+                segments:
+                  description: Optional - Story group segments as JSON
+                  type: string
+                  example: '{}'
+                settings:
+                  description: Optional - Story group settings as JSON
+                  type: string
+                  example: '{}'
+                status:
+                  description: Required - Story group status (integer)
+                  type: string
+                  example: '1'
+                title:
+                  description: Required - Story group title (max 255 chars)
+                  type: string
+                  example: My Story Group
+                ts_end:
+                  description: Optional - End timestamp
+                  type: string
+                  example: '2024-04-20T00:00:00Z'
+                ts_start:
+                  description: Optional - Start timestamp
+                  type: string
+                  example: '2024-03-20T00:00:00Z'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Story Group successfully created
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Story Group successfully created
+                    status: ok
+    delete:
+      tags:
+      - story-group
+      summary: Delete story group
+      description: Delete a story group by ID.
+      operationId: deleteStoryGroup
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: story_group_id
+        in: query
+        schema:
+          type: string
+          example: '204206'
+        description: required=True, min_value=1
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Story Group successfully deleted
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Story Group successfully deleted
+                    status: ok
+    patch:
+      tags:
+      - story-group
+      summary: Update story group
+      description: Update an existing story group.
+      operationId: updateStoryGroup
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  description: Optional - New cover image
+                  type: string
+                  format: binary
+                id:
+                  description: Required - Story group ID
+                  type: string
+                  example: '204206'
+                media_url:
+                  description: Optional - New media URL
+                  type: string
+                  example: https://example.com/new-cover.jpg
+                pinned:
+                  description: Optional - Pin status (boolean)
+                  type: string
+                  example: 'false'
+                segments:
+                  description: Optional - New segments as JSON
+                  type: string
+                  example: '{}'
+                settings:
+                  description: Optional - New settings as JSON
+                  type: string
+                  example: '{}'
+                sort_order:
+                  description: Optional - New sort order (integer)
+                  type: string
+                  example: '1'
+                status:
+                  description: Required - New status (integer)
+                  type: string
+                  example: '1'
+                title:
+                  description: Optional - New title (max 255 chars)
+                  type: string
+                  example: Updated Story Group
+                ts_end:
+                  description: Optional - New end timestamp
+                  type: string
+                  example: '2024-04-20T00:00:00Z'
+                ts_start:
+                  description: Optional - New start timestamp
+                  type: string
+                  example: '2024-03-20T00:00:00Z'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Story Group successfully updated
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Story Group successfully updated
+                    status: ok
+  /external/story-group/stats:
+    get:
+      tags:
+      - story-group
+      summary: Get story group stats
+      description: Get statistics for story groups.
+      operationId: getStoryGroupStats
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: instance_id
+        in: query
+        schema:
+          type: string
+          example: '22896'
+        description: required=False
+      - name: story_group_id
+        in: query
+        schema:
+          type: string
+          example: '204206'
+        description: required=False, min_value=1
+      - name: ts_start
+        in: query
+        schema:
+          type: string
+          example: '2025-01-01'
+        description: required=True, format=YYYY-MM-DD
+      - name: ts_end
+        in: query
+        schema:
+          type: string
+          example: '2025-01-01'
+        description: required=True, format=YYYY-MM-DD
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        daily-stats:
+                          type: object
+                          properties:
+                            '2025-01-01':
+                              type: object
+                              properties:
+                                active_users:
+                                  type: number
+                                  example: 0
+                                reach:
+                                  type: number
+                                  example: 0
+                                share_count:
+                                  type: number
+                                  example: 0
+                                total_click:
+                                  type: number
+                                  example: 0
+                                total_complete:
+                                  type: number
+                                  example: 0
+                                total_impression:
+                                  type: number
+                                  example: 0
+                                total_open:
+                                  type: number
+                                  example: 0
+                                total_skipped:
+                                  type: number
+                                  example: 0
+                        icon:
+                          type: string
+                          example: https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg
+                        id:
+                          type: number
+                          example: 204206
+                        instance_id:
+                          type: number
+                          example: 22896
+                        monthly-stats:
+                          type: object
+                          properties:
+                            '2025-01-01':
+                              type: object
+                              properties:
+                                active_users:
+                                  type: number
+                                  example: 0
+                                reach:
+                                  type: number
+                                  example: 0
+                                share_count:
+                                  type: number
+                                  example: 0
+                                total_click:
+                                  type: number
+                                  example: 0
+                                total_complete:
+                                  type: number
+                                  example: 0
+                                total_impression:
+                                  type: number
+                                  example: 0
+                                total_open:
+                                  type: number
+                                  example: 0
+                                total_skipped:
+                                  type: number
+                                  example: 0
+                        name:
+                          type: string
+                          example: TEST 4
+                        segments:
+                          example: null
+                        status:
+                          type: number
+                          example: 1
+                        total-stats:
+                          type: object
+                          properties:
+                            active_users:
+                              type: number
+                              example: 0
+                            reach:
+                              type: number
+                              example: 0
+                            share_count:
+                              type: number
+                              example: 0
+                            total_click:
+                              type: number
+                              example: 0
+                            total_complete:
+                              type: number
+                              example: 0
+                            total_impression:
+                              type: number
+                              example: 0
+                            total_open:
+                              type: number
+                              example: 0
+                            total_skipped:
+                              type: number
+                              example: 0
+                        ts_created:
+                          type: string
+                          example: '2025-03-04'
+                        ts_end:
+                          example: null
+                        ts_start:
+                          type: string
+                          example: '2025-03-04 17:47:45'
+                        weekly-stats:
+                          type: object
+                          properties:
+                            '2025-01-01':
+                              type: object
+                              properties:
+                                active_users:
+                                  type: number
+                                  example: 0
+                                reach:
+                                  type: number
+                                  example: 0
+                                share_count:
+                                  type: number
+                                  example: 0
+                                total_click:
+                                  type: number
+                                  example: 0
+                                total_complete:
+                                  type: number
+                                  example: 0
+                                total_impression:
+                                  type: number
+                                  example: 0
+                                total_open:
+                                  type: number
+                                  example: 0
+                                total_skipped:
+                                  type: number
+                                  example: 0
+                    example:
+                    - daily-stats:
+                        '2025-01-01':
+                          active_users: 0
+                          reach: 0
+                          share_count: 0
+                          total_click: 0
+                          total_complete: 0
+                          total_impression: 0
+                          total_open: 0
+                          total_skipped: 0
+                      icon: https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg
+                      id: 204206
+                      instance_id: 22896
+                      monthly-stats:
+                        '2025-01-01':
+                          active_users: 0
+                          reach: 0
+                          share_count: 0
+                          total_click: 0
+                          total_complete: 0
+                          total_impression: 0
+                          total_open: 0
+                          total_skipped: 0
+                      name: TEST 4
+                      segments: null
+                      status: 1
+                      total-stats:
+                        active_users: 0
+                        reach: 0
+                        share_count: 0
+                        total_click: 0
+                        total_complete: 0
+                        total_impression: 0
+                        total_open: 0
+                        total_skipped: 0
+                      ts_created: '2025-03-04'
+                      ts_end: null
+                      ts_start: '2025-03-04 17:47:45'
+                      weekly-stats:
+                        '2025-01-01':
+                          active_users: 0
+                          reach: 0
+                          share_count: 0
+                          total_click: 0
+                          total_complete: 0
+                          total_impression: 0
+                          total_open: 0
+                          total_skipped: 0
+                  message:
+                    type: string
+                    example: success
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    data:
+                    - daily-stats:
+                        '2025-01-01':
+                          active_users: 0
+                          reach: 0
+                          share_count: 0
+                          total_click: 0
+                          total_complete: 0
+                          total_impression: 0
+                          total_open: 0
+                          total_skipped: 0
+                      icon: https://db62cod6cnasq.cloudfront.net/user-media/9434/sg204206/3364491126.jpeg
+                      id: 204206
+                      instance_id: 22896
+                      monthly-stats:
+                        '2025-01-01':
+                          active_users: 0
+                          reach: 0
+                          share_count: 0
+                          total_click: 0
+                          total_complete: 0
+                          total_impression: 0
+                          total_open: 0
+                          total_skipped: 0
+                      name: TEST 4
+                      segments: null
+                      status: 1
+                      total-stats:
+                        active_users: 0
+                        reach: 0
+                        share_count: 0
+                        total_click: 0
+                        total_complete: 0
+                        total_impression: 0
+                        total_open: 0
+                        total_skipped: 0
+                      ts_created: '2025-03-04'
+                      ts_end: null
+                      ts_start: '2025-03-04 17:47:45'
+                      weekly-stats:
+                        '2025-01-01':
+                          active_users: 0
+                          reach: 0
+                          share_count: 0
+                          total_click: 0
+                          total_complete: 0
+                          total_impression: 0
+                          total_open: 0
+                          total_skipped: 0
+                    message: success
+                    status: ok
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for API authentication
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

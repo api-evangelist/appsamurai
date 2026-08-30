@@ -1,0 +1,756 @@
+openapi: 3.2.0
+info:
+  title: Storyly External Story API
+  version: 1.0.0
+  contact: {}
+  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
+  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
+  x-apievangelist-method: searched
+servers:
+- url: https://api.storyly.io
+tags:
+- name: story
+  description: Story management endpoints
+paths:
+  /external/story:
+    get:
+      tags:
+      - story
+      summary: Get stories
+      description: Get stories in a story group.
+      operationId: getStories
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: story_group_id
+        in: query
+        schema:
+          type: string
+          example: '204206'
+        description: required=True, min_value=1
+      - name: limit
+        in: query
+        schema:
+          type: string
+          example: '1'
+        description: required=False, min_value=1, max_value=100
+      - name: offset
+        in: query
+        schema:
+          type: string
+          example: '0'
+        description: required=False, min_value=0
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account_id:
+                          type: number
+                          example: 9434
+                        button_text:
+                          type: string
+                          example: ''
+                        deep_link:
+                          type: string
+                          example: jushpl://storyly?g=204206&s=2581651&instance=22896
+                        id:
+                          type: number
+                          example: 2581651
+                        media:
+                          type: string
+                          example: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg
+                        media_raw:
+                          type: string
+                          example: https://db62cod6cnasq.cloudfront.net/user-media/9434/087d26b8-4f90-4707-9fa2-764f289d7717--f99ac6d1f6614ba398ced3cb5a83f329.png
+                        mime_type:
+                          type: string
+                          example: image/jpeg
+                        name:
+                          example: null
+                        outlink:
+                          type: string
+                          example: ''
+                        settings:
+                          example: null
+                        sort_order:
+                          type: number
+                          example: 0
+                        status:
+                          type: number
+                          example: 1
+                        story_group_id:
+                          type: number
+                          example: 204206
+                        studio_image:
+                          type: string
+                          example: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg
+                        target_cap:
+                          example: null
+                        thumbnail:
+                          example: null
+                        title:
+                          type: string
+                          example: TEST 4
+                        ts_created:
+                          type: string
+                          example: '2025-03-04 17:48:15'
+                        ts_end:
+                          example: null
+                        ts_start:
+                          type: string
+                          example: '2025-03-04 17:47:47'
+                        ts_updated:
+                          type: string
+                          example: '2025-03-04 17:49:41'
+                        type:
+                          type: number
+                          example: 1
+                    example:
+                    - account_id: 9434
+                      button_text: ''
+                      deep_link: jushpl://storyly?g=204206&s=2581651&instance=22896
+                      id: 2581651
+                      media: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg
+                      media_raw: https://db62cod6cnasq.cloudfront.net/user-media/9434/087d26b8-4f90-4707-9fa2-764f289d7717--f99ac6d1f6614ba398ced3cb5a83f329.png
+                      mime_type: image/jpeg
+                      name: null
+                      outlink: ''
+                      settings: null
+                      sort_order: 0
+                      status: 1
+                      story_group_id: 204206
+                      studio_image: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg
+                      target_cap: null
+                      thumbnail: null
+                      title: TEST 4
+                      ts_created: '2025-03-04 17:48:15'
+                      ts_end: null
+                      ts_start: '2025-03-04 17:47:47'
+                      ts_updated: '2025-03-04 17:49:41'
+                      type: 1
+                  message:
+                    type: string
+                    example: Stories successfully listed
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    data:
+                    - account_id: 9434
+                      button_text: ''
+                      deep_link: jushpl://storyly?g=204206&s=2581651&instance=22896
+                      id: 2581651
+                      media: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg
+                      media_raw: https://db62cod6cnasq.cloudfront.net/user-media/9434/087d26b8-4f90-4707-9fa2-764f289d7717--f99ac6d1f6614ba398ced3cb5a83f329.png
+                      mime_type: image/jpeg
+                      name: null
+                      outlink: ''
+                      settings: null
+                      sort_order: 0
+                      status: 1
+                      story_group_id: 204206
+                      studio_image: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg
+                      target_cap: null
+                      thumbnail: null
+                      title: TEST 4
+                      ts_created: '2025-03-04 17:48:15'
+                      ts_end: null
+                      ts_start: '2025-03-04 17:47:47'
+                      ts_updated: '2025-03-04 17:49:41'
+                      type: 1
+                    message: Stories successfully listed
+                    status: ok
+    post:
+      tags:
+      - story
+      summary: Create story
+      description: Create a new story.
+      operationId: createStory
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                deep_link:
+                  description: Optional - Deep link URL
+                  type: string
+                  example: storyly://story/123
+                file:
+                  description: Optional - Story media file
+                  type: string
+                  format: binary
+                media_url:
+                  description: Optional - Media URL
+                  type: string
+                  example: https://example.com/story-media.mp4
+                name:
+                  description: Optional - Story name (max 255 chars)
+                  type: string
+                  example: story-name
+                sort_order:
+                  description: Optional - Sort order (integer)
+                  type: string
+                  example: '1'
+                status:
+                  description: Required - Story status (integer)
+                  type: string
+                  example: '1'
+                story_group_id:
+                  description: Required - Story group ID (integer)
+                  type: string
+                  example: '204206'
+                title:
+                  description: Required - Story title (max 255 chars)
+                  type: string
+                  example: My Story
+                ts_end:
+                  description: Optional - End timestamp
+                  type: string
+                  example: '2024-04-20T00:00:00Z'
+                ts_start:
+                  description: Optional - Start timestamp
+                  type: string
+                  example: '2024-03-20T00:00:00Z'
+                type:
+                  description: Required - Story type (integer)
+                  type: string
+                  example: '1'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Story successfully created
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Story successfully created
+                    status: ok
+    delete:
+      tags:
+      - story
+      summary: Delete story
+      description: Delete a story by ID.
+      operationId: deleteStory
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: story_id
+        in: query
+        schema:
+          type: string
+          example: '2581651'
+        description: required=True, min_value=1
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Story successfully deleted
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Story successfully deleted
+                    status: ok
+    patch:
+      tags:
+      - story
+      summary: Update story
+      description: Update an existing story.
+      operationId: updateStory
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                deep_link:
+                  description: Optional - New deep link URL
+                  type: string
+                  example: storyly://story/456
+                file:
+                  description: Optional - New story media file
+                  type: string
+                  format: binary
+                id:
+                  description: Required - Story ID (integer)
+                  type: string
+                  example: '2581651'
+                media_url:
+                  description: Optional - New media URL
+                  type: string
+                  example: https://example.com/updated-story-media.mp4
+                name:
+                  description: Optional - New name (max 255 chars)
+                  type: string
+                  example: updated-story-name
+                sort_order:
+                  description: Optional - New sort order (integer)
+                  type: string
+                  example: '2'
+                status:
+                  description: Optional - New status (integer)
+                  type: string
+                  example: '1'
+                title:
+                  description: Optional - New title (max 255 chars)
+                  type: string
+                  example: Updated Story
+                ts_end:
+                  description: Optional - New end timestamp
+                  type: string
+                  example: '2024-04-20T00:00:00Z'
+                ts_start:
+                  description: Optional - New start timestamp
+                  type: string
+                  example: '2024-03-20T00:00:00Z'
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Story successfully updated
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Story successfully updated
+                    status: ok
+  /external/story/stats:
+    get:
+      tags:
+      - story
+      summary: Get story stats
+      description: Get statistics for stories.
+      operationId: getStoryStats
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: app_id
+        in: query
+        schema:
+          type: string
+          example: '20485'
+        description: required=False
+      - name: instance_id
+        in: query
+        schema:
+          type: string
+          example: '22896'
+        description: required=False
+      - name: story_group_id
+        in: query
+        schema:
+          type: string
+          example: '204206'
+        description: required=False
+      - name: story_id
+        in: query
+        schema:
+          type: string
+          example: '2581651'
+        description: required=False, min_value=1
+      - name: ts_start
+        in: query
+        schema:
+          type: string
+          example: '2025-01-01'
+        description: required=True, format=YYYY-MM-DD
+      - name: ts_end
+        in: query
+        schema:
+          type: string
+          example: '2025-01-01'
+        description: required=True, format=YYYY-MM-DD
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        daily-stats:
+                          type: object
+                          properties:
+                            '2025-01-01':
+                              type: object
+                              properties:
+                                average_watch_length:
+                                  type: number
+                                  example: 0
+                                click:
+                                  type: number
+                                  example: 0
+                                click_impression:
+                                  type: number
+                                  example: 0
+                                close:
+                                  type: number
+                                  example: 0
+                                complete:
+                                  type: number
+                                  example: 0
+                                impression:
+                                  type: number
+                                  example: 0
+                                next:
+                                  type: number
+                                  example: 0
+                                prev:
+                                  type: number
+                                  example: 0
+                                reach:
+                                  type: number
+                                  example: 0
+                                share_count:
+                                  type: number
+                                  example: 0
+                                shared_count:
+                                  type: number
+                                  example: 0
+                        icon:
+                          type: string
+                          example: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg
+                        id:
+                          type: number
+                          example: 2581651
+                        media:
+                          type: string
+                          example: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg
+                        monthly-stats:
+                          type: object
+                          properties:
+                            '2025-01-01':
+                              type: object
+                              properties:
+                                average_watch_length:
+                                  type: number
+                                  example: 0
+                                click:
+                                  type: number
+                                  example: 0
+                                click_impression:
+                                  type: number
+                                  example: 0
+                                close:
+                                  type: number
+                                  example: 0
+                                complete:
+                                  type: number
+                                  example: 0
+                                impression:
+                                  type: number
+                                  example: 0
+                                next:
+                                  type: number
+                                  example: 0
+                                prev:
+                                  type: number
+                                  example: 0
+                                reach:
+                                  type: number
+                                  example: 0
+                                share_count:
+                                  type: number
+                                  example: 0
+                                shared_count:
+                                  type: number
+                                  example: 0
+                        name:
+                          example: null
+                        outlink:
+                          type: string
+                          example: ''
+                        settings:
+                          type: object
+                          properties: {}
+                        status:
+                          type: number
+                          example: 1
+                        story_group_id:
+                          type: number
+                          example: 204206
+                        thumbnail:
+                          example: null
+                        title:
+                          type: string
+                          example: TEST 4
+                        total-stats:
+                          type: object
+                          properties:
+                            average_watch_length:
+                              type: number
+                              example: 0
+                            click:
+                              type: number
+                              example: 0
+                            click_impression:
+                              type: number
+                              example: 0
+                            close:
+                              type: number
+                              example: 0
+                            complete:
+                              type: number
+                              example: 0
+                            impression:
+                              type: number
+                              example: 0
+                            next:
+                              type: number
+                              example: 0
+                            prev:
+                              type: number
+                              example: 0
+                            reach:
+                              type: number
+                              example: 0
+                            share_count:
+                              type: number
+                              example: 0
+                            shared_count:
+                              type: number
+                              example: 0
+                        ts_created:
+                          type: string
+                          example: '2025-03-04'
+                        ts_end:
+                          example: null
+                        ts_start:
+                          type: string
+                          example: '2025-03-04 17:47:47'
+                        weekly-stats:
+                          type: object
+                          properties:
+                            '2025-01-01':
+                              type: object
+                              properties:
+                                average_watch_length:
+                                  type: number
+                                  example: 0
+                                click:
+                                  type: number
+                                  example: 0
+                                click_impression:
+                                  type: number
+                                  example: 0
+                                close:
+                                  type: number
+                                  example: 0
+                                complete:
+                                  type: number
+                                  example: 0
+                                impression:
+                                  type: number
+                                  example: 0
+                                next:
+                                  type: number
+                                  example: 0
+                                prev:
+                                  type: number
+                                  example: 0
+                                reach:
+                                  type: number
+                                  example: 0
+                                share_count:
+                                  type: number
+                                  example: 0
+                                shared_count:
+                                  type: number
+                                  example: 0
+                    example:
+                    - daily-stats:
+                        '2025-01-01':
+                          average_watch_length: 0
+                          click: 0
+                          click_impression: 0
+                          close: 0
+                          complete: 0
+                          impression: 0
+                          next: 0
+                          prev: 0
+                          reach: 0
+                          share_count: 0
+                          shared_count: 0
+                      icon: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg
+                      id: 2581651
+                      media: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg
+                      monthly-stats:
+                        '2025-01-01':
+                          average_watch_length: 0
+                          click: 0
+                          click_impression: 0
+                          close: 0
+                          complete: 0
+                          impression: 0
+                          next: 0
+                          prev: 0
+                          reach: 0
+                          share_count: 0
+                          shared_count: 0
+                      name: null
+                      outlink: ''
+                      settings: {}
+                      status: 1
+                      story_group_id: 204206
+                      thumbnail: null
+                      title: TEST 4
+                      total-stats:
+                        average_watch_length: 0
+                        click: 0
+                        click_impression: 0
+                        close: 0
+                        complete: 0
+                        impression: 0
+                        next: 0
+                        prev: 0
+                        reach: 0
+                        share_count: 0
+                        shared_count: 0
+                      ts_created: '2025-03-04'
+                      ts_end: null
+                      ts_start: '2025-03-04 17:47:47'
+                      weekly-stats:
+                        '2025-01-01':
+                          average_watch_length: 0
+                          click: 0
+                          click_impression: 0
+                          close: 0
+                          complete: 0
+                          impression: 0
+                          next: 0
+                          prev: 0
+                          reach: 0
+                          share_count: 0
+                          shared_count: 0
+                  message:
+                    type: string
+                    example: success
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    data:
+                    - daily-stats:
+                        '2025-01-01':
+                          average_watch_length: 0
+                          click: 0
+                          click_impression: 0
+                          close: 0
+                          complete: 0
+                          impression: 0
+                          next: 0
+                          prev: 0
+                          reach: 0
+                          share_count: 0
+                          shared_count: 0
+                      icon: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3927707939.jpeg
+                      id: 2581651
+                      media: https://db62cod6cnasq.cloudfront.net/user-media/9434/s2581651/3879931866.jpeg
+                      monthly-stats:
+                        '2025-01-01':
+                          average_watch_length: 0
+                          click: 0
+                          click_impression: 0
+                          close: 0
+                          complete: 0
+                          impression: 0
+                          next: 0
+                          prev: 0
+                          reach: 0
+                          share_count: 0
+                          shared_count: 0
+                      name: null
+                      outlink: ''
+                      settings: {}
+                      status: 1
+                      story_group_id: 204206
+                      thumbnail: null
+                      title: TEST 4
+                      total-stats:
+                        average_watch_length: 0
+                        click: 0
+                        click_impression: 0
+                        close: 0
+                        complete: 0
+                        impression: 0
+                        next: 0
+                        prev: 0
+                        reach: 0
+                        share_count: 0
+                        shared_count: 0
+                      ts_created: '2025-03-04'
+                      ts_end: null
+                      ts_start: '2025-03-04 17:47:47'
+                      weekly-stats:
+                        '2025-01-01':
+                          average_watch_length: 0
+                          click: 0
+                          click_impression: 0
+                          close: 0
+                          complete: 0
+                          impression: 0
+                          next: 0
+                          prev: 0
+                          reach: 0
+                          share_count: 0
+                          shared_count: 0
+                    message: success
+                    status: ok
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for API authentication
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true

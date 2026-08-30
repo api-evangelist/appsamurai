@@ -1,0 +1,161 @@
+openapi: 3.2.0
+info:
+  title: Storyly External Segment API
+  version: 1.0.0
+  contact: {}
+  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
+  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
+  x-apievangelist-method: searched
+servers:
+- url: https://api.storyly.io
+tags:
+- name: segment
+  description: Segment management endpoints
+paths:
+  /external/segment:
+    get:
+      tags:
+      - segment
+      summary: List segments
+      description: List all segments for the authenticated account.
+      operationId: listSegments
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: string
+          example: '1'
+        description: required=False, min_value=1, max_value=100
+      - name: offset
+        in: query
+        schema:
+          type: string
+          example: '0'
+        description: required=False, min_value=0
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        account_id:
+                          type: number
+                          example: 9434
+                        is_used:
+                          type: boolean
+                          example: false
+                        label:
+                          type: string
+                          example: ffdg
+                    example:
+                    - account_id: 9434
+                      is_used: false
+                      label: ffdg
+                  message:
+                    type: string
+                    example: Segments successfully listed
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    data:
+                    - account_id: 9434
+                      is_used: false
+                      label: ffdg
+                    message: Segments successfully listed
+                    status: ok
+    post:
+      tags:
+      - segment
+      summary: Create segment
+      description: Create a new segment.
+      operationId: createSegment
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                label:
+                  type: string
+                  example: label_name
+            examples:
+              Create segment:
+                value:
+                  label: label_name
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Segments successfully created
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Segments successfully created
+                    status: ok
+    delete:
+      tags:
+      - segment
+      summary: Delete segment
+      description: Delete a segment by label.
+      operationId: deleteSegment
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: label
+        in: query
+        schema:
+          type: string
+          example: label_name
+        description: required=True, empty=False
+      responses:
+        '200':
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Segments successfully deleted
+                  status:
+                    type: string
+                    example: ok
+              examples:
+                '200':
+                  value:
+                    message: Segments successfully deleted
+                    status: ok
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token for API authentication
+x-readme:
+  explorer-enabled: true
+  proxy-enabled: true
