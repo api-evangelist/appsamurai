@@ -95,6 +95,8 @@ apis:
   humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
   baseURL: http://api.appsamurai.com
   tags:
+  - App
+  tags_raw:
   - app
   properties:
   - type: OpenAPI
@@ -123,6 +125,8 @@ apis:
   humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
   baseURL: http://api.appsamurai.com
   tags:
+  - Audience
+  tags_raw:
   - audience
   properties:
   - type: OpenAPI
@@ -151,6 +155,8 @@ apis:
   humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
   baseURL: http://api.appsamurai.com
   tags:
+  - Instance
+  tags_raw:
   - instance
   properties:
   - type: OpenAPI
@@ -179,6 +185,8 @@ apis:
   humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
   baseURL: http://api.appsamurai.com
   tags:
+  - Segment
+  tags_raw:
   - segment
   properties:
   - type: OpenAPI
@@ -207,6 +215,8 @@ apis:
   humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
   baseURL: http://api.appsamurai.com
   tags:
+  - Story
+  tags_raw:
   - story
   properties:
   - type: OpenAPI
