@@ -128,7 +128,7 @@ apis:
   humanURL: https://help.appsamurai.com/en/articles/11105087-appsamurai-campaign-spend-api
   baseURL: http://api.appsamurai.com
   tags:
-  - Audience
+  - Audiences
   tags_raw:
   - audience
   properties:
