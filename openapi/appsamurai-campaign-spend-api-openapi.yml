@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: AppSamurai Campaign Spend API
   version: 1.0.0
@@ -94,6 +94,15 @@ paths:
       - PathApiKey: []
 components:
   schemas:
+    EventGoal:
+      type: object
+      properties:
+        event_name:
+          type: string
+        cpi_bid:
+          type: number
+        event_token:
+          type: string
     CampaignSpend:
       type: object
       description: Per-campaign spend record keyed and filtered by the supplied query parameters.
@@ -131,15 +140,6 @@ components:
           description: Daily spend as date-to-amount key/value pairs.
           additionalProperties:
             type: number
-    EventGoal:
-      type: object
-      properties:
-        event_name:
-          type: string
-        cpi_bid:
-          type: number
-        event_token:
-          type: string
   securitySchemes:
     PathApiKey:
       type: apiKey

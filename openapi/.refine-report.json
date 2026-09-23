@@ -1,14 +1,37 @@
 {
   "provider": "appsamurai",
   "sources": [
-    "appsamurai-campaign-spend-api-openapi.yml"
+    "_original/appsamurai-campaign-spend-openapi.yml",
+    "_original/appsamurai-storyly-external-api-openapi.json"
   ],
   "outputs": [
-    "appsamurai-campaign-spend-api-openapi.yml"
+    "appsamurai-campaign-spend-api-openapi.yml",
+    "appsamurai-app-api-openapi.yml",
+    "appsamurai-audience-api-openapi.yml",
+    "appsamurai-instance-api-openapi.yml",
+    "appsamurai-segment-api-openapi.yml",
+    "appsamurai-story-api-openapi.yml",
+    "appsamurai-story-group-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "1 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "appsamurai-campaign-spend-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "appsamurai-campaign-spend-openapi.yml: declared missing tag: Campaign Spend",
+    "appsamurai-storyly-external-api-openapi.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/appsamurai-storyly-external-api-openapi_2.json: archived document superseded by a larger archived document",
+    "appsamurai-app-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appsamurai-audience-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appsamurai-campaign-spend-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appsamurai-instance-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appsamurai-segment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appsamurai-story-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "appsamurai-story-group-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

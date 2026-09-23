@@ -3,19 +3,17 @@ info:
   title: Storyly External Instance API
   version: 1.0.0
   contact: {}
-  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
-  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
-  x-apievangelist-method: searched
+  description: Instance management endpoints
 servers:
 - url: https://api.storyly.io
 tags:
-- name: instance
+- name: Instance
   description: Instance management endpoints
 paths:
   /external/instance:
     get:
       tags:
-      - instance
+      - Instance
       summary: List instances
       description: List instances for an app.
       operationId: listInstances

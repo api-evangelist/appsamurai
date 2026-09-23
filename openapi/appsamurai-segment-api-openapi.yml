@@ -3,19 +3,17 @@ info:
   title: Storyly External Segment API
   version: 1.0.0
   contact: {}
-  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
-  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
-  x-apievangelist-method: searched
+  description: Segment management endpoints
 servers:
 - url: https://api.storyly.io
 tags:
-- name: segment
+- name: Segment
   description: Segment management endpoints
 paths:
   /external/segment:
     get:
       tags:
-      - segment
+      - Segment
       summary: List segments
       description: List all segments for the authenticated account.
       operationId: listSegments
@@ -77,7 +75,7 @@ paths:
                     status: ok
     post:
       tags:
-      - segment
+      - Segment
       summary: Create segment
       description: Create a new segment.
       operationId: createSegment
@@ -117,7 +115,7 @@ paths:
                     status: ok
     delete:
       tags:
-      - segment
+      - Segment
       summary: Delete segment
       description: Delete a segment by label.
       operationId: deleteSegment

@@ -3,19 +3,17 @@ info:
   title: Storyly External Audience API
   version: 1.0.0
   contact: {}
-  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
-  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
-  x-apievangelist-method: searched
+  description: Audience management endpoints
 servers:
 - url: https://api.storyly.io
 tags:
-- name: audience
+- name: Audience
   description: Audience management endpoints
 paths:
   /external/audience:
     get:
       tags:
-      - audience
+      - Audience
       summary: List audiences
       description: List all audiences for the authenticated account.
       operationId: listAudiences
@@ -232,7 +230,7 @@ paths:
                     status: ok
     post:
       tags:
-      - audience
+      - Audience
       summary: Create audience
       description: Create a new audience.
       operationId: createAudience
@@ -316,7 +314,7 @@ paths:
                     status: ok
     patch:
       tags:
-      - audience
+      - Audience
       summary: Update audience
       description: Update an existing audience.
       operationId: updateAudience

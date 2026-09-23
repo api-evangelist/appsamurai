@@ -3,19 +3,17 @@ info:
   title: Storyly External App API
   version: 1.0.0
   contact: {}
-  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
-  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
-  x-apievangelist-method: searched
+  description: App management endpoints
 servers:
 - url: https://api.storyly.io
 tags:
-- name: app
+- name: App
   description: App management endpoints
 paths:
   /external/app:
     get:
       tags:
-      - app
+      - App
       summary: List apps
       description: List all apps for the authenticated account.
       operationId: listApps

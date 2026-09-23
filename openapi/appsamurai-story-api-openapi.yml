@@ -3,19 +3,17 @@ info:
   title: Storyly External Story API
   version: 1.0.0
   contact: {}
-  description: The Storyly External API manages apps, instances, story groups, stories, audiences and segments for Storyly, App Samurai's in-app content experience product. Harvested verbatim from the Storyly ReadMe documentation hub (docs.storyly.io/.well-known/api-catalog -> docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b).
-  x-apievangelist-source: https://docs.storyly.io/openapi/68f9ff1ab2a841f03a72b06b
-  x-apievangelist-method: searched
+  description: Story management endpoints
 servers:
 - url: https://api.storyly.io
 tags:
-- name: story
+- name: Story
   description: Story management endpoints
 paths:
   /external/story:
     get:
       tags:
-      - story
+      - Story
       summary: Get stories
       description: Get stories in a story group.
       operationId: getStories
@@ -173,7 +171,7 @@ paths:
                     status: ok
     post:
       tags:
-      - story
+      - Story
       summary: Create story
       description: Create a new story.
       operationId: createStory
@@ -250,7 +248,7 @@ paths:
                     status: ok
     delete:
       tags:
-      - story
+      - Story
       summary: Delete story
       description: Delete a story by ID.
       operationId: deleteStory
@@ -284,7 +282,7 @@ paths:
                     status: ok
     patch:
       tags:
-      - story
+      - Story
       summary: Update story
       description: Update an existing story.
       operationId: updateStory
@@ -358,7 +356,7 @@ paths:
   /external/story/stats:
     get:
       tags:
-      - story
+      - Story
       summary: Get story stats
       description: Get statistics for stories.
       operationId: getStoryStats
