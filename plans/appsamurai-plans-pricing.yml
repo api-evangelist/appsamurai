@@ -95,3 +95,31 @@ unpriced_products:
       purchasable product.
 
 comparison_table: https://www.storyly.io/pricing#plans_table
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Core Engagement Suite
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Personalization & Widget Suite
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Comprehensive Orchestration Suite
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - month
