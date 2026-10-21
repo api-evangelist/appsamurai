@@ -42,3 +42,165 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: appsamurai-maven-central
+  label: Maven Central
+  partner: maven-central
+  partner_name: Maven Central
+  category: official SDK (Java/JVM)
+  type: register
+  channel: package-registry
+  evidence: https://central.sonatype.com/artifact/com.appsamurai.storyly/storyly
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: Maven Central (public registry JSON)
+    spec_file: null
+    language: Java/JVM
+    packages:
+    - name: com.appsamurai.storyly:storyly
+      version: 4.21.1
+      released: '2026-10-09'
+      released_field: lastUpdated
+      lapsed: false
+      page: https://central.sonatype.com/artifact/com.appsamurai.storyly/storyly
+      repo_leg: github-org:netvent
+      publisher_leg: groupId:appsamurai.com
+      matched_by: domain
+    - name: com.appsamurai.storyly:storyly-moments
+      version: 1.0.0
+      released: '2023-05-05'
+      released_field: lastUpdated
+      lapsed: true
+      page: https://central.sonatype.com/artifact/com.appsamurai.storyly/storyly-moments
+      repo_leg: github-org:netvent
+      publisher_leg: groupId:appsamurai.com
+      matched_by: domain
+    - name: com.appsamurai.storyly:storyly-monetization
+      version: 3.0.0
+      released: '2024-05-30'
+      released_field: lastUpdated
+      lapsed: true
+      page: https://central.sonatype.com/artifact/com.appsamurai.storyly/storyly-monetization
+      repo_leg: github-org:netvent
+      publisher_leg: groupId:appsamurai.com
+      matched_by: domain
+    - name: com.appsamurai.storyly:storyly-placement
+      version: 1.17.1
+      released: '2026-10-16'
+      released_field: lastUpdated
+      lapsed: false
+      page: https://central.sonatype.com/artifact/com.appsamurai.storyly/storyly-placement
+      repo_leg: github-org:netvent
+      publisher_leg: groupId:appsamurai.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: appsamurai-npm-registry
+  label: npm registry
+  partner: npm
+  partner_name: npm registry
+  category: official SDK (JavaScript/TypeScript)
+  type: register
+  channel: package-registry
+  evidence: https://www.npmjs.com/package/@appsamurai/react-native-appsamurai-ads
+  source: edge
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@appsamurai/react-native-appsamurai-ads'
+      version: 0.0.10
+      released: '2022-04-04'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/@appsamurai/react-native-appsamurai-ads
+      repo_leg: github-org:netvent
+      publisher_leg: org:appsamurai
+      matched_by: github-org
+    - name: react-native-appsamurai-ads
+      version: 0.1.0
+      released: '2022-05-14'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/react-native-appsamurai-ads
+      repo_leg: github-org:netvent
+      publisher_leg: email:appsamurai.com
+      matched_by: domain
+    - name: react-native-as-attribution-sdk-bridge
+      version: 1.0.15
+      released: '2022-05-14'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/react-native-as-attribution-sdk-bridge
+      repo_leg: github-org:netvent
+      publisher_leg: email:appsamurai.com
+      matched_by: domain
+    - name: storyly-placement-react-native
+      version: 1.17.0
+      released: '2026-10-09'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/storyly-placement-react-native
+      repo_leg: github-org:netvent
+      publisher_leg: email:appsamurai.com
+      matched_by: domain
+    - name: storyly-react-native
+      version: 4.21.3
+      released: '2026-10-02'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/storyly-react-native
+      repo_leg: github-org:netvent
+      publisher_leg: email:appsamurai.com
+      matched_by: domain
+    - name: storyly-react-native-fabric
+      version: 4.21.3
+      released: '2026-10-02'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/storyly-react-native-fabric
+      repo_leg: github-org:netvent
+      publisher_leg: email:appsamurai.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  status: not-a-workflow
+  arazzo: null
+- slug: appsamurai-500-global
+  label: 500 Global
+  partner: 500-global
+  partner_name: 500 Global
+  category: accelerator portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://500.co/companies
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: 500 Global portfolio (500.co/companies; the page's own JSON 500.co/api/startups)
+    standard: null
+    spec_file: null
+    role: accelerator-portfolio-company
+    registered_name: Appsamurai
+    register_id: https://500.co/companies
+    register_country: United States
+    register_website: appsamurai.com
+    matched_domain: appsamurai.com
+    matched_by: domain
+    signal_note: 'participation only: the accelerator''s own portfolio register lists the company (cohort / investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-accelerator-portfolios.py
+    detected: '2026-10-21'
+    year: '2017'
+  status: not-a-workflow
+  arazzo: null
